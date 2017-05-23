@@ -23,7 +23,6 @@
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-key "></i></span>
             <input class="form-control" type="password" id="inputPassword" name="senha" placeholder="Password" required>
-            <input class="form-control" type="password" id="inputPassword" name="senha" placeholder="Password" required>
           </div>
           
 
