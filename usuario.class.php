@@ -12,7 +12,7 @@
  -	  public function __set($var, $valor){
  -	  	$this->$var = $valor;
  -	  }
- -
+ -//Enviar para o banco de dados
  -	  public function gravar(){
  -	  	$sql = "insert into usuario (nome, senha, tipo) values (?,?,?)";
  -	  	$con = new Conexao();
