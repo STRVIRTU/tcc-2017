@@ -1,8 +1,8 @@
 <?php
 	class Conexao extends PDO{
-		private $host = "mysql:host=localhost;dbname=u452310481_tcc";
-		private $user = "u452310481_admin";
-		private $pass = "ceep123";
+		private $host = "mysql:host=localhost;dbname=db_registros";
+		private $user = "root";
+		private $pass = "";
 
 		public function Conexao() {
 			try {

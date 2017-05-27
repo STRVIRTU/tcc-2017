@@ -27,6 +27,7 @@
 					case 'login': $pagina = 'login.php';break;
 					case 'admin': $pagina = 'admin.php';break;
 					case 'cadastro': $pagina = 'cadastro.php';break;
+					
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

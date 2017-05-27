@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?>
+
 
 <html>
 <head>
@@ -41,30 +39,32 @@ session_start();
 
 
 							<!--ALUNO-->
-							<form method="POST ">
+							<form method="POST">
 								<label>Nome: </label>
 								<input type="text" name="nome" class="form-control" required autofocus><br>
+								<label>Turma: </label>
+								<input type="text" name="turma" class="form-control" required autofocus><br>
 								<div class="row">
 									<div class="col-sm-6 pull-left">
-										<label id="input" for="exampleInputName2">CGM:</label>
-										<input type="text" class="form-control" id="exampleInputName2" placeholder="448807959">
+										<label for="cgm">CGM:</label>
+										<input type="text" class="form-control" id="cgm" name="cgm" placeholder="448807959">
 										<label id="input" for="course">Curso</label>
-										<select name="tipo" class="form-control" id="sel1">
+										<select name="curso" class="form-control" id="curso">
 											<option value="informatica">Informática</option>
 											<option value="administração">Administração</option>
 											<option value="meioambiente">Meio Ambiente</option>
 										</select>
 									</div>
 									<div class="col-sm-6 pull-right">
-										<label id="input" for="rg">RG:</label>
-										<input type="text" class="form-control" id="rg" placeholder="13.195.492-1">
-										<label for="old">Data de Nascimento:</label>
-										<input type="text" class="form-control pull-right" id="old" placeholder="05/03/1999">
+										<label for="rg">RG:</label>
+										<input type="text" class="form-control" id="rg" name="rg" placeholder="13.195.492-1">
+										<label for="nascimento">Data de Nascimento:</label>
+										<input type="text" class="form-control pull-right" id="nascimento" name="nascimento" placeholder="05/03/1999">
 									</div>
 								</div><br>
 								<label>Email:</label>
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="luan.rohde" aria-describedby="basic-addon2">
+									<input type="text" class="form-control" name="email" placeholder="luan.rohde" aria-describedby="basic-addon2">
 									<span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
 								</div><br>
 								<label>Senha:</label>
@@ -108,7 +108,23 @@ session_start();
 			</div>
 		</div>
 	</div> <!-- /container -->
-
+	<?php
+		include_once('aluno.class.php');
+		/*
+		$nome = $_POST['nome'];
+		$rg = $_POST['rg'];
+		$nascimento = $_POST['nascimento'];
+		$email = $_POST['email'];
+		$cgm = $_POST['cgm'];
+		$curso = $_POST['curso'];
+		$turma = $_POST['turma'];
+	*/
+		$aluno = new Aluno();
+		$aluno->setCgm($_POST['cgm']);
+		$aluno->setCurso($_POST['curso']);
+		$aluno->setTurma($_POST['turma']);
+		$aluno->gravar();
+	?>
 </body>
 </html>
 
