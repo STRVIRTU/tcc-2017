@@ -118,7 +118,9 @@
 		$cgm = $_POST['cgm'];
 		$curso = $_POST['curso'];
 		$turma = $_POST['turma'];
+		$turma = $_POST['turma'];
 	*/
+
 		$aluno = new Aluno();
 		$aluno->setCgm($_POST['cgm']);
 		$aluno->setCurso($_POST['curso']);
