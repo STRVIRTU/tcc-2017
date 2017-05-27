@@ -20,14 +20,14 @@
 	</head>
 	<body>
 		<?php
-			/* include('cadastro.php'); */
+			/*include('cadastro.php');*/
 			$pagina = 'cadastro.php';
 			if(isset($_GET['pagina'])){
 				switch ($_GET['pagina']) {
 					case 'login': $pagina = 'login.php';break;
 					case 'admin': $pagina = 'admin.php';break;
 					case 'cadastro': $pagina = 'cadastro.php';break;
-					
+					case 'recuperar_senha': $pagina = "recuperar_senha.php"; break;
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

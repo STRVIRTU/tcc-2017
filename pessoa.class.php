@@ -1,5 +1,5 @@
 <?php
-
+	include_once('conexao.class.php');
 	class Pessoa 
 	{
 		
@@ -9,13 +9,8 @@
 		public $nascimento;
 		/* public $foto; */
 		public $email;
-		public function __construct($nome,$rg,$nascimento,$email)
-		{
-			$this->setNome($nome);
-			$this->setRg($rg);
-			$this->setNascimento($nascimento);
-			$this->setEmail($email);		
-		}
+		private $senha;
+		
 
 		public function setNome($nome){
 			$this->$nome = $nome;
@@ -45,7 +40,23 @@
 			return $this->$email;
 		}
 
+		public function recuperar_senha(){
+			$sql = "select * from login where email=?";
+			$con = new Conexao();
+			$stm = $con->prepare($sql);
+			$stm ->bindParam(1, $this->email);
+			$stm ->execute();
 
+				foreach ($stm as $linha) {
+					$this->email=$linha['email'];
+					$this->senha=$linha['senha'];
+				}
+
+			$para = $this->email;
+			$mensagem = "Recuperação da senha:".$this->senha;
+			$titulo = "Recuperacao de senha";		
+			mail($para, $titulo, $mensagem);
+		}
 	}
 
 ?>

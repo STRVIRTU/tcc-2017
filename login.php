@@ -34,7 +34,8 @@
           
           <div class="btn-group">
             <input type="submit" class="btn btn-primary"></input>
-            <a href="cadastro.php" class="btn btn-danger" role="button">Cadastrar-se</a>
+            <a href="?pagina=cadastro" class="btn btn-danger" role="button">Cadastrar-se</a>
+            <a href="?pagina=recuperar_senha" class="btn btn-danger" role="button">Rec. Senha</a>
           </div>
 
         </form> <!-- /form -->
