@@ -4,31 +4,8 @@ session_start();
 
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Página de Login">
-	<meta name="author" content="Luan Rohde">
-	<link rel="icon" href="img/favicon.ico">
-
 	<title>Cadastro</title>
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	<link href="css/signin.css" rel="stylesheet">
-	<link href="css/style.css" type="text/css "rel="stylesheet">
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="bootstrap/js/bootstrap-datepicker.js"></script>
-	<script>
-	$(document).ready(function () {
-		$('#old').datepicker({
-			format: "dd/mm/yyyy",
-			language: "pt-BR"
-		});
-	});
-	</script>
+		<?php include_once('carregar_links.php'); ?>
 </head>
 <body class="cadastro">
 	<div class="container">
@@ -135,9 +112,3 @@ session_start();
 </body>
 </html>
 
-<?php
-if(isset($_SESSION['error'])){
-	echo $_SESSION['error'];
-}
-session_destroy();
-?>
