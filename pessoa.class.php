@@ -1,62 +1,61 @@
 <?php
-	include_once('conexao.class.php');
-	class Pessoa 
-	{
-		
-		private $id_pessoa;
+
+	class Pessoa{
+
+		public $id_pessoa;
 		public $nome;
 		public $rg;
 		public $nascimento;
-		/* public $foto; */
 		public $email;
-		private $senha;
+
+		public function __construct(){
+			print "Pessoa instanciada!";
+		}
 		
+	    public function getIdPessoa()
+	    {
+	        return $this->id_pessoa;
+	    }
 
-		public function setNome($nome){
-			$this->$nome = $nome;
-		}
-		public function getNome(){
-			return $this->$nome;
-		}
 
-		public function setRg($rg){
-			$this->$rg = $rg;
-		}
-		public function getRg(){
-			return $this->$rg;
-		}
+	    public function getNome()
+	    {
+	        return $this->nome;
+	    }  
+	    public function setNome($nome)
+	    {
+	        $this->nome = $nome;
+	    }
 
-		public function setNascimento($nascimento){
-			$this->$nascimento = $nascimento;
-		}
-		public function getNascimento(){
-			return $this->$nascimento;
-		}
 
-		public function setEmail($email){
-			$this->$email = $email;
-		}
-		public function getEmail(){
-			return $this->$email;
-		}
+	    public function getRg()
+	    {
+	        return $this->rg;
+	    }
+	    public function setRg($rg)
+	    {
+	        $this->rg = $rg;
+	    }
 
-		public function recuperar_senha(){
-			$sql = "select * from login where email=?";
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm ->bindParam(1, $this->email);
-			$stm ->execute();
 
-				foreach ($stm as $linha) {
-					$this->email=$linha['email'];
-					$this->senha=$linha['senha'];
-				}
+	    public function getNascimento()
+	    {
+	        return $this->nascimento;
+	    }
+	    public function setNascimento($nascimento)
+	    {
+	        $this->nascimento = $nascimento;
+	    }
 
-			$para = $this->email;
-			$mensagem = "Recuperação da senha:".$this->senha;
-			$titulo = "Recuperacao de senha";		
-			mail($para, $titulo, $mensagem);
-		}
-	}
+
+	    public function getEmail()
+	    {
+	        return $this->email;
+	    }
+	    public function setEmail($email)
+	    {
+	        $this->email = $email;
+	    }
+}
 
 ?>
