@@ -29,26 +29,26 @@
 
 		<div class="row">
 			<div class="center col-sm-5 col-md-5 col-lg-5">
-				<form class="" method="POST" >
+				<form class="" method="POST" action="validar_cadastro.php">
 					<h1 class="form-signin-heading text-center">Cadastro de estagiário</h1>
 					<label for="">Nome:</label>
-					<input type="text" class="form-control"  name="turma" value="" >
+					<input type="text" class="form-control" name="nome" value="" >
 					<br/>
 
-					<label for="">CPF:</label>
-					<input type="text" id="cpf" class="form-control" name="cgm" value="">
+					<label for="">CGM:</label>
+					<input type="text" class="form-control" name="cgm" value="">
 					<br/>
 
 					<label for="">RG:</label>
+					<input type="text" class="form-control" name="rg" value="">
+					<br/>
+
+					<label for="">Curso:</label>
 					<input type="text" class="form-control" name="curso" value="">
 					<br/>
 
-					<label for="">Telefone:</label>
-					<input type="text" id="telefone" class="form-control" name="telefone" value="">
-					<br/>
-
-					<label for="">Código:</label>
-					<input type="text" class="form-control"  name="idaluno" value="" readonly>
+					<label for="">Turma:</label>
+					<input type="text" class="form-control"  name="turma" value="">
 					<br/>
 
 					<label for="">E-mail:</label>
@@ -70,26 +70,5 @@
 				</form>
 			</div>
 		</div>
-	<?php
-		include_once('aluno.class.php');
-		/*
-		$nome = $_POST['nome'];
-		$rg = $_POST['rg'];
-		$nascimento = $_POST['nascimento'];
-		$email = $_POST['email'];
-		$cgm = $_POST['cgm'];
-		$curso = $_POST['curso'];
-		$turma = $_POST['turma'];
-		$turma = $_POST['turma'];
-	*/
-
-		$aluno = new Aluno();
-	
-		$aluno->__set('cgm', $_POST['cgm']);
-		$aluno->__set('curso', $_POST['curso']);
-		$aluno->__set('turma', $_POST['turma']);
-		$aluno->gravar();
-
-	?>
 	</body>
 </html>

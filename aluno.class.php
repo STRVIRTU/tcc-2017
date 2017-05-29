@@ -19,7 +19,6 @@
             $stm->bindParam(1, $this->cgm);
             $stm->bindParam(2, $this->curso);
             $stm->bindParam(3, $this->turma);
-     
             $stm->execute();
             echo "gravado";
         }
