@@ -40,7 +40,7 @@
 			return $this->$email;
 		}
 
-		public function recuperar_senha($email){
+		public function recuperar_senha(){
 			$sql = "select * from login where email=?";
 			$con = new Conexao();
 			$stm = $con->prepare($sql);
