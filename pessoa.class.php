@@ -40,7 +40,7 @@
 			return $this->$email;
 		}
 
-		public function recuperar_senha(){
+		public function recuperar_senha($email){
 			$sql = "select * from login where email=?";
 			$con = new Conexao();
 			$stm = $con->prepare($sql);
@@ -55,9 +55,19 @@
 			$para = $this->email;
 			$headers = 'From: luanrohde11@gmail.com';
 			$mensagem = "Recuperação da senha:".$this->senha;
-			$titulo = "Recuperacao de senha";		
-			// echo $para.$titulo.$mensagem.$headers;
-			mail($para, $titulo, $mensagem, $headers);
+			$titulo = "Recuperacao de senha";
+			
+			/*$titulo = "Recuperacao de senha";
+			$para = "luanrohde11@gmail.com";
+			$headers = "From: luanrohde11@gmail.com";
+			$mensagem = "Recuperação da senha:";*/
+			
+			if (mail($para, $titulo, $mensagem, $headers)){
+				echo'<p class="text text-success">Sucesso</p>';
+			}else{
+				echo '<p class="text-danger">Erro</p>';
+			}
+
 		}
 	}
 
