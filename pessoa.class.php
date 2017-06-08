@@ -53,9 +53,11 @@
 				}
 
 			$para = $this->email;
+			$headers = 'From: luanrohde11@gmail.com';
 			$mensagem = "Recuperação da senha:".$this->senha;
 			$titulo = "Recuperacao de senha";		
-			mail($para, $titulo, $mensagem);
+			// echo $para.$titulo.$mensagem.$headers;
+			mail($para, $titulo, $mensagem, $headers);
 		}
 	}
 
