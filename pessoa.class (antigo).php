@@ -40,46 +40,38 @@
 			return $this->$email;
 		}
 
-		public function recuperar_senha(){
-			$email = $_POST['email-rec'];
-			$sql = ("SELECT senha FROM login WHERE email='$email'");
+		public function recuperar_senha($rec){
+			$sql = "select * from login where email=?";
 			$con = new Conexao();
 			$stm = $con->prepare($sql);
-			// $stm ->bindParam(1, $this->email);
+			$stm ->bindParam(1, $this->email);
 			$stm ->execute();
-			$verificar = $sql->num_rows;
-			// echo $total = $sql->num_rows;
-			// if (($total)> 0 ){
-			// 	echo "existe";
-			// }
-		 
-			// if ($verificar == 0) {
-			// 	echo "Email não cadastrado";
-			// }
-			
+
 				foreach ($stm as $linha) {
-				  	$this->email=$linha['email'];
-				 	$this->senha=$linha['senha'];
-				  }
+					$this->email=$linha['email'];
+					$this->senha=$linha['senha'];
+				}
 
-
-				  
-			$para = $email;
-			$senha = $this->senha;
+			$para = $this->email;
 			$headers = 'From: luanrohde11@gmail.com';
-			$mensagem ="Recuperação da senha: $senha";
+			$mensagem = "Recuperação da senha:".$this->senha;
 			$titulo = "Recuperacao de senha";
+			echo $para;
+			/*$titulo = "Recuperacao de senha";
+			$para = "luanrohde11@gmail.com";
+			$headers = "From: luanrohde11@gmail.com";
+			$mensagem = "Recuperação da senha:";*/
+			/*if ($rec == $para) {
 				
-				// echo $mensagem['a']['b'];
 			
 			if (mail($para, $titulo, $mensagem, $headers)){
 				echo'<p class="text text-success">Sucesso</p>';
-				session_destroy();
 			}else{
 				echo '<p class="text-danger">Email não enviado</p>';
-				session_destroy();
+			}else{
+				echo '<p class="text-danger">Email não registrado</p>';
 		}
+		}*/
 	}
-}
 
 ?>

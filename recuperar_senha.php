@@ -2,7 +2,20 @@
 <html>
 <head>
 	<title>Recuperar</title>
-	<?php include_once('carregar_links.php'); ?>
+	<?php
+		session_start();
+		include_once('pessoa.class.php');
+			
+			if ($_SESSION['control'] == 1) {
+				$pessoa = new Pessoa();
+				$pessoa->recuperar_senha();
+			
+			}
+
+
+			
+ 
+?>
 </head>
 <body>
 
@@ -13,16 +26,11 @@
 		<form class="form-rec" method="POST">
 			<label>Email</label>
 			<input type="text" class="form-control" name="email-rec"><br>
-			<a href="?pagina=recuperar_senha" class="btn btn-success" role="button">Rec. Senha</a>
-		</form>
+			<button type="submit" onclick="<?php $_SESSION['control'] = 1; ?>" class="btn btn-success" role="button">Rec. Senha</button>
 
-<?php
-include_once('pessoa.class.php');
-$pessoa = new Pessoa();
 
-$pessoa->recuperar_senha();
- 
-?>
+
+
 </div>
 </body>
 </html>
