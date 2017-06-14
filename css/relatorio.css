@@ -1,0 +1,31 @@
+body{
+	background: #eee;
+}
+
+#pagina{
+	width:21cm;
+	height:29.7cm;
+	box-sizing:border-box;
+	padding: 2cm;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+h2{
+
+}
+
+table{
+	border: 1px solid;
+}
+
+tr{
+	
+	background: #cdcdcd;
+	border: 1px solid;
+}
+td{
+	border: 1px solid;
+	padding: 4px;
+}
