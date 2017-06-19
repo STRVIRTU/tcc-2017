@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+	// session_start();
 	function __autoload($classe){
 		if(file_exists('{$classe}.class.php')){
 			include_once('{$classe}.class.php');
@@ -7,7 +7,8 @@
 	}
 
 	if(!isset($_SESSION['logado'])){
-		header('Location:login.php');
+		$pagina = "login.php";
+		// header('Location:login.php');
 	}
 
 	date_default_timezone_set('America/Sao_Paulo');
@@ -21,7 +22,7 @@
 	<body>
 		<?php
 			/*include('cadastro.php');*/
-			$pagina = 'cadastro.php';
+			
 			if(isset($_GET['pagina'])){
 				switch ($_GET['pagina']) {
 					case 'login': $pagina = 'login.php';break;
