@@ -1,7 +1,11 @@
   body{
   background-color: #26A65B;
+  margin: 0;
 }
 
+p{
+  margin: 0px;
+}
 .center{
   margin: 0 auto !important;
   float: none !important;
@@ -31,7 +35,6 @@
 
 .form-control{
   padding: 2rem;
-  background-color: rgba(0,0,0,.09);
   border: none;
 
 }
@@ -85,6 +88,15 @@
   display:block;
 
 }
+
+.footer{
+  height: 10%;
+  padding: 10px;
+  background-color: rgba(245,245,245,1);
+  
+  margin-top: 200px;
+  width: 100%;
+}
 /*
 .social-login ul li:nth-child(1) a{
   background:#3b5998;
@@ -101,5 +113,4 @@
 
 .box-perfil{
   background-color: red;
-  margin-left: 0px;
-}
+  margin
