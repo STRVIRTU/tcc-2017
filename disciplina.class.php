@@ -9,7 +9,7 @@
 		public $carga_horaria;
 
 		public function __construct(){
-			print "Disciplina instanciada!";
+			//print "Disciplina instanciada!";
 		}
 
 		public function gravar(){
@@ -21,7 +21,7 @@
 			$stm->bindParam(3, $this->curso);
 			$stm->bindParam(4, $this->carga_horaria);
 		 	$stm->execute();
-		 	echo "gravado";
+		 	//echo "gravado";
 	 	}
 	 	  
 

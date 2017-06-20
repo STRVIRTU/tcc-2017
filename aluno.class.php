@@ -14,7 +14,7 @@
 
 		public function __construct(){
 
-			print "Aluno instanciado!";
+			//print "Aluno instanciado!";
 		}
 
 		public function gravar(){
@@ -31,7 +31,7 @@
 		 	$stm->bindParam(8, $this->senha);
 		 
 		 	$stm->execute();
-		 	echo "gravado";
+		 	//echo "gravado";
 	 	}
 	 	  
 

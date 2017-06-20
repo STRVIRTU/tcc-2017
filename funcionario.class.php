@@ -13,7 +13,7 @@
 		public $senha; 
 
 		public function __construct(){
-			print "Funcionario instanciado!";
+			//print "Funcionario instanciado!";
 		}
 
 		public function gravar(){
@@ -29,7 +29,7 @@
 		 	$stm->bindParam(7, $this->senha);
 		 
 		 	$stm->execute();
-		 	echo "gravado";
+		 	//echo "gravado";
 	 	} 
 
 	    public function __get($var){

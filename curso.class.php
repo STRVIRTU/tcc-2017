@@ -6,7 +6,7 @@
 		public $curso;
 
 		public function __construct(){
-			print "Curso instanciado!";
+			//print "Curso instanciado!";
 		}
 
 		public function gravar(){
@@ -16,7 +16,7 @@
 		 	$stm->bindParam(1, $this->curso);
 		 
 		 	$stm->execute();
-		 	echo "gravado";
+		 	//echo "gravado";
 	 	}
 	 	  
 
