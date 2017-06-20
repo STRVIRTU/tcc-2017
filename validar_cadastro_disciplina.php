@@ -15,5 +15,9 @@
 
 	    $disc->gravar();
 	
+<<<<<<< HEAD
 	    header("Location:?pagina=admin");
+=======
+
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554
 ?>

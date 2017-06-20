@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 	background: #eee;
 }
@@ -29,3 +30,42 @@ td{
 	border: 1px solid;
 	padding: 4px;
 }
+=======
+body{
+	background: #eee;
+}
+
+#pagina{
+	width:21cm;
+	height:29.7cm;
+	box-sizing:border-box;
+	padding: 2cm;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+h1{
+	text-align: center;
+}
+
+.title{
+	font-weight: bold;
+	background: #cdcdcd;
+}
+
+table{
+	border: 1px solid;
+}
+
+tr{
+	
+	
+	border: 1px solid;
+}
+td{
+	border: 1px solid;
+	padding:2px;
+	text-align: center;
+}
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554

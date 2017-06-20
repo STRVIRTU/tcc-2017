@@ -51,12 +51,21 @@
 		}
 
 		public function validar(){
+<<<<<<< HEAD
 			$sql = ("select * from aluno where email=? and senha=?");
 			$con = new Conexao();
 			$stm = $con->prepare($sql);
 			$stm->bindParam(1,$this->email);
 			$stm->bindParam(2,$this->senha);
 			$stm->execute();
+=======
+			$sql = "select * from aluno";
+			$con = new Conexao();
+			$stm = $con->prepare($sql);
+			$stm = bindParam(1,$this->email);
+			$stm = bindParam(2,$this->senha);
+			$stm = execute();
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554
 
 			if($stm->rowCount()>0){
 				return true;

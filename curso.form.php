@@ -4,7 +4,11 @@
     <title> Cadastro de Cursos</title>
   </head>
 <body>
+<<<<<<< HEAD
 	<form method="POST" action="?pagina=validar_cadastro_curso">
+=======
+	<form method="POST" action="validar_cadastro_curso.php">
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554
 		<label>Informe o nome do curso:</label><input type="text" name="nome_curso" id="curso"><br>
 		<input type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
 	</form>

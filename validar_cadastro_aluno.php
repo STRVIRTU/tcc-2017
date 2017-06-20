@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 	<?php
+=======
+<?php
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554
 
 	include_once('aluno.class.php');
 		$nome = $_POST['nome_aluno'];
@@ -20,6 +24,9 @@
 	    $aluno->__set("email",$email);  
 	    $aluno->__set("senha",$senha);
 	    $aluno->gravar();
+<<<<<<< HEAD
 	    header("Location: ?pagina=admin");
+=======
+>>>>>>> 32e2792c74e9564ca1bb0e54189613c7ee21e554
 
 ?>
