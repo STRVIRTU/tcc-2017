@@ -11,7 +11,7 @@
 
     <div class="container">
       <div class="row">
-        <form class="col-lg-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="valida_login.php">
+        <form class="col-lg-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
         <h2 class="form-signin-heading text-center no-margin">Login - CEEP</h2>
         <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">
         
@@ -34,8 +34,9 @@
           
           <div class="btn-group">
             <input type="submit" class="btn btn-primary" value="Logar"></input>
-            <a href="?pagina=cadastro" class="btn btn-danger" role="button">Cadastrar-se</a>
+            <a href="?pagina=cadastro_aluno" class="btn btn-danger" role="button">Cadastrar-se</a>
             <a href="?pagina=recuperar_senha" class="btn btn-danger" role="button">Rec. Senha</a>
+        
           </div>
 
         </form> <!-- /form -->

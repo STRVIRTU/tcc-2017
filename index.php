@@ -32,16 +32,7 @@
 					case 'cadastro_funcionario': $pagina = 'funcionario.form.php';break;
 					case 'cadastro_curso': $pagina = 'curso.form.php';break;
 					case 'cadastro_disciplina': $pagina = 'disciplina.form.php';break;
-					case 'recuperar_senha': $pagina = "recuperar_senha.php"; break;
-					default: $pagina = $_GET['pagina'];break;
-				}	
-			}
-
-			if(file_exists($pagina)){
-				include_once($pagina);
-			}else{
-				echo '<h1 class="erro"> A pagina não existe. </h1>';
-			}
-		?>
-	</body>
-</html>
+					case 'relatorio_aluno': $pagina = 'relatorioAluno.php';break;
+					case 'relatorio_curso': $pagina = 'relatorioCurso.php';break;
+					case 'relatorio_disciplina': $pagina = 'relatorioDisciplina.php';break;
+					case 'relatorio_funcionario': $pagina = 'relatorioFuncionario.php';
