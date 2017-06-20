@@ -12,7 +12,7 @@
 
   <link href="bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-  <!--<link href="css/style.css" rel="stylesheet">-->
+  <link href="css/style.css" rel="stylesheet">
 
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>

@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+	// session_start();
 	function __autoload($classe){
 		if(file_exists('{$classe}.class.php')){
 			include_once('{$classe}.class.php');
@@ -7,7 +7,8 @@
 	}
 
 	if(!isset($_SESSION['logado'])){
-		header('Location:login.php');
+		$pagina = "login.php";
+		// header('Location:login.php');
 	}
 
 	date_default_timezone_set('America/Sao_Paulo');
@@ -21,22 +22,17 @@
 	<body>
 		<?php
 			/*include('cadastro.php');*/
-			$pagina = 'cadastro.php';
+			
 			if(isset($_GET['pagina'])){
 				switch ($_GET['pagina']) {
 					case 'login': $pagina = 'login.php';break;
 					case 'admin': $pagina = 'admin.php';break;
-					case 'cadastro': $pagina = 'cadastro.php';break;
-					case 'recuperar_senha': $pagina = "recuperar_senha.php"; break;
-					default: $pagina = $_GET['pagina'];break;
-				}	
-			}
-
-			if(file_exists($pagina)){
-				include_once($pagina);
-			}else{
-				echo '<h1 class="erro"> A pagina não existe. </h1>';
-			}
-		?>
-	</body>
-</html>
+					case 'cadastro': $pagina = 'cadastro.form.php';break;
+					case 'cadastro_aluno': $pagina = 'aluno.form.php';break;
+					case 'cadastro_funcionario': $pagina = 'funcionario.form.php';break;
+					case 'cadastro_curso': $pagina = 'curso.form.php';break;
+					case 'cadastro_disciplina': $pagina = 'disciplina.form.php';break;
+					case 'relatorio_aluno': $pagina = 'relatorioAluno.php';break;
+					case 'relatorio_curso': $pagina = 'relatorioCurso.php';break;
+					case 'relatorio_disciplina': $pagina = 'relatorioDisciplina.php';break;
+					case 'relatorio_funcionario': $pagina = 'relatorioFuncionario.php';

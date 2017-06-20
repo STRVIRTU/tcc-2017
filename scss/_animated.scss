@@ -1,34 +1,20 @@
-// Spinning Icons
-// --------------------------
+<?php
+  session_start();
+?>
+<!DOCTYPE html>
+  <head>
+    <?php include_once('carregar_links.php'); ?>
+    <title> Teste Login </title>
+  </head>
 
-.#{$fa-css-prefix}-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
-          animation: fa-spin 2s infinite linear;
-}
+  <body class="bglogin">
 
-.#{$fa-css-prefix}-pulse {
-  -webkit-animation: fa-spin 1s infinite steps(8);
-          animation: fa-spin 1s infinite steps(8);
-}
-
-@-webkit-keyframes fa-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
-@keyframes fa-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
+    <div class="container">
+      <div class="row">
+        <form class="col-lg-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
+        <h2 class="form-signin-heading text-center no-margin">Login - CEEP</h2>
+        <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">
+        
+          <div class="input-group margin-bottom-sm ">
+            <span class="input-group-addon"><i class="fa fa-envelope-o "></i></span>
+            <i
