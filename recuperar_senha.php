@@ -8,8 +8,9 @@
 			
 		if ($_SESSION['control'] == 1) {
 			$pessoa = new Pessoa();
-			$pessoa->recuperar_senha();
 			$pessoa->__set('email', $_POST['email_rec']);
+			$pessoa->recuperar_senha();
+			
 			
 		}
 ?>
