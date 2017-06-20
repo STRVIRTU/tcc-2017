@@ -9,6 +9,7 @@
             <a href="?pagina=cadastro_aluno" class="btn btn-danger" role="button">Cadastrar Aluno</a>
             <a href="?pagina=cadastro_funcionario" class="btn btn-danger" role="button">Cadastrar Funcionário</a>
             <a href="?pagina=cadastro_curso" class="btn btn-danger" role="button">Cadastrar Cursos</a>
+            <a href="?pagina=cadastro_disciplina" class="btn btn-danger" role="button">Cadastrar Disciplinas</a>
           </div>
 	</form>
 </body>
