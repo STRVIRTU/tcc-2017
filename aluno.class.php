@@ -50,6 +50,21 @@
 			return $stm;
 		}
 
+		public function validar(){
+			$sql = "select * from aluno";
+			$con = new Conexao();
+			$stm = $con->prepare($sql);
+			$stm = bindParam(1,$this->email);
+			$stm = bindParam(2,$this->senha);
+			$stm = execute();
+
+			if($stm->rowCount()>0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
     }
 
 ?>

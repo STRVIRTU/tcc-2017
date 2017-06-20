@@ -37,16 +37,15 @@
         <div class="col-md-2">
           <div class="box-perfil">
             <br>
-            OI
+     
             <br>
             <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">         
             <br>
             <ul class="nav nav-sidebar">
-              <li class="active"><a href="#">dd <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">aa</a></li>
+              <li class="active"><a href="#">aa <span class="sr-only">(current)</span></a></li>
               <li><a href="#">bb</a></li>
               <li><a href="#">cc</a></li>
-              
+              <li><a href="#">dd</a></li>              
             </ul>
             <br>
             <br>
@@ -66,6 +65,10 @@
             <br>
             <br>
           </div>
+        </div>
+
+        <div class="col-md-10 center">
+        oi oi oi oi oi
         </div>
       </div>
 

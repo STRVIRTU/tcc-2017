@@ -1,20 +1,22 @@
 <?php
 	include_once('conexao.class.php');
+	include_once('aluno.class.php');
 	session_start();
+
+	$aluno = new Aluno();
+
 	$login = $_POST['login'];
 	$senha = $_POST['senha'];
 
-	$sql = "select * from 'login' where 'usuario' = '$login' and 'senha' = '$senha'";
-	$con = new Conexao();
-
-  	$query = mysql_query($sql);
-	if(mysql_num_rows ($query) > 0 )
-	{
-		$_SESSION['user'] = $login;
-		$_SESSION['logado'] = true;
-		$pagina = 'admin.php';
-	}else{
-		$_SESSION['logado'] = false;
-		$pagina = 'login.php';
+	if($_SERVER['request_method'] = 'POST'){
+		$aluno->__set('email', $login);
+		$aluno->__set('senha', $senha);
+		if($aluno->validar()){
+			$_SESSION['logado'] = true;
+			$_SESSION['user'] = $login;
+			$pagina = 'admin.php';
+		}else{
+			echo 'Login/senha invalidos!';
+		}
 	}
 ?>
