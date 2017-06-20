@@ -1,15 +1,20 @@
-<?php 
+<?php
+	include_once('conexao.class.php');
 	session_start();
-	$nome = $_POST['usuario'];
+	$login = $_POST['login'];
 	$senha = $_POST['senha'];
-	if(($nome == "Vini") && ($senha == "123")){
-		$_SESSION['user'] = $nome;
+
+	$sql = "select * from 'login' where 'usuario' = '$login' and 'senha' = '$senha'";
+	$con = new Conexao();
+
+  	$query = mysql_query($sql);
+	if(mysql_num_rows ($query) > 0 )
+	{
+		$_SESSION['user'] = $login;
 		$_SESSION['logado'] = true;
-		setcookie("usu", $nome, time()+3600);
-		header("Location:pagina-segura.php");
+		$pagina = 'admin.php';
 	}else{
-		$_SESSION['error'] = "Login/Senha inválidos!";
 		$_SESSION['logado'] = false;
-		header("Location:login.php");
+		$pagina = 'login.php';
 	}
 ?>

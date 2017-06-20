@@ -12,7 +12,6 @@
 			$pessoa->__set('email', $_POST['email_rec']);
 			
 		}
-		
 ?>
 </head>
 <body>

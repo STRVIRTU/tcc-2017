@@ -17,7 +17,7 @@
         
           <div class="input-group margin-bottom-sm ">
             <span class="input-group-addon"><i class="fa fa-envelope-o "></i></span>
-            <input class="form-control" type="text" id="inputEmail" name="usuario" placeholder="Email address" required autofocus>
+            <input class="form-control" type="text" id="inputEmail" name="login" placeholder="Email address" required autofocus>
           </div>
 
           <div class="input-group">
@@ -33,7 +33,7 @@
           </div>
           
           <div class="btn-group">
-            <input type="submit" class="btn btn-primary"></input>
+            <input type="submit" class="btn btn-primary" value="Logar"></input>
             <a href="?pagina=cadastro" class="btn btn-danger" role="button">Cadastrar-se</a>
             <a href="?pagina=recuperar_senha" class="btn btn-danger" role="button">Rec. Senha</a>
           </div>
