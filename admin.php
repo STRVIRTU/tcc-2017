@@ -37,16 +37,15 @@
         <div class="col-md-2">
           <div class="box-perfil">
             <br>
-            OI
+     
             <br>
             <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">         
             <br>
             <ul class="nav nav-sidebar">
-              <li class="active"><a href="#">dd <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">aa</a></li>
+              <li class="active"><a href="#">aa <span class="sr-only">(current)</span></a></li>
               <li><a href="#">bb</a></li>
               <li><a href="#">cc</a></li>
-              
+              <li><a href="#">dd</a></li>              
             </ul>
             <br>
             <br>
@@ -65,6 +64,29 @@
             <br>
             <br>
             <br>
+          </div>
+        </div>
+
+        <div class="col-md-10">
+          <div class="btn-group">
+            <p>
+              <a href="?pagina=cadastro_funcionario" class="btn btn-danger" role="button">Cadastrar Funcionário</a>
+              <br>
+              <a href="?pagina=relatorio_funcionario" class="btn btn-danger" role="button">Relatorio Funcionário</a>
+            </p>
+            <p>
+              <a href="?pagina=cadastro_curso" class="btn btn-danger" role="button">Cadastrar Cursos</a>
+              <br>
+              <a href="?pagina=relatorio_curso" class="btn btn-danger" role="button">Relatorio Cursos</a>
+            </p>
+            <p>
+              <a href="?pagina=cadastro_disciplina" class="btn btn-danger" role="button">Cadastrar Disciplinas</a>
+              <br>
+              <a href="?pagina=relatorio_disciplina" class="btn btn-danger" role="button">Relatorio Disciplinas</a>         
+            </p>   
+            <p>
+              <a href="?pagina=relatorio_aluno" class="btn btn-danger" role="button">Relatorio Alunos</a> 
+            </p>
           </div>
         </div>
       </div>
