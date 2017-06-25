@@ -1,5 +1,5 @@
 <?php
-
+	include_once('conexao.class.php');
 	class Pessoa{
 
 		public $id_pessoa;
@@ -20,7 +20,7 @@
 	    }
 
 	    public function recuperar_senha(){
-			$sql = ("select * from login where email=?");
+			$sql = ("select * from aluno where email=?");
 			$con = new Conexao();
 			$stm = $con->prepare($sql);
 			$stm ->bindParam(1, $this->email);
@@ -30,9 +30,10 @@
 				foreach ($stm as $linha) {
 				  	$this->email=$linha['email'];
 				 	$this->senha=$linha['senha'];
-				  }
+				}
 				  
 				$para = $this->email;
+				$senha = $this->senha;
 				$headers = 'From: luanrohde11@gmail.com';
 				$mensagem ="Recuperação da senha: $senha";
 				$titulo = "Recuperacao de senha";

@@ -11,16 +11,16 @@
 	<div id="pagina">
 		<h1>Relatório de Alunos</h1>
 
-		<table>
+		<table class="center">
 			<tr>
-				<td>Código</td>
-				<td>Nome</td>
-				<td>Nascimento</td>
-				<td>RG</td>
-				<td>CGM</td>
-				<td>Curso</td>
-				<td>Turma</td>
-				<td>Email</td>
+				<td class="topo">Código</td>
+				<td class="topo">Nome</td>
+				<td class="topo">Nascimento</td>
+				<td class="topo">RG</td>
+				<td class="topo">CGM</td>
+				<td class="topo">Curso</td>
+				<td class="topo">Turma</td>
+				<td class="topo">Email</td>
 			</tr>
 
 			<?php

@@ -13,11 +13,11 @@
 
 		<table>
 			<tr>
-				<td>Código</td>
-				<td>Nome</td>
-				<td>RG</td>
-				<td>Nascimento</td>
-				<td>E-mail</td>
+				<td class="topo">Código</td>
+				<td class="topo">Nome</td>
+				<td class="topo">RG</td>
+				<td class="topo">Nascimento</td>
+				<td class="topo">E-mail</td>
 			</tr>
 
 			<?php

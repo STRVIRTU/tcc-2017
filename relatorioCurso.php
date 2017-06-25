@@ -13,8 +13,8 @@
 
 		<table>
 			<tr>
-				<td>Código</td>
-				<td>Nome</td>
+				<td class="topo">Código</td>
+				<td class="topo">Nome</td>
 
 			</tr>
 

@@ -1,4 +1,4 @@
- <footer class="footer navbar-fixed-bottom">
+ <footer class="footer">
       
         <p class="text-center">&copy Desenvolvido por Luan Rohde e Vinicius Stanoga</p>
       
