@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 </head>
 <body>
+	<?php include_once('menu_admin.php');?>
 	<div id="pagina">
 		<h1>Relatório de Usuários</h1>
 
@@ -36,6 +37,12 @@
 			?>
 		</table>
 
-	</div>	
+	</div>
+	<!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
