@@ -3,7 +3,6 @@ body{
 }
 
 #pagina{
-	position: relative;
 	width:21cm;
 	height:29.7cm;
 	box-sizing:border-box;
@@ -25,7 +24,6 @@ h1{
 table{
 	
 	border: 1px solid;
-	margin-left: -5000px;
 	width: 2px;
 }
 
