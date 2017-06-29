@@ -65,11 +65,6 @@
 			}
 		}
 
-		public function carregar(){
-			$sql = "select * from aluno where cgm=?";
-			$con = 
-		}
-
     }
 
 ?>

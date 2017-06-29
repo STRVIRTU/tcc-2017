@@ -1,0 +1,44 @@
+body{
+	background: #eee;
+}
+
+#pagina{
+	width:21cm;
+	height:29.7cm;
+	box-sizing:border-box;
+	padding: 2cm;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.center{
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+h1{
+	text-align: center;
+}
+
+table{
+	
+	border: 1px solid;
+	width: 2px;
+}
+
+tr{
+	
+	
+	border: 1px solid;
+}
+td{
+
+	border: 1px solid;
+	padding: 2px;
+	text-align: center;
+}
+.topo{
+	background: #cdcdcd;
+	font-weight: bold;
+}

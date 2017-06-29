@@ -8,7 +8,7 @@
           </a>
         </div>
 
-         <div class="col-md-9 drop-margin">
+         <div class="col-md-11 drop-margin">
           <div class="dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Relatórios
           <span class="caret"></span>
