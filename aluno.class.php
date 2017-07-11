@@ -67,7 +67,17 @@
 
 		public function carregar(){
 			$sql = "select * from aluno where cgm=?";
-			$con = 
+			$con = new Conexao();
+			$stm = $con->prepare($sql);
+			$stm->bindParam(1, $this->cgm);
+			$stm->execute();
+
+				foreach ($stm as $linha) {
+					$this->cgm=$linha['cgm'];
+					$this->nome=$linha['nome'];
+					$this->senha=$linha['senha'];
+					$this->email=$linha['email'];
+				}
 		}
 
     }
