@@ -17,20 +17,24 @@
 		}
 
 		public function gravar(){
-			$sql = "insert into funcionario (nome, nascimento, rg, cpf, cargo, email, senha) values (?,?,?,?,?,?,?)";
-		 	$con = new Conexao();
-		 	$stm = $con->prepare($sql);
-		 	$stm->bindParam(1, $this->nome);
-		 	$stm->bindParam(2, $this->nascimento);
-		 	$stm->bindParam(3, $this->rg);
-		 	$stm->bindParam(4, $this->cpf);
-		 	$stm->bindParam(5, $this->cargo);
-		 	$stm->bindParam(6, $this->email);
-		 	$stm->bindParam(7, $this->senha);
-		 
-		 	$stm->execute();
-		 	//echo "gravado";
-	 	} 
+				try{
+					$sql = "insert into funcionario (nome, nascimento, rg, cpf, cargo, email, senha) values (?,?,?,?,?,?,?)";
+				 	$con = new Conexao();
+				 	$stm = $con->prepare($sql);
+				 	$stm->bindParam(1, $this->nome);
+				 	$stm->bindParam(2, $this->nascimento);
+				 	$stm->bindParam(3, $this->rg);
+				 	$stm->bindParam(4, $this->cpf);
+				 	$stm->bindParam(5, $this->cargo);
+				 	$stm->bindParam(6, $this->email);
+				 	$stm->bindParam(7, $this->senha);
+				 
+				 	$stm->execute();
+				 	//echo "gravado";
+		 	}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 
 	    public function __get($var){
 	        return $this->$var;
@@ -40,12 +44,16 @@
 	    }
 
 	   	public function listar(){
-			$sql = "select * from funcionario";
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm->execute();
-			return $stm;
-		}
+		   		try{
+					$sql = "select * from funcionario";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->execute();
+					return $stm;
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
     }
 
 ?>

@@ -13,16 +13,20 @@
 		}
 
 		public function gravar(){
-			$sql = "insert into disciplina (nome, professor, curso, carga_horaria) values (?,?,?,?)";
-		 	$con = new Conexao();
-		 	$stm = $con->prepare($sql);
-		 	$stm->bindParam(1, $this->nome);
-			$stm->bindParam(2, $this->professor);
-			$stm->bindParam(3, $this->curso);
-			$stm->bindParam(4, $this->carga_horaria);
-		 	$stm->execute();
-		 	//echo "gravado";
-	 	}
+				try {
+					$sql = "insert into disciplina (nome, professor, curso, carga_horaria) values (?,?,?,?)";
+				 	$con = new Conexao();
+				 	$stm = $con->prepare($sql);
+				 	$stm->bindParam(1, $this->nome);
+					$stm->bindParam(2, $this->professor);
+					$stm->bindParam(3, $this->curso);
+					$stm->bindParam(4, $this->carga_horaria);
+				 	$stm->execute();
+			 	
+		 	}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 	 	  
 
 	    public function __get($var){
@@ -33,12 +37,16 @@
 	    }
 
 		public function listar(){
-			$sql = "select * from disciplina";
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm->execute();
-			return $stm;
-		}
+				try {
+					$sql = "select * from disciplina";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->execute();
+					return $stm;
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 
     }
 

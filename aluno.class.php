@@ -18,20 +18,25 @@
 		}
 
 		public function gravar(){
-			$sql = "insert into aluno (nome, nascimento, rg, cgm, curso, turma, email, senha) values (?,?,?,?,?,?,?,?)";
-		 	$con = new Conexao();
-		 	$stm = $con->prepare($sql);
-		 	$stm->bindParam(1, $this->nome);
-		 	$stm->bindParam(2, $this->nascimento);
-		 	$stm->bindParam(3, $this->rg);
-		 	$stm->bindParam(4, $this->cgm);
-		 	$stm->bindParam(5, $this->curso);
-		 	$stm->bindParam(6, $this->turma);
-		 	$stm->bindParam(7, $this->email);
-		 	$stm->bindParam(8, $this->senha);
-		 
-		 	$stm->execute();
-		 	//echo "gravado";
+			try {
+				
+				$sql = "insert into aluno (nome, nascimento, rg, cgm, curso, turma, email, senha) values (?,?,?,?,?,?,?,?)";
+			 	$con = new Conexao();
+			 	$stm = $con->prepare($sql);
+			 	$stm->bindParam(1, $this->nome);
+			 	$stm->bindParam(2, $this->nascimento);
+			 	$stm->bindParam(3, $this->rg);
+			 	$stm->bindParam(4, $this->cgm);
+			 	$stm->bindParam(5, $this->curso);
+			 	$stm->bindParam(6, $this->turma);
+			 	$stm->bindParam(7, $this->email);
+			 	$stm->bindParam(8, $this->senha);
+			 
+			 	$stm->execute();
+
+		 	}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
 	 	}
 	 	  
 
@@ -43,42 +48,53 @@
 	    }
 
 		public function listar(){
-			$sql = "select * from aluno";
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm->execute();
-			return $stm;
-		}
+				try {
+					$sql = "select * from aluno";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->execute();
+					return $stm;
 
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 		public function validar(){
-			$sql = ("select * from aluno where email=? and senha=?");
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm->bindParam(1,$this->email);
-			$stm->bindParam(2,$this->senha);
-			$stm->execute();
+				try {
+					$sql = ("select * from aluno where email=? and senha=?");
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1,$this->email);
+					$stm->bindParam(2,$this->senha);
+					$stm->execute();
 
-			if($stm->rowCount()>0){
-				return true;
-			}else{
-				return false;
-			}
-		}
-
+					if($stm->rowCount()>0){
+						return true;
+					}else{
+						return false;
+					}
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 		public function carregar(){
-			$sql = "select * from aluno where cgm=?";
-			$con = new Conexao();
-			$stm = $con->prepare($sql);
-			$stm->bindParam(1, $this->cgm);
-			$stm->execute();
+				try {
+					$sql = "select * from aluno where cgm=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->cgm);
+					$stm->execute();
 
-				foreach ($stm as $linha) {
-					$this->cgm=$linha['cgm'];
-					$this->nome=$linha['nome'];
-					$this->senha=$linha['senha'];
-					$this->email=$linha['email'];
-				}
-		}
+						foreach ($stm as $linha) {
+							$this->cgm=$linha['cgm'];
+							$this->nome=$linha['nome'];
+							$this->senha=$linha['senha'];
+							$this->email=$linha['email'];
+						}
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	 	}
 
     }
 

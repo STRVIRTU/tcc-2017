@@ -30,7 +30,6 @@
               <thead class="thead-inverse"><tr><td>CGM</td><td>Nome</td><td>Email</td></tr></thead>
               <?php
                 $dados = $aluno->listar();
-
                   foreach ($dados as $linha) {
                      echo "<tr onclick=\"location.href='?pagina=admin.php&cgm=".$linha['cgm']."'\"><td>";
                      echo $linha['cgm'];
@@ -39,7 +38,6 @@
                      echo "</td><td>";
                      echo $linha['email'];
                      echo "</td>";
-
                   }
               ?>
             </table>
