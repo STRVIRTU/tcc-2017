@@ -27,17 +27,17 @@
 					$stm ->bindParam(1, $this->email);
 					$stm ->execute();	
 
-					if ($stm->rowCount()>0){
-						foreach ($stm as $linha) {
-						  	$this->email=$linha['email'];
-						 	$this->senha=$linha['senha'];
-						}
+						if ($stm->rowCount()>0){
+							foreach ($stm as $linha) {
+							  	$this->email=$linha['email'];
+							 	$this->senha=$linha['senha'];
+							}
 						  
-						$para = $this->email;
-						$senha = $this->senha;
-						$headers = 'From: luanrohde11@gmail.com';
-						$mensagem ="Recuperação da senha: $senha";
-						$titulo = "Recuperacao de senha";
+							$para = $this->email;
+							$senha = $this->senha;
+							$headers = 'From: luanrohde11@gmail.com';
+							$mensagem ="Recuperação da senha: $senha";
+							$titulo = "Recuperacao de senha";
 						
 					
 							if (mail($para, $titulo, $mensagem, $headers)){
@@ -47,16 +47,12 @@
 								echo '<p class="text-danger">Email não enviado</p>';
 								session_destroy();
 							}
-
-					}else{
-						echo "Email não cadastrado!";
+						}else{
+							echo "Email não cadastrado!";
+						}
 				}catch(PDOExeption $e){
 			 		return "<div class='danger'>".$e->getMessage()."</div>";
 			 	}
-		    }
 		}
-
-
     }
-
 ?>
