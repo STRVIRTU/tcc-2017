@@ -78,7 +78,7 @@
 		 	}
 	    }
 		public function carregar(){
-				try {
+				try{
 					$sql = "select * from aluno where cgm=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
@@ -91,9 +91,9 @@
 							$this->senha=$linha['senha'];
 							$this->email=$linha['email'];
 						}
-			}catch(PDOExeption $e){
-		 		return "<div class='danger'>".$e->getMessage()."</div>";
-		 	}
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
 	 	}
 
     }

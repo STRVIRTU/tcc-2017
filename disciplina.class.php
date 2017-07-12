@@ -43,11 +43,9 @@
 					$stm = $con->prepare($sql);
 					$stm->execute();
 					return $stm;
-			}catch(PDOExeption $e){
-		 		return "<div class='danger'>".$e->getMessage()."</div>";
-		 	}
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
 	    }
-
     }
-
 ?>

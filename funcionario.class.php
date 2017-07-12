@@ -31,14 +31,15 @@
 				 
 				 	$stm->execute();
 				 	//echo "gravado";
-		 	}catch(PDOExeption $e){
-		 		return "<div class='danger'>".$e->getMessage()."</div>";
-		 	}
+		 		}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
 	    }
 
 	    public function __get($var){
 	        return $this->$var;
 	   	}
+	   	
 	    public function __set($var, $valor){
 	        $this->$var = $valor;
 	    }
@@ -50,10 +51,9 @@
 					$stm = $con->prepare($sql);
 					$stm->execute();
 					return $stm;
-			}catch(PDOExeption $e){
-		 		return "<div class='danger'>".$e->getMessage()."</div>";
-		 	}
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
 	    }
     }
-
 ?>
