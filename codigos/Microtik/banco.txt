@@ -1,0 +1,18 @@
+<?php
+use PEAR2\Net\RouterOS;
+
+require_once 'PEAR2_Net_RouterOS-1.0.0b3.phar';
+
+$client = new RouterOS\Client('192.168.0.1', 'admin', 'password');
+$mysqli = new mysqli('localhost', 'root', '', 'db');
+
+$addRequest = new RouterOS\Request('/tool user-manager user add');
+
+$users = $mysqli->query('SELECT `username`, `password` FROM `users`');
+
+while ($user = $users->fetch_object()) {
+    $addRequest
+        ->setArgument('name', $user->username)
+        ->setArgument('password', $user->password);
+    $client($addRequest);
+} 
