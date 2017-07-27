@@ -41,7 +41,7 @@
 					case 'validar_cadastro_aluno': $pagina = "validar_cadastro_aluno.php"; break;
 					case 'validar_cadastro_curso': $pagina = "validar_cadastro_curso.php"; break;
 					case 'validar_cadastro_disciplina': $pagina = "validar_cadastro_disciplina.php"; break;
-					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_func.php"; break;
+					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_funcionario.php"; break;
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

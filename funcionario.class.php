@@ -10,7 +10,8 @@
 		public $rg;
 		public $nascimento;
 		public $email;
-		public $senha; 
+		public $senha;
+		 
 
 		public function __construct(){
 			//print "Funcionario instanciado!";
@@ -28,7 +29,7 @@
 				 	$stm->bindParam(5, $this->cargo);
 				 	$stm->bindParam(6, $this->email);
 				 	$stm->bindParam(7, $this->senha);
-				 
+				 				 
 				 	$stm->execute();
 				 	//echo "gravado";
 		 		}catch(PDOExeption $e){

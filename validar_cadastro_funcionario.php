@@ -8,6 +8,8 @@
 		$cargo = $_POST['cargo_funcionario'];
 		$email = $_POST['email_funcionario'];
 		$senha = $_POST['senha_funcionario'];
+		$cargo = $_POST['cargo'];
+
 
 		$func = new Funcionario();
 		$func->__set("nome",$nome);  
@@ -17,6 +19,7 @@
 	    $func->__set("cargo",$cargo);  
 	    $func->__set("email",$email);  
 	    $func->__set("senha",$senha);
+	    $func->__set("cargo",$cargo);
 	    $func->gravar();
 	
 	    header("Location:?pagina=admin");
