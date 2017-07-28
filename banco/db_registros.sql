@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Jun-2017 às 02:34
--- Versão do servidor: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: 28-Jul-2017 às 01:09
+-- Versão do servidor: 10.1.22-MariaDB
+-- PHP Version: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_registros`
 --
+CREATE DATABASE IF NOT EXISTS `db_registros` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `db_registros`;
 
 -- --------------------------------------------------------
 
@@ -43,8 +47,11 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`id_aluno`, `nome`, `nascimento`, `rg`, `cgm`, `curso`, `turma`, `email`, `senha`) VALUES
-(1, 'Vinicius', '24/06/1999', '12.584.317-4', '889409126', 'Informatica', '4 ano', 'vinicius.stanoga@ceepcascavel.com.br', 123),
-(2, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123);
+(1, 'Vinícius', '24/06/1999', '12.584.317-4', '889409126', 'Informatica', '4 ano', 'vinistanoga@gmail.com', 123),
+(2, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123),
+(3, 'Maria', '18/06/1999', '12121212', '121212', 'Informatica', '4 ano', 'maria@hotmail.com', 123),
+(4, 'Andre', '20/04/1980', '131954921', '448807959', 'Eletronica', '4a', 'jandrey@jandrey', 123),
+(6, 'Luan Teste', '05/03/1999', '131954921', '448807959', 'Informatica', '4A', 'luanrohde11@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +89,11 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`) VALUES
-(1, 'Informatica');
+(1, 'Informatica'),
+(2, 'Administracao'),
+(3, 'Eletronica'),
+(4, 'MEio Ambiente'),
+(5, 'Enfermagem');
 
 -- --------------------------------------------------------
 
@@ -103,7 +114,9 @@ CREATE TABLE `disciplina` (
 --
 
 INSERT INTO `disciplina` (`id_disciplina`, `nome`, `professor`, `curso`, `carga_horaria`) VALUES
-(1, 'Matematica', 'Silvano', 'Informatica', '1010');
+(1, 'Matematica', 'Silvano', 'Informatica', '1010'),
+(2, 'WEB', 'Jandrey', 'Informatica', '18h'),
+(3, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -129,7 +142,8 @@ CREATE TABLE `funcionario` (
 INSERT INTO `funcionario` (`id_funcionario`, `nome`, `nascimento`, `rg`, `cpf`, `cargo`, `email`, `senha`) VALUES
 (1, 'Vinicius', '24/06/1999', '12.584.317-4', '069.368.299-02', 'Prof', 'vinicius@email.com', 123),
 (2, 'Vinicius', '24/06/1999', '12.584.317-4', '069.368.299-02', 'Prof', 'vinicius@email.com', 123),
-(3, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123);
+(3, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123),
+(4, 'Vinicius', '123', '123', '123', 'professor', 'vini.stanoga', 123);
 
 -- --------------------------------------------------------
 
@@ -166,18 +180,18 @@ CREATE TABLE `info_aluno` (
 
 CREATE TABLE `login` (
   `id_login` int(11) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `senha` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `login`
 --
 
-INSERT INTO `login` (`id_login`, `usuario`, `senha`, `email`) VALUES
-(1, 'lrlr', '123', 'luanrohde11@gmail.com'),
-(2, 'stanoga', '123', '');
+INSERT INTO `login` (`id_login`, `email`, `senha`) VALUES
+(1, '', '123'),
+(2, '', '123'),
+(3, 'teste', '123');
 
 -- --------------------------------------------------------
 
@@ -191,7 +205,8 @@ CREATE TABLE `pessoa` (
   `rg` varchar(50) NOT NULL,
   `nascimento` varchar(50) NOT NULL,
   `foto` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `senha` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -281,22 +296,22 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id_aluno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_aluno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `info_aluno`
 --
@@ -316,7 +331,8 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
