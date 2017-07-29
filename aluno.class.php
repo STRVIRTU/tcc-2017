@@ -42,7 +42,7 @@
 
 		public function listar(){
 				try {
-					$sql = "select * from aluno";
+					$sql = "select p.id_pessoa, p.nome, p.senha, p.email, a.cgm from pessoa p join aluno a on p.id_pessoa=a.idpessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->execute();
@@ -72,17 +72,15 @@
 	    }
 		public function carregar(){
 				try{
-					$sql = "select * from aluno where cgm=?";
+					$sql = "select * from pessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->cgm);
+					$stm->bindParam(1, $this->id_pessoa);
 					$stm->execute();
+					print_r($sql);
 
 						foreach ($stm as $linha) {
-							$this->cgm=$linha['cgm'];
-							$this->nome=$linha['nome'];
-							$this->senha=$linha['senha'];
-							$this->email=$linha['email'];
+							$this->id_pessoa=$linha['id_pessoa'];
 						}
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";

@@ -75,6 +75,23 @@
 		 	}
 	    }
 
+	    public function carregar(){
+				try{
+					$sql = "select * from pessoa where id_pessoa=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->id_pessoa);
+					$stm->execute();
+						foreach ($stm as $linha) {
+							$this->id_pessoa=$linha['id_pessoa'];
+							$this->email=$linha['email'];
+							$this->senha=$linha['senha'];
+						}
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
+	 	}
+
 	    public function recuperar_senha(){
 		    	try{
 					$sql = ("select * from aluno where email=?");

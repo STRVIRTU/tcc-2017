@@ -24,6 +24,6 @@
 
 
 	    $aluno->gravar();
-	   // header("Location: ?pagina=admin");
+	   header("Location: ?pagina=admin");
 
 ?>
