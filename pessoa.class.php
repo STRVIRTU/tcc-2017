@@ -56,6 +56,24 @@
 		 	}
 	 	}
 
+	 	public function validar(){
+				try {
+					$sql = ("select * from pessoa where email=? and senha=?");
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1,$this->email);
+					$stm->bindParam(2,$this->senha);
+					$stm->execute();
+
+					if($stm->rowCount()>0){
+						return true;
+					}else{
+						return false;
+					}
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
 
 	    public function recuperar_senha(){
 		    	try{

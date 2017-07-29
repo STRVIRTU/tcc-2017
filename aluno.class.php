@@ -89,6 +89,21 @@
 		 		}
 	 	}
 
+	 	public function excluir(){
+				try{
+					$sql = "delete * from aluno where idpessoa=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->idpessoa);
+						if ($stm->execute()) {
+							return '<div class="sucess">Excluido com sucesso!</div>';
+						}
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
+	 	}
+
+
     }
 
 ?>
