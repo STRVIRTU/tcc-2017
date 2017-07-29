@@ -11,15 +11,19 @@
 		$senha = $_POST['senha_aluno'];
 
 		$aluno = new Aluno();
-		$aluno->__set("nome",$nome);  
-	    $aluno->__set("nascimento",$nascimento);  
-	    $aluno->__set("rg",$rg);
-	    $aluno->__set("cgm",$cgm);  
+
+	    $aluno->__set("cgm",$cgm); 
 	    $aluno->__set("curso",$curso);  
 	    $aluno->__set("turma",$turma);
+
+	    $aluno->__set("nome",$nome);  
+	    $aluno->__set("nascimento",$nascimento);  
+	    $aluno->__set("rg",$rg);
 	    $aluno->__set("email",$email);  
 	    $aluno->__set("senha",$senha);
+
+
 	    $aluno->gravar();
-	    header("Location: ?pagina=admin");
+	   // header("Location: ?pagina=admin");
 
 ?>

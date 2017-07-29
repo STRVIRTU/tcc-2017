@@ -1,7 +1,7 @@
 <?php
 	include_once('pessoa.class.php');
 	include_once('conexao.class.php');
-	class Funcionario{
+	class Funcionario extends Pessoa{
 
 		public $cpf;
 		public $cargo;
