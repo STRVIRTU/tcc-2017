@@ -111,7 +111,7 @@
 				</div><br>
 				<label>Senha:</label>
 				<input  class="form-control" type="password" name="senha_funcionario" id="senha_funcionario" required><br> 
-				<select name="cargo" class="form-control" id="cargo">
+				<select name="cargo_funcionario" class="form-control" id="cargo">
 					<option value="professor">Professor</option>
 					<option value="pedagogo">Pedagogo</option>
 				</select><br>
