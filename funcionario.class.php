@@ -20,7 +20,7 @@
 				 	$stm = $con->prepare($sql);
 				 	$stm->bindParam(1, $this->cargo);
 				 	$stm->bindParam(2, $this->cpf);
-				 	$stm->bindParam(3, parent::__get("idpessoa"));
+				 	$stm->bindParam(3, parent::__get("id"));
 				 				 
 				 	$stm->execute();
 				 	//echo "gravado";
@@ -39,7 +39,7 @@
 
 	   	public function listar(){
 				try {
-					$sql = "select p.id_pessoa, p.nome, p.senha, p.email, f.cgm from pessoa p join funcionario f on p.id_pessoa=f.idpessoa";
+					$sql = "select p.id, p.nome, p.senha, p.email, f.cgm from pessoa p join funcionario f on p.id=f.idpessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->execute();
@@ -55,12 +55,12 @@
 					$sql = "select * from pessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->id_pessoa);
+					$stm->bindParam(1, $this->idpessoa);
 					$stm->execute();
 					print_r($sql);
 
 						foreach ($stm as $linha) {
-							$this->id_pessoa=$linha['id_pessoa'];
+							$this->idpessoa=$linha['id'];
 						}
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
@@ -69,7 +69,7 @@
 
 	 	public function excluir(){
 				try{
-					$sql = "delete * from aluno where idpessoa=?";
+					$sql = "delete * from funcionario where idpessoa=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->bindParam(1, $this->idpessoa);

@@ -2,7 +2,7 @@
 	include_once('conexao.class.php');
 	class Pessoa{
 
-		public $idpessoa;
+		public $id;
 		public $nome;
 		public $rg;
 		public $nascimento;
@@ -47,7 +47,7 @@
 				$stm->bindParam(2,$this->email);
 				$stm->execute();
 				foreach ($stm as $linha) {
-							$this->idpessoa=$linha['id_pessoa'];
+							$this->id=$linha['id'];
 							
 				}
 
@@ -77,13 +77,13 @@
 
 	    public function carregar(){
 				try{
-					$sql = "select * from pessoa where id_pessoa=?";
+					$sql = "select * from pessoa where id=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->id_pessoa);
+					$stm->bindParam(1, $this->id);
 					$stm->execute();
 						foreach ($stm as $linha) {
-							$this->id_pessoa=$linha['id_pessoa'];
+							$this->id=$linha['id'];
 							$this->email=$linha['email'];
 							$this->senha=$linha['senha'];
 						}
@@ -127,5 +127,21 @@
 			 		return "<div class='danger'>".$e->getMessage()."</div>";
 			 	}
 		}
+
+		public function excluir(){
+				try{
+					$sql = "delete from pessoa where id=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->id);
+						if ($stm->execute()) {
+							return '<div class="sucess">Excluido com sucesso!</div>';
+						}
+					
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
+	 	}
+
     }
 ?>

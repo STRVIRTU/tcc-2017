@@ -4,7 +4,7 @@
         <div class="row">
         <div class="col-md-1 navbar-header">
           <a class="navbar-brand" href="?pagina=admin">
-            <img src="img/ceep_logo.jpg" alt="Brand" width="140" class="img-responsive img-rounded">
+            <!--<img src="img/ceep_logo.jpg" alt="Brand" width="140" class="img-responsive img-rounded"> -->
           </a>
         </div>
 

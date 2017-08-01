@@ -27,7 +27,6 @@
 				switch ($_GET['pagina']) {
 					case 'login': $pagina = 'login.php';break;
 					case 'admin': $pagina = 'admin.php';break;
-					case 'cadastro': $pagina = 'cadastro.form.php';break;
 					case 'cadastro_aluno': $pagina = 'aluno.form.php';break;
 					case 'cadastro_funcionario': $pagina = 'funcionario.form.php';break;
 					case 'cadastro_curso': $pagina = 'curso.form.php';break;
@@ -42,6 +41,7 @@
 					case 'validar_cadastro_curso': $pagina = "validar_cadastro_curso.php"; break;
 					case 'validar_cadastro_disciplina': $pagina = "validar_cadastro_disciplina.php"; break;
 					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_funcionario.php"; break;
+					case 'acao_admin': $pagina = "acao_admin.php"; break;
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

@@ -1,4 +1,4 @@
-<?php
+	<?php
 	class Conexao extends PDO{
 		private $host = "mysql:host=localhost;dbname=db_registros";
 		private $user = "root";
