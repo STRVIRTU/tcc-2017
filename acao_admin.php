@@ -2,16 +2,24 @@
 
 	include_once('aluno.class.php');
 	include_once('pessoa.class.php');
-	if(@$_POST['acao'] == 'excluir'){
-		$id = $_POST['id'];
+	
+	$id = $_POST['id'];
+	$email = $_POST['email'];
+	$senha = $_POST['senha'];
 
-		$aluno = new Aluno();
-	    $aluno->__set("idpessoa",$id); 
+	$aluno = new Aluno();
+	$aluno->__set("idpessoa",$id); 
 	 
-	    $pessoa = new Pessoa();
-	    $aluno->__set("id",$id);
+	$pessoa = new Pessoa();
+	$pessoa->__set("id",$id);
+	$pessoa->__set('email', $email);
+	$pessoa->__set("senha", $senha);
 
+	if(@$_POST['acao'] == 'excluir'){
 	    $aluno->excluir();
+	   	header("Location: ?pagina=admin");
+	}elseif (@$_POST['acao'] == 'alterar') {
+		$pessoa->alterar();
 	   	header("Location: ?pagina=admin");
 	}
 ?>

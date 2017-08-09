@@ -46,7 +46,8 @@
               <input class="form-control" name="email" value="<?php echo $pessoa->__get('email')?>"><br>
               <label>Senha:</label><br>
               <input type="text"class="form-control" name="senha" value="<?php echo $pessoa->__get('senha')?>"><br>
-              <button class="btn btn-danger" name="acao" value="excluir" formnovalidate>Excluir<br>
+              <button class="btn btn-danger" name="acao" value="excluir" formnovalidate>Excluir</button><br>
+              <button class="btn btn-danger" name="acao" value="alterar" formnovalidate>Alterar</button>
             </form>
           </div>
         </div>

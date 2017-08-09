@@ -143,5 +143,22 @@
 		 		}
 	 	}
 
+	 	public function alterar(){
+				try{
+					$sql = "update pessoa set email=?, senha=? where id=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->email);
+					$stm->bindParam(2, $this->senha);
+					$stm->bindParam(3, $this->id);
+						if ($stm->execute()) {
+							return '<div class="sucess">Alterado com sucesso!</div>';
+						}
+					
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
+	 	}
+
     }
 ?>
