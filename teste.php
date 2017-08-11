@@ -7,12 +7,12 @@ $API = new RouterosAPI();
 
 $API->debug = true;
 
-if ($API->connect('192.168.2.1', 'admin', '')){
+if ($API->connect('192.168.20.31', 'admin', 'fwpmicsc*9dc')){
 
 $API->comm("/ip/hotspot/user/add", array(
-         "name"     => "teste",
-         "password" => "123",
-         "profile"  => "5MB",
+         "name"     => "tccinformatica",
+         "password" => "123456",
+         
  		));
  		
  $API->disconnect();

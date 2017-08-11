@@ -160,5 +160,18 @@
 		 		}
 	 	}
 
+	 	public function listarPendentes(){
+				try {
+					$sql = "select * from pessoa where status='pendente'";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->execute();
+					return $stm;
+
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
+
     }
 ?>

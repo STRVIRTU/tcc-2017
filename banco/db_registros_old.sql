@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Jul-2017 às 01:09
--- Versão do servidor: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Generation Time: 02-Ago-2017 às 02:25
+-- Versão do servidor: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,6 +29,29 @@ USE `db_registros`;
 --
 
 CREATE TABLE `aluno` (
+  `cgm` int(50) NOT NULL,
+  `curso` varchar(50) NOT NULL,
+  `turma` varchar(30) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idpessoa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`cgm`, `curso`, `turma`, `id`, `idpessoa`) VALUES
+(123, 'Informatica', 'Info', 4, 14),
+(5656565, 'Informatica', '4a', 5, 15),
+(6565, 'Informatica', '4a', 6, 16);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `alunozz`
+--
+
+CREATE TABLE `alunozz` (
   `id_aluno` int(100) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `nascimento` varchar(10) NOT NULL,
@@ -40,38 +61,18 @@ CREATE TABLE `aluno` (
   `turma` varchar(30) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` int(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
--- Extraindo dados da tabela `aluno`
+-- Extraindo dados da tabela `alunozz`
 --
 
-INSERT INTO `aluno` (`id_aluno`, `nome`, `nascimento`, `rg`, `cgm`, `curso`, `turma`, `email`, `senha`) VALUES
+INSERT INTO `alunozz` (`id_aluno`, `nome`, `nascimento`, `rg`, `cgm`, `curso`, `turma`, `email`, `senha`) VALUES
 (1, 'Vinícius', '24/06/1999', '12.584.317-4', '889409126', 'Informatica', '4 ano', 'vinistanoga@gmail.com', 123),
 (2, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123),
 (3, 'Maria', '18/06/1999', '12121212', '121212', 'Informatica', '4 ano', 'maria@hotmail.com', 123),
 (4, 'Andre', '20/04/1980', '131954921', '448807959', 'Eletronica', '4a', 'jandrey@jandrey', 123),
 (6, 'Luan Teste', '05/03/1999', '131954921', '448807959', 'Informatica', '4A', 'luanrohde11@gmail.com', 0);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `alunozzz`
---
-
-CREATE TABLE `alunozzz` (
-  `cgm` int(50) NOT NULL,
-  `curso` varchar(50) NOT NULL,
-  `turma` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `alunozzz`
---
-
-INSERT INTO `alunozzz` (`cgm`, `curso`, `turma`) VALUES
-(10206012, 'Teste', 'Tesete'),
-(889409126, 'Informatica', '4 ano');
 
 -- --------------------------------------------------------
 
@@ -125,6 +126,19 @@ INSERT INTO `disciplina` (`id_disciplina`, `nome`, `professor`, `curso`, `carga_
 --
 
 CREATE TABLE `funcionario` (
+  `id` int(11) NOT NULL,
+  `cargo` varchar(50) NOT NULL,
+  `cpf` varchar(13) NOT NULL,
+  `idpessoa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `funcionariozz`
+--
+
+CREATE TABLE `funcionariozz` (
   `id_funcionario` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `nascimento` varchar(10) NOT NULL,
@@ -133,28 +147,18 @@ CREATE TABLE `funcionario` (
   `cargo` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` int(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
--- Extraindo dados da tabela `funcionario`
+-- Extraindo dados da tabela `funcionariozz`
 --
 
-INSERT INTO `funcionario` (`id_funcionario`, `nome`, `nascimento`, `rg`, `cpf`, `cargo`, `email`, `senha`) VALUES
+INSERT INTO `funcionariozz` (`id_funcionario`, `nome`, `nascimento`, `rg`, `cpf`, `cargo`, `email`, `senha`) VALUES
 (1, 'Vinicius', '24/06/1999', '12.584.317-4', '069.368.299-02', 'Prof', 'vinicius@email.com', 123),
 (2, 'Vinicius', '24/06/1999', '12.584.317-4', '069.368.299-02', 'Prof', 'vinicius@email.com', 123),
 (3, 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 123),
-(4, 'Vinicius', '123', '123', '123', 'professor', 'vini.stanoga', 123);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `funcionariozzz`
---
-
-CREATE TABLE `funcionariozzz` (
-  `cpf` varchar(50) NOT NULL,
-  `cargo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(4, 'Vinicius', '123', '123', '123', 'professor', 'vini.stanoga', 123),
+(5, 'Luan', '1234', '1234', '1234', 'professor', 'luan.rohde', 123);
 
 -- --------------------------------------------------------
 
@@ -200,7 +204,7 @@ INSERT INTO `login` (`id_login`, `email`, `senha`) VALUES
 --
 
 CREATE TABLE `pessoa` (
-  `id_pessoa` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `rg` varchar(50) NOT NULL,
   `nascimento` varchar(50) NOT NULL,
@@ -208,6 +212,18 @@ CREATE TABLE `pessoa` (
   `email` varchar(50) NOT NULL,
   `senha` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`) VALUES
+(10, 'Vinicius', '121418', '12456789', '', 'andre.jandrey', 123),
+(11, 'Luan', '12141820', '12456789', '', 'luan.rohde', 123),
+(12, 'Luan 2', '1239876', '12456789', '', 'rohde', 123),
+(14, 'Teste', '123', '123', '', 'ceep', 123),
+(15, 'Luan', '56565656', '565656', '', 'luan', 123),
+(16, 'Luan 2', '77777', '565656', '', 'luan', 0);
 
 -- --------------------------------------------------------
 
@@ -232,13 +248,14 @@ CREATE TABLE `turma` (
 -- Indexes for table `aluno`
 --
 ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`id_aluno`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idpessoa` (`idpessoa`);
 
 --
--- Indexes for table `alunozzz`
+-- Indexes for table `alunozz`
 --
-ALTER TABLE `alunozzz`
-  ADD PRIMARY KEY (`cgm`);
+ALTER TABLE `alunozz`
+  ADD PRIMARY KEY (`id_aluno`);
 
 --
 -- Indexes for table `curso`
@@ -256,13 +273,14 @@ ALTER TABLE `disciplina`
 -- Indexes for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  ADD PRIMARY KEY (`id_funcionario`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idpessoa` (`idpessoa`);
 
 --
--- Indexes for table `funcionariozzz`
+-- Indexes for table `funcionariozz`
 --
-ALTER TABLE `funcionariozzz`
-  ADD PRIMARY KEY (`cpf`);
+ALTER TABLE `funcionariozz`
+  ADD PRIMARY KEY (`id_funcionario`);
 
 --
 -- Indexes for table `info_aluno`
@@ -280,7 +298,7 @@ ALTER TABLE `login`
 -- Indexes for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`id_pessoa`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `turma`
@@ -296,6 +314,11 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `alunozz`
+--
+ALTER TABLE `alunozz`
   MODIFY `id_aluno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `curso`
@@ -311,7 +334,12 @@ ALTER TABLE `disciplina`
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `funcionariozz`
+--
+ALTER TABLE `funcionariozz`
+  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `info_aluno`
 --
@@ -326,12 +354,27 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id_pessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `aluno`
+--
+ALTER TABLE `aluno`
+  ADD CONSTRAINT `aluno_ibfk_1` FOREIGN KEY (`idpessoa`) REFERENCES `pessoa` (`id`);
+
+--
+-- Limitadores para a tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`idpessoa`) REFERENCES `pessoa` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
