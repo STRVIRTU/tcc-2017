@@ -1,4 +1,4 @@
-<?php include_once('menu_admin.php');?>
+<?php include_once('sidebar_admin.php');?>
 <div class="container-fluid" style="height: 100%;">
 	<div class="row">
 		<div class="col-sm-4 center">

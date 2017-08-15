@@ -1,4 +1,4 @@
-<?php include_once('menu_admin.php');?>
+<?php include_once('sidebar_admin.php');?>
 <div class="row">
 <div class="col-sm-4 center">
 	<h1 class="text-center">Cadastro de funcionários</h1>

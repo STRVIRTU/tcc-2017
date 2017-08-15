@@ -1,6 +1,7 @@
 <html>
 <head>
 	<?php include_once('carregar_links.php'); 
+
 	include_once('curso.class.php');
 	include_once('conexao.class.php');?>
 
@@ -8,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 </head>
 <body>
-	<?php include_once('menu_admin.php');?>
+	<?php include_once('sidebar_admin.php');?>
 	<div id="pagina">
 		<h1>Relatório de Cursos</h1>
 
