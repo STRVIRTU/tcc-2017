@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text|Droid+Serif');
   body{
+  overflow-x: hidden;
   background: #4caf50;
   background: -webkit-linear-gradient(left top, #4caf50, #1b5e20);
   background: -o-linear-gradient(bottom right, #4caf50, #1b5e20); 
@@ -132,11 +133,11 @@
 
 .footer{
   height: 8%;
-  padding: 10px;
-   background-color: rgba(245,245,245,1);
-   margin-top: 200px;
-   margin-bottom: 0;
-   position: relative;
+  padding: 20px;
+  background-color: rgba(245,245,245,1);
+
+  margin-bottom: 0;
+  position: relative;
 }
 
 
@@ -149,4 +150,40 @@
   margin-left:40px;
   max-width: 70px;
   max-height: 60px;
+}
+
+.sidebar-admin{
+  
+  max-height: 100%;
+  height: 100%;
+  background:#fff;
+  color:#686a76;
+  box-shadow:1px 1px 1px rgba(0,0,0,0.1);
+
+}
+
+.sidebar-admin a{
+  color:inherit;
+  position:relative;
+  font-size:12px;
+}
+
+.sidebar-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sidebar-usertitle-nome {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.sidebar-usertitle-cargo {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
