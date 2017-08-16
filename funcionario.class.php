@@ -39,7 +39,7 @@
 
 	   	public function listar(){
 				try {
-					$sql = "select p.id, p.nome, p.senha, p.email, f.cgm from pessoa p join funcionario f on p.id=f.idpessoa";
+					$sql = "select p.id, p.nome, p.nascimento, p.rg, p.senha, p.email, f.cpf, f.cargo from pessoa p join funcionario f on p.id=f.idpessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->execute();
