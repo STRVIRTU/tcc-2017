@@ -84,12 +84,7 @@
 					<span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
 				</div><br>
 				<label>Senha:</label>
-				<input  class="form-control" type="password" name="senha_aluno" id="senha_aluno" required><br> 
-				<label>Tipo</label><br>
-				<select name="tipo" class="form-control" id="sel1">
-					<option value="cliente">Aluno</option>
-					<option value="funcionario">Funcionário</option>
-				</select><br>
+				<input  class="form-control" type="password" name="senha_aluno" id="senha_aluno" required><br>
 				<button type="submit" class="btn">Cadastrar</button>
 		    </form>                                   	
     </div>

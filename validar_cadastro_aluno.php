@@ -19,7 +19,7 @@
 	    $aluno->__set("nome",$nome);  
 	    $aluno->__set("nascimento",$nascimento);  
 	    $aluno->__set("rg",$rg);
-	    $aluno->__set("email",$email);  
+	    $aluno->__set("email",$email.'@ceepcascavel.com.br');  
 	    $aluno->__set("senha",$senha);
 
 

@@ -17,7 +17,7 @@
 	    $func->__set("rg",$rg);
 	    $func->__set("cpf",$cpf);  
 	    $func->__set("cargo",$cargo);  
-	    $func->__set("email",$email);  
+	    $func->__set("email",$email.'@ceepcascavel.com.br');  
 	    $func->__set("senha",$senha);
 	    $func->gravar();
 	
