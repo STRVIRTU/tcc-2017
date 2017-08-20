@@ -1,4 +1,5 @@
 <?php
+
 	include_once('pessoa.class.php');
 	include_once('conexao.class.php');
 	class Aluno extends Pessoa{
@@ -55,16 +56,18 @@
 		
 		public function carregar(){
 				try{
-					$sql = "select * from pessoa";
+					$sql = "select * from aluno where cgm=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->idpessoa);
+					$stm->bindParam(1, $this->cgm);
 					$stm->execute();
-					print_r($sql);
 
 						foreach ($stm as $linha) {
-							$this->idpessoa=$linha['id'];
+							$this->cgm=$linha['cgm'];
+							$this->turma=$linha['turma'];
+							$_SESSION['idpessoa'] = $linha['idpessoa'];
 						}
+						
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
 		 		}

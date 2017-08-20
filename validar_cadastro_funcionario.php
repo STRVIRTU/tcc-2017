@@ -8,6 +8,7 @@
 		$cargo = $_POST['cargo_funcionario'];
 		$email = $_POST['email_funcionario'];
 		$senha = $_POST['senha_funcionario'];
+		$tipo = $_POST['cargo_funcionario'];
 
 
 
@@ -19,7 +20,8 @@
 	    $func->__set("cargo",$cargo);  
 	    $func->__set("email",$email.'@ceepcascavel.com.br');  
 	    $func->__set("senha",$senha);
+	    $func->__set("tipo",$tipo);
 	    $func->gravar();
 	
-	    header("Location:?pagina=admin");
+	    header("Location:?pagina=perfil_funcionario");
 ?>

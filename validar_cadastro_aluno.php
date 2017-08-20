@@ -9,6 +9,7 @@
 		$turma = $_POST['turma_aluno'];
 		$email = $_POST['email_aluno'];
 		$senha = $_POST['senha_aluno'];
+		$tipo = 2;
 
 		$aluno = new Aluno();
 
@@ -21,9 +22,10 @@
 	    $aluno->__set("rg",$rg);
 	    $aluno->__set("email",$email.'@ceepcascavel.com.br');  
 	    $aluno->__set("senha",$senha);
+	    $aluno->__set("tipo", $tipo);
 
 
 	    $aluno->gravar();
-	   header("Location: ?pagina=admin");
+	   header("Location: ?pagina=perfil_aluno");
 
 ?>

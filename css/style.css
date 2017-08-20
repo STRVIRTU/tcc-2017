@@ -6,12 +6,21 @@
   background: -o-linear-gradient(bottom right, #4caf50, #1b5e20); 
   background: -moz-linear-gradient(bottom right, #4caf50, #1b5e20);
   background: linear-gradient(to bottom right, #4caf50, #1b5e20);
- font-family: 'Crimson Text', serif;
+  font-family: 'Crimson Text', serif;
+  
 }
-
+.admin{
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #f3f3f4;
+  color: #676a6c;
+  height: 100%;
+}
 .center{
   margin: 0 auto !important;
   float: none !important;
+}
+.formularios{
+  
 }
 .bglogin{
   background: #4caf50;
@@ -140,11 +149,28 @@
   position: relative;
 }
 
-
-/* PAGINA ADMIN */
-.btn{
-  width: 100%;
+.side-menu-usertitle{
+  padding-bottom: 0px;
+  text-align: center;
 }
+.side-menu-nome{
+  font-size: 14px;
+  font-weight: bold;
+  color:#0066ff;
+}
+.side-menu-cargo{
+  font-size: 12px;
+  color: #cce0ff;
+}
+.side-menu-usertitle hr{
+  width: 90%;
+  height: 0.5px;
+  background-color:#f3f6db;
+  color:#f3f6db;
+  border: none;
+}
+/* PAGINA ADMIN */
+
 
 .box-perfil{
   margin-left:40px;
@@ -152,38 +178,197 @@
   max-height: 60px;
 }
 
-.sidebar-admin{
-  
-  max-height: 100%;
-  height: 100%;
-  background:#fff;
-  color:#686a76;
-  box-shadow:1px 1px 1px rgba(0,0,0,0.1);
-
+.box{
+  border: 1px red dotted;
 }
 
-.sidebar-admin a{
-  color:inherit;
-  position:relative;
-  font-size:12px;
+.side-menu{
+  background-color: #2f4050;
+  padding: 0px;
 }
-
-.sidebar-usertitle {
+.side-menu h1{
+  color: #1f3647;
   text-align: center;
+  margin: 10px 0px;
+  font-size: 25px;
+}
+.side-menu ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.side-menu a{
+  padding: 12px 20px;
+  text-decoration: none;
+  color:#9fb1c2;
+  font-weight: bold;
+  font-size: 13px;
+  display: block;
+}
+.side-menu a:hover{
+  background-color: #293846;
+  color: #fff;
+  display: block;
+}
+.side-menu .glyphicon{
+  margin-right: 6px;
+}
+.side-menu .active a{
+  color: #fff;
+  background-color: #293846;
+}
+
+.side-menu .link > ul > li {
+  padding-bottom: 10px;
+}
+
+.display-table{
+  display: table;
+  padding: 0px;
+  height:100%;
+  width: 100%;
+}
+
+.display-table-row{
+  display: table-row;
+  height:100%;
+}
+
+.display-table-cell{
+  display: table-cell;
+  float: none;
+  height:100%;
+}
+
+.valign-top{
+  vertical-align: top;
+
+}
+
+.nav-header{
+  background-color: #fff;
+  border-bottom: 1px solid #e7eaec;
+}
+.nav-header ul{
+  margin: 0px;
+  padding: 0px; 
+  list-style: none;
+  columns: #676a6c;
+}
+.nav-header ul li{
+  float: left;
+  margin-left: 15px;
+  padding: 17px 0px;
+}
+.nav-header ul .glyphicon{
+  color: #676a6c;
+}
+.nav-header ul a{
+  text-decoration: none;
+}
+.nav-header ul .label{
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -5px;
+}
+.nav-header .logout{
+  color: #676a6c;
+}
+.nav-header .logout:hover{
+  color: #676a6c;
+}
+.nav-header .welcome{
+  margin-right: 20px;
+}
+.nav-header .fixed-width{
+  width: 35px;
+}
+
+.header-search-field{
+  padding-top: 17px;
+  vertical-align: center;
+  border: none;
+  width: 300px;
+  outline: none;
+}
+
+.label-message{
+  background-color: #1ab394;
+}
+
+.navbar-default{
+  background-color: #fff;
+}
+
+.navbar-default .navbar-toggle{
+  border-color: #1ab394;
+  background-color: #1ab394;
+}
+
+.navbar-default .icon-bar{
+  border: 1px white solid;
+}
+
+.navbar-default .navbar-toggle:hover{
+  background-color: #1ab394;
+}
+
+.navbar-default .navbar-toggle:focus{
+  background-color: #1ab394;
+}
+
+/**** Pagina principal admin ***/
+.admin-content-con{
   margin-top: 20px;
+  background-color: white;
+  border-top: 4px #e7eaec solid;
+  padding: 15px;
 }
 
-.sidebar-usertitle-nome {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
+.dashboard-left-cell{
+  padding-right: 5px;
+}
+.dashboard-right-cell{
+  padding-left: 5px;
 }
 
-.sidebar-usertitle-cargo {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
+.admin-content-con header{
+  margin-bottom: 20px;
+  border-bottom: 1px #eee solid;
+  padding-bottom: 10px;
 }
+
+.admin-content-con h5{
+  margin: 0px;
+  padding-top: 3px;
+}
+
+.text-link{
+  color: #676a6c;
+}
+
+.text-link:hover {
+  color: #676a6c;
+}
+
+.commenter-name-dash{
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.comment-head-dash{
+  margin-bottom: 6px;
+}
+
+.comment-dash{
+  margin-bottom: 5px;
+}
+
+.comment-date-dash{
+  color: #999;
+}
+
+.dashboard-con{
+  padding-bottom: 40px;
+}
+/******/

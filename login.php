@@ -1,9 +1,8 @@
-  <?php
-    session_start();
-  ?>
+
+
       <div class="container">
         <div class="row">
-              <form class="col-lg-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
+              <form class="col-md-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
                 <h2 class="form-signin-heading text-center no-margin">Login - CEEP</h2>
                   <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">
           
@@ -36,7 +35,6 @@
                     </div>
                   </div>
                 </form> <!-- /form -->
-           </div>
-        </div> <!-- /row -->
-      </div> <!-- /container -->
+           </div> <!-- /row -->
+        </div> <!-- /container -->
     

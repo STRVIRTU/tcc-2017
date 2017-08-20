@@ -2,8 +2,36 @@
  <head>
     <?php include_once('carregar_links.php');
     include_once('curso.class.php');
-	include_once('conexao.class.php'); ?>
+	include_once('conexao.class.php'); 
+	include_once('aluno.class.php');
+	include_once('pessoa.class.php');
+
+	
+	$aluno = new Aluno;
+	$aluno->__set('cgm', @$_GET['cgm']);
+	$aluno->carregar();
+	$id =$aluno->__get('idpessoa');
+
+	$pessoa = new Pessoa;
+	$pessoa->__set('id', @$_SESSION['idpessoa'] );
+	$pessoa->carregar();
+	
+
+	?>
     <title> Cadastro do Usuário</title>
+
+    <script	>
+
+    function carregarinput() {
+	    var CustomerNumber = document.getElementById("cgm_aluno").value;
+	    var Url = "?pagina=cadastro_aluno&cgm=" + CustomerNumber;
+	    window.location.href=Url;
+	}
+
+
+
+
+    </script>
   </head>
 <body>
 	
@@ -53,15 +81,15 @@
 	    <div role="tabpanel" class="tab-pane active" id="aluno">
 		    <form method="POST" action="?pagina=validar_cadastro_aluno">
 				<label>Nome: </label>
-				<input class="form-control" type="text" name="nome_aluno" id="nome_aluno"required autofocus><br>
+				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required autofocus><br>
 				<label>Turma: </label>
-				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno"><br>
+				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>
 				<div class="row">
 					<div class="col-sm-6 pull-left">
 						<label for="cgm">CGM:</label>
-						<input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" placeholder="448807959">
+						<input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
 						<label id="input" for="course">Curso</label>
-							<select class="form-control" type="text" name="curso_aluno" id="curso_aluno">
+							<select class="form-control" type="text" name="curso_aluno" id="curso_aluno" value="">
 								<?php
 										$c = new Curso();
 										$dados = $c->listar();
@@ -73,14 +101,14 @@
 					</div>
 					<div class="col-sm-6 pull-right">
 						<label for="rg">RG:</label>
-						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" placeholder="13.195.492-1">
+						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1">
 						<label for="nascimento">Data de Nascimento:</label>
-						<input class="form-control" type="text" name="nascimento_aluno" id="nascimento_aluno" placeholder="05/03/1999">
+						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999">
 					</div>
 				</div><br>
 				<label>Email:</label>
 				<div class="input-group">
-					<input class="form-control" type="text" name="email_aluno" id="email_aluno" placeholder="luan.rohde" aria-describedby="basic-addon2">
+					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('email')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
 					<span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
 				</div><br>
 				<label>Senha:</label>
@@ -89,6 +117,7 @@
 		    </form>                                   	
     </div>
      <div role="tabpanel" class="tab-pane" id="funcionario">
+
      <!----------FUNCIONÁRIO----------> 	
      	<form method="POST" action="?pagina=validar_cadastro_funcionario">
 				<label>Nome: </label>
@@ -107,8 +136,8 @@
 				<label>Senha:</label>
 				<input  class="form-control" type="password" name="senha_funcionario" id="senha_funcionario" required><br> 
 				<select name="cargo_funcionario" class="form-control" id="cargo">
-					<option value="professor">Professor</option>
-					<option value="pedagogo">Pedagogo</option>
+					<option value="3">Professor</option>
+					<option value="3">Pedagogo</option>
 				</select><br>
 
 				

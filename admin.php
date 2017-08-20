@@ -4,179 +4,240 @@
         $pessoa = new pessoa;
         $pessoa->__set('id', @$_GET['id_pessoa']);
         $pessoa -> carregar();
-        include_once("sidebar_admin.php");
+        //include_once("sidebar_admin.php");
 ?>
-      <div class="row">
+<html>
+  <body class="admin">
 
-        <div class="col-sm-9 col-md-10">
-          <h1 class="page-header">Dashboard</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+    <div class="container-fluid display-table">
+      <div class="row display-table-row">
+        <!-- Side menu -->
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top side-menu">
+          <?php include_once('sidebar_admin.php'); ?>
         </div>
+        <!-- Main content -->
+        <div class="col-md-10 col-sm-11 display-table-cell valign-top">
+          <div class="row">
+            <header class="nav-header clearfix">
+              <div class="col-md-5">
+                <nav class="navbar-default pull-left">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="side-menu">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                  </button>
+                </nav>
+                <input type="text" class="hidden-sm hidden-xs header-search-field" placeholder="Search for something...">
+              </div>
+              <div class="col-md-7">
+              <ul class="pull-right">
+                <li class="welcome hidden-xs">Bem vindo a area administrativa</li>
+                <li class="fixed-width">
+                  <a href="#">
+                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    <span class="label label-warning">3</span>
+                  </a>
+                </li>
+                <li class="fixed-width">
+                  <a href="#">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    <span class="label label-message">3</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="logout">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    log out
+                  </a>
+                </li>
+              </ul>
+              </div>    
+            </header>
+          </div>
+          <div class="dashboard-con">
+            <div class="row">
+              <div class="col-md-6 dashboard-left-cell">
+                <div class="admin-content-con">
+                  <header class="clearfix">
+                    <h5 class="pull-left">Articles</h5>
+                    <a class="btn btn-xs btn-primary pull-right" href="#" role="button">Criar novo</a>
+                  </header>
+                  <table class="table table-striped">     
+                    <thead>
+                      <tr>
+                        <th>title</th>
+                        <th>replies</th>
+                        <th>date</th>
+                        <th>actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>This is the first post</td>
+                        <td>20</td>
+                        <td>2 days ago</td>
+                        <td>
+                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
+                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
+                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>This is the first post</td>
+                        <td>20</td>
+                        <td>2 days ago</td>
+                        <td>
+                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
+                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
+                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>This is the first post</td>
+                        <td>20</td>
+                        <td>2 days ago</td>
+                        <td>
+                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
+                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
+                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>This is the first post</td>
+                        <td>20</td>
+                        <td>2 days ago</td>
+                        <td>
+                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
+                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
+                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>This is the first post</td>
+                        <td>20</td>
+                        <td>2 days ago</td>
+                        <td>
+                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
+                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
+                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr>
+                  <a href="#" class="pull-right text-link"> view all</a>
+                  <br>
+                </div>
+              </div>
+              <div class="col-md-6 dashboard-right-cell">
+                <div class="admin-content-con">
+                  <header>
+                    <h5>Comments</h5>
+                  </header>
+                  <div class="comment-head-dash clearfix">
+                    <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
+                    <div class="days-dash pull-right">2 days ago</div>
+                  </div>
+                  <p class="comment-dash">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
+                  </p>
+                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
+                  <hr>
+                  
+                  <div class="comment-head-dash clearfix">
+                    <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
+                    <div class="days-dash pull-right">2 days ago</div>
+                  </div>
+                  <p class="comment-dash">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
+                  </p>
+                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
+                  <hr>
 
-      </div>
-  
+                  <div class="comment-head-dash clearfix">
+                   <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
+                   <div class="days-dash pull-right">2 days ago</div>
+                  </div>
+                  <p class="comment-dash">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
+                  </p>
+                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
+                  <hr>
+                  <div class="clearfix">
+                    <a href="#" class="pull-right text-link">view all</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="admin-content-con clearfix">
+                  <header>
+                    <h5>Commenters</h5>
+                  </header>
 
-   
-   
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Full name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Kingsley Ijomah</td>
+                        <td>kings.ijomah@example.com</td>
+                        <td><a href="#" class="label label-default">pending</a></td>
+                        <td>Today 5:60pm - 14/09/2015</td>
+                        <td><a href="#" class="label label-danger">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Kingsley Ijomah</td>
+                        <td>kings.ijomah@example.com</td>
+                        <td><a href="#" class="label label-success">active</a></td>
+                        <td>Today 5:60pm - 14/09/2015</td>
+                        <td><a href="#" class="label label-danger">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Kingsley Ijomah</td>
+                        <td>kings.ijomah@example.com</td>
+                        <td><a href="#" class="label label-default">pending</a></td>
+                        <td>Today 5:60pm - 14/09/2015</td>
+                        <td><a href="#" class="label label-danger">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Kingsley Ijomah</td>
+                        <td>kings.ijomah@example.com</td>
+                        <td><a href="#" class="label label-success">active</a></td>
+                        <td>Today 5:60pm - 14/09/2015</td>
+                        <td><a href="#" class="label label-danger">Delete</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>
 
+    </script>
     <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
     <script src="bootstrap/js/jquery.min.js"></script>
     <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/default.js"></script>
   </body>
 </html>
-
