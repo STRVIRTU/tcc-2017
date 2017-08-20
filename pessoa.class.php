@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 	include_once('conexao.class.php');
 	class Pessoa{
 
@@ -9,6 +11,7 @@
 		public $email;
 		public $senha;
 		public $tipo;
+		public $usuario;
 
 		public function __construct(){
 			// print "Pessoa instanciada!";
@@ -27,7 +30,7 @@
 			try {
 			
 				//echo "gravando pessoa"; 
-				$sql = "insert into pessoa (nome, rg, nascimento, email, senha, tipo) values (?,?,?,?,?,?)";
+				$sql = "insert into pessoa (nome, rg, nascimento, email, senha, tipo, usuario) values (?,?,?,?,?,?,?)";
 				$con = new Conexao();
 			  	$stm = $con->prepare($sql);
 			 	$stm->bindParam(1, $this->nome);
@@ -36,6 +39,7 @@
 			  	$stm->bindParam(4, $this->email);
 			  	$stm->bindParam(5, $this->senha);
 			  	$stm->bindParam(6, $this->tipo);
+			  	$stm->bindParam(7, $this->usuario);
 			 // 	$stm->bindParam(3, $this->rg);
 			 // 	$stm->bindParam(4, $this->cgm);
 			

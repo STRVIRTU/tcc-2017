@@ -9,6 +9,7 @@
 		$turma = $_POST['turma_aluno'];
 		$email = $_POST['email_aluno'];
 		$senha = $_POST['senha_aluno'];
+		$usuario = $_POST['email_aluno'];
 		$tipo = 2;
 
 		$aluno = new Aluno();
@@ -20,7 +21,8 @@
 	    $aluno->__set("nome",$nome);  
 	    $aluno->__set("nascimento",$nascimento);  
 	    $aluno->__set("rg",$rg);
-	    $aluno->__set("email",$email.'@ceepcascavel.com.br');  
+	    $aluno->__set("email",$email.'@ceepcascavel.com.br');
+	    $aluno->__set("usuario", $usuario);
 	    $aluno->__set("senha",$senha);
 	    $aluno->__set("tipo", $tipo);
 

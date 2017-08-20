@@ -1,4 +1,5 @@
 <?php
+session_start();
 	include_once('conexao.class.php');
 	include_once('pessoa.class.php');
 
