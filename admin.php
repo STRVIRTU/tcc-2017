@@ -8,12 +8,12 @@
 
 
         $aluno = new Aluno;
-        $pessoa->__set('id', $_GET['id']);
-        $aluno->__set("idpessoa", $_GET['id']);
+        $pessoa->__set('id', @$_GET['id']);
+        $aluno->__set("idpessoa", @$_GET['id']);
         $aluno->excluir();
   ?>
 
-  <div class="admin">
+  <body class="admin">
 
     <div class="container-fluid display-table">
       <div class="row display-table-row">
@@ -238,5 +238,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </body>
 

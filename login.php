@@ -23,16 +23,19 @@
             
                   <div class="row">
                     <div class="col-md-12">
-                      <input type="submit" class="btn btn-danger text-center" value="Logar">
+                      <input type="submit" class="btn btn-danger login_btn text-center" value="Logar">
                     </div>
                     <div class="col-md-12">
-                      <a href="?pagina=cadastro_aluno" class="col-md-4 btn btn-danger text-center" role="button">Cadastrar-se</a>
+                      <a href="?pagina=cadastro_aluno" class="col-md-4 btn btn-danger login_btn text-center" role="button">Cadastrar-se</a>
                     </div>
                     <div class="col-md-12">
-                      <a href="?pagina=recuperar_senha" class="col-md-4 btn btn-danger" role="button">Rec. Senha</a>
+                      <a href="?pagina=recuperar_senha" class="col-md-4 btn btn-danger login_btn " role="button">Rec. Senha</a>
                     </div>
                   </div>
                 </form> <!-- /form -->
            </div> <!-- /row -->
         </div> <!-- /container -->
+        <br>
+        <br>
+        <br>
     

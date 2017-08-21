@@ -64,17 +64,17 @@ session_start();
 
 	 	public function validar(){
 				try {
-					$sql = ("select * from pessoa where email=? and senha=?");
+					$sql = ("select * from pessoa where usuario=? and senha=?");
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1,$this->email);
+					$stm->bindParam(1,$this->usuario);
 					$stm->bindParam(2,$this->senha);
 					$stm->execute();
 
 					if($stm->rowCount()>0){
 						foreach ($stm as $linha) {
 							$_SESSION['tipo'] = $linha['tipo'];
-							$_SESSION['email'] = $linha['email'];
+							$_SESSION['usuario'] = $linha['usuario'];
 						}
 						return true;
 					}else{

@@ -15,7 +15,7 @@ session_start();
 
 	if($_SERVER['request_method'] = 'POST'){
 
-		$pessoa->__set('email', $login);
+		$pessoa->__set('usuario', $login);
 		$pessoa->__set('senha', $senha);
 		if($pessoa->validar()){
 			$_SESSION['logado'] = true;

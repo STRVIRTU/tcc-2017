@@ -7,8 +7,7 @@
   background: -moz-linear-gradient(bottom right, #4caf50, #1b5e20);
   background: linear-gradient(to bottom right, #4caf50, #1b5e20);
   font-family: 'Crimson Text', serif;
-  position: relative;
-  
+
 }
 .admin{
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -31,6 +30,9 @@
   background: linear-gradient(to bottom right, #4caf50, #1b5e20);
 }
 
+.login_btn{
+  width: 100%;
+}
 .no-margin{
   margin: 0 !important;
 }
