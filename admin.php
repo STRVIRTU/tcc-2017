@@ -12,8 +12,8 @@
         $aluno->__set("idpessoa", $_GET['id']);
         $aluno->excluir();
   ?>
-<html>
-  <body class="admin">
+
+  <div class="admin">
 
     <div class="container-fluid display-table">
       <div class="row display-table-row">
@@ -89,7 +89,7 @@
                                echo "<td>".$linha['id']."</td>";
                                 echo "<td>20/08/2016</td>";
                                 echo "<td>";
-                                  echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">Alterar</a>";
+                                  echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" onmousemove= \"history.pushState('?pagina=','Titulo de teste','?pagina=admin&id=".$linha['id']."')\" onclick=\"\">Alterar</a>";
                                   echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\">Ver</a>";
                                   echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."'\" role=\"button\">Excluir</a>";
                                 echo "</td>";
@@ -163,7 +163,7 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Nome</th>
+                        <th>Usuario</th>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Criado</th>
@@ -179,7 +179,7 @@
                                // echo "<tr onclick=\"location.href='?pagina=admin.php&id=".$linha['id']."'\"><td>";
                               echo "<tr>";
                                 echo "<td>".$linha['id']."</td>";
-                                echo "<td>".$linha['nome']."</td>";
+                                echo "<td>".$linha['usuario']."</td>";
                                 echo "<td>".$linha['email']."</td>";
                                 echo "<td><a href=\"#\" class=\"label label-default\">pendente</a></td>";
                                 echo "<td>Today 5:60pm - 14/09/2015</td>";
@@ -211,49 +211,32 @@
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
+            <?php $pessoa->carregar(); ?>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Título do modal</h4>
+            <h4 class="modal-title" id="myModalLabel">Alterar</h4>
           </div>
           <div class="modal-body">
               <form>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="exampleInputId">ID</label>
+                    <input type="email" class="form-control" id="exampleInputId" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('id')?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('email')?>">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelect1">Example select</label>
-                    <select class="form-control" id="exampleSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                    <input type="password" class="form-control" id="exampleInputPassword1" value="<?php echo $pessoa->__get('senha')?>">
                   </div>
                 </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" name="acao" value="excluir" formnovalidate>Excluir</button>
+            <button type="button" class="btn btn-primary"name="acao" value="alterar" formnovalidate>Alterar</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-
-    </script>
-    <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="js/default.js"></script>
-  </body>
-</html>

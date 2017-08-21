@@ -55,11 +55,15 @@
 			}
 			include_once('rodape.php');
 		?>
-		 <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
+	
+    <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
+
+
+	</body>
+	
+    
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-	</body>
+    <script src="js/default.js"></script>
 </html>

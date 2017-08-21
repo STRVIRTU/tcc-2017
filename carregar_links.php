@@ -17,7 +17,5 @@
 
  <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
-  <script src="bootstrap/js/jquery.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  
