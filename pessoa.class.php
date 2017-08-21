@@ -85,6 +85,19 @@ session_start();
 		 	}
 	    }
 
+	    public function listar(){
+				try {
+					$sql = "select * from pessoa";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->execute();
+					return $stm;
+
+			}catch(PDOExeption $e){
+		 		return "<div class='danger'>".$e->getMessage()."</div>";
+		 	}
+	    }
+
 	    public function carregar(){
 				try{
 					$sql = "select * from pessoa where id=?";
@@ -146,9 +159,10 @@ session_start();
 					$sql = "delete from pessoa where id=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->id);
+					$stm->bindParam(1, $this->id );
 						if ($stm->execute()) {
-							return '<div class="sucess">Excluido com sucesso!</div>';
+							
+							return '<div class="sucess">Aluno excluido com sucesso!</div>';
 						}
 					
 				}catch(PDOExeption $e){

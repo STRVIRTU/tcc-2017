@@ -3,11 +3,12 @@
             <img src="img/avatar.png" class="block img-responsive img-rounded img-avatar">
           </div>
           <div class="side-menu-usertitle">
+            <br>            
             <div class="side-menu-nome">
               VINÍCIUS STANOGA
             </div>
             <div class="side-menu-cargo">
-              Developer
+              Administrador
             </div>
             <hr>
           </div>

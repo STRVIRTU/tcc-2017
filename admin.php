@@ -1,11 +1,17 @@
-<?php
+ <?php 
         include_once("aluno.class.php");
         include_once("pessoa.class.php");
-        $pessoa = new pessoa;
-        $pessoa->__set('id', @$_GET['id_pessoa']);
+        $pessoa = new Pessoa;
+        
+        $pessoa->__set('id', @$_GET['id']);
         $pessoa -> carregar();
-        //include_once("sidebar_admin.php");
-?>
+
+
+        $aluno = new Aluno;
+        $pessoa->__set('id', $_GET['id']);
+        $aluno->__set("idpessoa", $_GET['id']);
+        $aluno->excluir();
+  ?>
 <html>
   <body class="admin">
 
@@ -48,7 +54,7 @@
                 <li>
                   <a href="#" class="logout">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    log out
+                    Sair
                   </a>
                 </li>
               </ul>
@@ -60,73 +66,46 @@
               <div class="col-md-6 dashboard-left-cell">
                 <div class="admin-content-con">
                   <header class="clearfix">
-                    <h5 class="pull-left">Articles</h5>
+                    <h5 class="pull-left">Usuários</h5>
                     <a class="btn btn-xs btn-primary pull-right" href="#" role="button">Criar novo</a>
                   </header>
                   <table class="table table-striped">     
                     <thead>
                       <tr>
-                        <th>title</th>
-                        <th>replies</th>
-                        <th>date</th>
-                        <th>actions</th>
+                        <th>Nome</th>
+                        <th>ID</th>
+                        <th>Data Alteração</th>
+                        <th>Acão</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>This is the first post</td>
-                        <td>20</td>
-                        <td>2 days ago</td>
-                        <td>
-                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
-                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
-                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>This is the first post</td>
-                        <td>20</td>
-                        <td>2 days ago</td>
-                        <td>
-                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
-                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
-                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>This is the first post</td>
-                        <td>20</td>
-                        <td>2 days ago</td>
-                        <td>
-                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
-                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
-                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>This is the first post</td>
-                        <td>20</td>
-                        <td>2 days ago</td>
-                        <td>
-                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
-                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
-                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>This is the first post</td>
-                        <td>20</td>
-                        <td>2 days ago</td>
-                        <td>
-                          <a class="btn btn-xs btn-warning" href="#" role="button">edit</a>
-                          <a class="btn btn-xs btn-primary" href="#" role="button">view</a>
-                          <a class="btn btn-xs btn-danger" href="#" role="button">delete</a>
-                        </td>
-                      </tr>
+                      <?php
+
+                          $dados = $pessoa->listar();
+                            foreach ($dados as $linha) {
+                               // echo "<tr onclick=\"location.href='?pagina=admin.php&id=".$linha['id']."'\"><td>";
+                              echo "<tr>";
+                               echo "<td>".$linha['nome']."</td>";
+                               echo "<td>".$linha['id']."</td>";
+                                echo "<td>20/08/2016</td>";
+                                echo "<td>";
+                                  echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">Alterar</a>";
+                                  echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\">Ver</a>";
+                                  echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."'\" role=\"button\">Excluir</a>";
+                                echo "</td>";
+                              echo "</tr>";
+
+                               // echo "</td><td>";
+                               // echo $linha['nome'];
+                               // echo "</td><td>";
+                               // echo $linha['email'];
+                               // echo "</td>";
+                            }
+                        ?>
                     </tbody>
                   </table>
                   <hr>
-                  <a href="#" class="pull-right text-link"> view all</a>
+                  <a href="#" class="pull-right text-link">Ver todos</a>
                   <br>
                 </div>
               </div>
@@ -135,6 +114,9 @@
                   <header>
                     <h5>Comments</h5>
                   </header>
+
+
+
                   <div class="comment-head-dash clearfix">
                     <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
                     <div class="days-dash pull-right">2 days ago</div>
@@ -180,47 +162,39 @@
                   <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Full name</th>
+                        <th>ID</th>
+                        <th>Nome</th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th>Created</th>
-                        <th>Actions</th>
+                        <th>Criado</th>
+                        <th>Ações</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Kingsley Ijomah</td>
-                        <td>kings.ijomah@example.com</td>
-                        <td><a href="#" class="label label-default">pending</a></td>
-                        <td>Today 5:60pm - 14/09/2015</td>
-                        <td><a href="#" class="label label-danger">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Kingsley Ijomah</td>
-                        <td>kings.ijomah@example.com</td>
-                        <td><a href="#" class="label label-success">active</a></td>
-                        <td>Today 5:60pm - 14/09/2015</td>
-                        <td><a href="#" class="label label-danger">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Kingsley Ijomah</td>
-                        <td>kings.ijomah@example.com</td>
-                        <td><a href="#" class="label label-default">pending</a></td>
-                        <td>Today 5:60pm - 14/09/2015</td>
-                        <td><a href="#" class="label label-danger">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Kingsley Ijomah</td>
-                        <td>kings.ijomah@example.com</td>
-                        <td><a href="#" class="label label-success">active</a></td>
-                        <td>Today 5:60pm - 14/09/2015</td>
-                        <td><a href="#" class="label label-danger">Delete</a></td>
-                      </tr>
+
+                      <?php
+
+                          $dados = $pessoa->listar();
+                            foreach ($dados as $linha) {
+                               // echo "<tr onclick=\"location.href='?pagina=admin.php&id=".$linha['id']."'\"><td>";
+                              echo "<tr>";
+                                echo "<td>".$linha['id']."</td>";
+                                echo "<td>".$linha['nome']."</td>";
+                                echo "<td>".$linha['email']."</td>";
+                                echo "<td><a href=\"#\" class=\"label label-default\">pendente</a></td>";
+                                echo "<td>Today 5:60pm - 14/09/2015</td>";
+                                echo "<td><a href=\"#\" class=\"label label-danger\">Delete</a></td>";
+                              echo "</tr>";
+
+                               // echo "</td><td>";
+                               // echo $linha['nome'];
+                               // echo "</td><td>";
+                               // echo $linha['email'];
+                               // echo "</td>";
+                            }
+                        ?>
+                     
+              
                     </tbody>
                   </table>
                 </div>
@@ -231,11 +205,53 @@
       </div>   
     </div>
 
+    <!-- Modal Alterar -->
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Título do modal</h4>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Example select</label>
+                    <select class="form-control" id="exampleSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     </script>
     <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
-    <script src="bootstrap/js/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/default.js"></script>
