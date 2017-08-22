@@ -2,7 +2,7 @@
         include_once("aluno.class.php");
         include_once("pessoa.class.php");
         $pessoa = new Pessoa;
-        
+        /*
         $pessoa->__set('id', @$_GET['id']);
         $pessoa -> carregar();
 
@@ -11,7 +11,41 @@
         $pessoa->__set('id', @$_GET['id']);
         $aluno->__set("idpessoa", @$_GET['id']);
         $aluno->excluir();
-  ?>
+
+        */
+        if(@$_GET['funcao']=='alterar'){
+          $pessoa->__set('id', @$_GET['id']);
+          $pessoa -> carregar();
+          $_GET['funcao']='';
+      }
+      
+
+
+?>
+
+<script type="text/javascript">
+  function _GET(name)
+  {
+    var url   = window.location.search.replace("?", "");
+    var itens = url.split("&");
+   
+    for(n in itens)
+    {
+      if( itens[n].match(name) )
+      {
+        return decodeURIComponent(itens[n].replace(name+"=", ""));
+      }
+    }
+    return null;
+  }
+
+  if(_GET("funcao")=='alterar'){
+      $(window).on('load',function(){
+          $('#myModal').modal('show');
+      });
+    }
+</script>
+
 
   <body class="admin">
 
@@ -89,9 +123,9 @@
                                echo "<td>".$linha['id']."</td>";
                                 echo "<td>20/08/2016</td>";
                                 echo "<td>";
-                                  echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" onmousemove= \"history.pushState('?pagina=','Titulo de teste','?pagina=admin&id=".$linha['id']."')\" onclick=\"\">Alterar</a>";
+                                  echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=alterar'\" >Alterar</a>";
                                   echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\">Ver</a>";
-                                  echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."'\" role=\"button\">Excluir</a>";
+                                  echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=excluir'\" role=\"button\">Excluir</a>";
                                 echo "</td>";
                               echo "</tr>";
 
@@ -205,13 +239,11 @@
       </div>   
     </div>
 
-    <!-- Modal Alterar -->
-
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <!-- Modal Alterar   -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <?php $pessoa->carregar(); ?>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Alterar</h4>
           </div>
@@ -238,5 +270,8 @@
         </div>
       </div>
     </div>
+  
+
+
   </body>
 
