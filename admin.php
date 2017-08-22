@@ -1,6 +1,7 @@
  <?php 
         include_once("aluno.class.php");
         include_once("pessoa.class.php");
+        include_once("funcionario.class.php");
         $pessoa = new Pessoa;
         /*
         $pessoa->__set('id', @$_GET['id']);
@@ -13,7 +14,8 @@
         $aluno->excluir();
 
         */
-        if(@$_GET['funcao']=='alterar'){
+
+        if((@$_GET['funcao']=='alterar') or (@$_GET['funcao']=='ver') or (@$_GET['funcao']=='excluir')) {
           $pessoa->__set('id', @$_GET['id']);
           $pessoa -> carregar();
      
@@ -41,8 +43,29 @@
 
   if(_GET("funcao")=='alterar'){
       $(window).on('load',function(){
-          $('#myModal').modal('show');
+          $('#ModalAlterar').modal('show');
       });
+    }
+
+    if (_GET("funcao")=='ver') {
+      $(window).on('load',function(){
+          $('#ModalVer').modal('show');
+      });
+    }
+
+    if (_GET("funcao")=='excluir') {
+      $(window).on('load',function(){
+        $('#ModalExcluir').modal('show');
+      });
+    }
+
+    function limparUrlModal(){
+        if ($('#ModalVer').modal('close') || $('#ModalAlterar').modal('close') || $('#ModalVer').modal('close')) {
+
+            history.pushState('teste','Titulo de teste','?pagina=admin'); 
+
+            return false;
+        }
     }
 </script>
 
@@ -124,7 +147,7 @@
                                 echo "<td>20/08/2016</td>";
                                 echo "<td>";
                                   echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=alterar'\" >Alterar</a>";
-                                  echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\">Ver</a>";
+                                  echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=ver'\">Ver</a>";
                                   echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=excluir'\" role=\"button\">Excluir</a>";
                                 echo "</td>";
                               echo "</tr>";
@@ -240,12 +263,49 @@
     </div>
 
     <!-- Modal Alterar   -->
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalAlterar">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Alterar</h4>
+          </div>
+          <div class="modal-body">
+              <form method="post" action="?pagina=acao_admin">
+                  <div class="form-group">
+                    <label for="exampleInputId">ID</label>
+                    <input type="email" class="form-control" name="id" id="exampleInputId" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('id')?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('email')?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="senha" id="exampleInputPassword1" value="<?php echo $pessoa->__get('senha')?>">
+                  </div>
+        
+                </div>
+                <div class="modal-footer">
+                  <p clas="text" style="text-align: left;">Confirmar alteração?</p>
+                  <button type="submit" class="btn btn-default" data-dismiss="modal"onclick="limparUrlModal()"formnovalidate>Não</button>
+                  <button type="submit" class="btn btn-warning" name="acao" value="alterar" formnovalidate>Sim</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+        <!-- Modal Ver   -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalVer">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Ver</h4>
           </div>
           <div class="modal-body">
               <form>
@@ -264,13 +324,48 @@
                 </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" name="acao" value="excluir" formnovalidate>Excluir</button>
-            <button type="button" class="btn btn-primary" name="acao" value="alterar" formnovalidate>Alterar</button>
+           
           </div>
         </div>
       </div>
     </div>
-  
+    
+
+        <!-- Modal Excluir   -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalExcluir">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Excluir</h4>
+          </div>
+          <div class="modal-body">
+              <form method ="post" action="?pagina=acao_admin">
+                  <div class="form-group">
+                    <label for="exampleInputId">ID</label>
+                    <input type="email" class="form-control" name="id" id="exampleInputId" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('id')?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('email')?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="senha" id="exampleInputPassword1" value="<?php echo $pessoa->__get('senha')?>">
+                  </div>
+                
+
+                  </div>
+                  <div class="modal-footer ">
+                    <p clas="text" style="text-align: left;">Confirmar exclusão?</p>
+                  <button type="submit" class="btn btn-default" data-dismiss="modal">Não</button>
+                  <button type="submit" class="btn btn-danger" name="acao" value="excluir"  formnovalidate>Sim</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 
 
   </body>

@@ -17,6 +17,7 @@
 
 	if(@$_POST['acao'] == 'excluir'){
 	    $aluno->excluir();
+	    $pessoa->excluir();
 	   	header("Location: ?pagina=admin");
 	}elseif (@$_POST['acao'] == 'alterar') {
 		$pessoa->alterar();
