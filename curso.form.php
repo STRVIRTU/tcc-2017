@@ -6,12 +6,18 @@
 		</div>
 <!-- Main content -->
 		<div class="col-md-10 col-sm-11 display-table-cell valign-top">
-			<h1 class="text-center">Cadastro de Cursos</h1>
-			<form method="POST" action="?pagina=validar_cadastro_curso">
-				<label>Informe o nome do curso:</label>
-				<input class="form-control" type="text" name="nome_curso" id="curso"><br>
-				<input class="btn btn-danger" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
-			</form>
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-6">
+				<h1 class="text-center">Cadastro de Cursos</h1>
+				<form method="POST" action="?pagina=validar_cadastro_curso">
+					<label>Informe o nome do curso:</label>
+					<input class="form-control" type="text" name="nome_curso" id="curso"><br>
+					<input class="btn btn-danger" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+				</form>
+			</div>
+			<div class="col-md-3">
+			</div>			
 		</div>   
 	</div>
 </div>

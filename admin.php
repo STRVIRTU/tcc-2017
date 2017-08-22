@@ -70,7 +70,6 @@
 </script>
 
 
-  <body class="admin">
 
     <div class="container-fluid display-table">
       <div class="row display-table-row">
@@ -367,6 +366,4 @@
     </div>
     
 
-
-  </body>
 
