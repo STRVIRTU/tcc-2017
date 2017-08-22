@@ -16,7 +16,7 @@
         if(@$_GET['funcao']=='alterar'){
           $pessoa->__set('id', @$_GET['id']);
           $pessoa -> carregar();
-          $_GET['funcao']='';
+     
       }
       
 
@@ -265,7 +265,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" name="acao" value="excluir" formnovalidate>Excluir</button>
-            <button type="button" class="btn btn-primary"name="acao" value="alterar" formnovalidate>Alterar</button>
+            <button type="button" class="btn btn-primary" name="acao" value="alterar" formnovalidate>Alterar</button>
           </div>
         </div>
       </div>

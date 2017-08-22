@@ -15,7 +15,7 @@
 
           <ul>
             <li class="link active">
-              <a href="admin.php">
+              <a href="?pagina=admin">
                 <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
                 <span class="hidden-sm hidden-xs">Dashboard</span>
               </a>
