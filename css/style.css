@@ -1,20 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text|Droid+Serif');
   body{
   overflow-x: hidden;
-  background: #4caf50;
-  background: -webkit-linear-gradient(left top, #4caf50, #1b5e20);
-  background: -o-linear-gradient(bottom right, #4caf50, #1b5e20); 
-  background: -moz-linear-gradient(bottom right, #4caf50, #1b5e20);
-  background: linear-gradient(to bottom right, #4caf50, #1b5e20);
-  font-family: 'Crimson Text', serif;
-
-}
-.admin{
-  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif, 'Crimson Text', serif;
   background: #f3f3f4;
   color: #676a6c;
   height: 100%;
+
 }
+
 .center{
   margin: 0 auto !important;
   float: none !important;
@@ -159,11 +152,12 @@
 .side-menu-nome{
   font-size: 14px;
   font-weight: bold;
-  color:#0066ff;
+  color:#212121;
 }
 .side-menu-cargo{
   font-size: 12px;
-  color: #cce0ff;
+  font-weight: bold;
+  color: #C8E6C9;
 }
 .side-menu-usertitle hr{
   width: 90%;
@@ -186,7 +180,7 @@
 }
 
 .side-menu{
-  background-color: #2f4050;
+  background-color: #4CAF50;
   padding: 0px;
 }
 .side-menu h1{
@@ -199,17 +193,18 @@
   list-style: none;
   margin: 0px;
   padding: 0px;
+
 }
 .side-menu a{
   padding: 12px 20px;
   text-decoration: none;
-  color:#9fb1c2;
+  color:#fff;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   display: block;
 }
 .side-menu a:hover{
-  background-color: #293846;
+  background-color: #388E3C;
   color: #fff;
   display: block;
 }
@@ -218,7 +213,7 @@
 }
 .side-menu .active a{
   color: #fff;
-  background-color: #293846;
+  background-color: #388E3C;
 }
 
 .side-menu .link > ul > li {
@@ -324,7 +319,7 @@
 .admin-content-con{
   margin-top: 20px;
   background-color: white;
-  border-top: 4px #e7eaec solid;
+  border-top: 4px #5cb85c solid;
   padding: 15px;
 }
 
