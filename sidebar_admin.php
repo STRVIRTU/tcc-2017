@@ -21,6 +21,13 @@
               </a>
             </li>
 
+            <ul class="link" id="relatorio"
+                <span class="hidden-sm hidden-xs">Relatórios</span>
+              <li><a class="itemrelatorio" href="?pagina=relatorio_curso">Cursos</a></li>
+              <li><a class="itemrelatorio"href="?pagina=relatorio_aluno">Alunos</a></li>
+              <li><a class="itemrelatorio" href="?pagina=relatorio_funcionario">Funcionários</a></li>
+              <li><a class="itemrelatorio" href="?pagina=relatorio_disciplina">Disciplinas</a></li>
+            </ul>
             
             <li class="link">
               <a href="?pagina=cadastro_curso">
