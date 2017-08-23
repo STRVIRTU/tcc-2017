@@ -58,15 +58,26 @@
         $('#ModalExcluir').modal('show');
       });
     }
+</script>
 
-    function limparUrlModal(){
-        if ($('#ModalVer').modal('close') || $('#ModalAlterar').modal('close') || $('#ModalVer').modal('close')) {
+<script type="text/javascript">
 
-            history.pushState('teste','Titulo de teste','?pagina=admin'); 
+  $(document).on('hidden.bs.modal','#ModalVer', function () {
 
-            return false;
-        }
-    }
+      window.history.pushState('teste','Titulo de teste','?pagina=admin'); 
+
+  });
+  $(document).on('hidden.bs.modal','#ModalAlterar', function () {
+
+     window.history.pushState('teste','Titulo de teste','?pagina=admin'); 
+
+  });
+  $(document).on('hidden.bs.modal','#ModalExcluir', function () {
+
+      window.history.pushState('teste','Titulo de teste','?pagina=admin'); 
+
+  });
+
 </script>
 
 
@@ -287,7 +298,7 @@
                 </div>
                 <div class="modal-footer">
                   <p clas="text" style="text-align: left;">Confirmar alteração?</p>
-                  <button type="submit" class="btn btn-default" data-dismiss="modal"onclick="limparUrlModal()"formnovalidate>Não</button>
+                  <button type="submit" class="btn btn-default" data-dismiss="modal"onclick="" formnovalidate>Não</button>
                   <button type="submit" class="btn btn-warning" name="acao" value="alterar" formnovalidate>Sim</button>
             </form>
           </div>
