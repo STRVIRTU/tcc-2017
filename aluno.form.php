@@ -80,14 +80,12 @@
     <div class="tab-content">
 	    <div role="tabpanel" class="tab-pane active" id="aluno">
 		    <form method="POST" action="?pagina=validar_cadastro_aluno">
+		    	<label for="cgm">CGM:</label>
+				<input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
 				<label>Nome: </label>
-				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required autofocus><br>
+				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required disabled><br>
 				<label>Turma: </label>
-				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>
-				<div class="row">
-					<div class="col-sm-6 pull-left">
-						<label for="cgm">CGM:</label>
-						<input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
+				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>						
 						<label id="input" for="course">Curso</label>
 							<select class="form-control" type="text" name="curso_aluno" id="curso_aluno" value="">
 								<?php
@@ -97,15 +95,14 @@
 												echo "<option>".$linha['nome']."</option>";	
 											}
 								?>
-							</select>
-					</div>
-					<div class="col-sm-6 pull-right">
+							</select><br>
+			
 						<label for="rg">RG:</label>
-						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1">
+						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1" disabled><br>
 						<label for="nascimento">Data de Nascimento:</label>
-						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999">
-					</div>
-				</div><br>
+						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999" disabled><br>
+	
+			
 				<label>Email:</label>
 				<div class="input-group">
 					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('email')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">

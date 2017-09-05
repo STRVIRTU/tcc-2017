@@ -1,4 +1,5 @@
  <h1 class="hidden-xs hidden-sm"> Navegação </h1>
+ <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top side-menu">
           <div class="box-perfil center">
             <img src="img/avatar.png" class="block img-responsive img-rounded img-avatar">
           </div>
@@ -21,7 +22,7 @@
               </a>
             </li>
 
-            <ul class="link" id="relatorio"
+            <ul class="link" id="relatorio">
                 <span class="hidden-sm hidden-xs">Relatórios</span>
               <li><a class="itemrelatorio" href="?pagina=relatorio_curso">Cursos</a></li>
               <li><a class="itemrelatorio"href="?pagina=relatorio_aluno">Alunos</a></li>
@@ -50,3 +51,4 @@
               </a>
             </li>
           </ul>
+      </div>

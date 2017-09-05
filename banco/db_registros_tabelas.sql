@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Ago-2017 às 19:32
+-- Generation Time: 23-Ago-2017 às 19:41
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_registros`
 --
-CREATE DATABASE IF NOT EXISTS `db_registros` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `db_registros`;
 
 -- --------------------------------------------------------
 

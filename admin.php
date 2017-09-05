@@ -85,6 +85,7 @@
     <div class="container-fluid display-table">
       <div class="row display-table-row">
         <!-- Side menu -->
+
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top side-menu">
           <?php include_once('sidebar_admin.php'); ?>
         </div>
@@ -94,40 +95,87 @@
             <header class="nav-header clearfix">
               <div class="col-md-5">
                 <nav class="navbar-default pull-left">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="side-menu">
+
+                  <!--Collapse-->
+                  <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#side-collapse">
+                    
                    <span class="sr-only">Toggle navigation</span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
+
                   </button>
-                </nav>
-                <input type="text" class="hidden-sm hidden-xs header-search-field" placeholder="Search for something...">
-              </div>
-              <div class="col-md-7">
-              <ul class="pull-right">
-                <li class="welcome hidden-xs">Bem vindo a area administrativa</li>
-                <li class="fixed-width">
-                  <a href="#">
-                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                    <span class="label label-warning">3</span>
-                  </a>
-                </li>
-                <li class="fixed-width">
-                  <a href="#">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                    <span class="label label-message">3</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="logout">
-                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    Sair
-                  </a>
-                </li>
-              </ul>
-              </div>    
+
+                  <div class="collapse navbar-collapse" id="side-collapse">
+                      <ul class="nav navbar-nav visible-xs">
+                            <li class="link active">
+                              <a href="?pagina=admin">
+                                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                                <span class="hidden-sm hidden-xs">Dashboard</span>
+                              </a>
+                            </li>
+
+                           <!--  <ul class="link" id="relatorio">
+                                <span class="hidden-sm hidden-xs">Relatórios</span>
+                              <li><a class="itemrelatorio" href="?pagina=relatorio_curso">Cursos</a></li>
+                              <li><a class="itemrelatorio"href="?pagina=relatorio_aluno">Alunos</a></li>
+                              <li><a class="itemrelatorio" href="?pagina=relatorio_funcionario">Funcionários</a></li>
+                              <li><a class="itemrelatorio" href="?pagina=relatorio_disciplina">Disciplinas</a></li>
+                            </ul> -->
+                            
+                            <li class="link">
+                              <a href="?pagina=cadastro_curso">
+                                <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                                <span class="hidden-sm hidden-xs">Cursos</span>
+                              </a>
+                            </li>
+
+                            <li class="link">
+                              <a href="?pagina=cadastro_disciplina">
+                                <span class="fa fa-book" aria-hidden="true"></span>
+                                <span class="hidden-sm hidden-xs">Disciplinas</span>
+                              </a>
+                            </li>
+
+                            <li class="link">
+                              <a href="?pagina=cadastro_funcionario">
+                                <span class="fa fa-user" aria-hidden="true"></span>
+                                <span class="hidden-sm hidden-xs">Funcionarios</span>
+                              </a>
+                            </li>
+                      </ul>
+                  </div><!---Fim Collapse-->
+               </nav>
+                  <input type="text" class="hidden-sm hidden-xs header-search-field" placeholder="Search for something...">
+            </div>
+
+
+
+            <div class="col-md-7">
+                <ul class="pull-right">
+                    <li class="welcome hidden-xs">Bem vindo a area administrativa</li>
+                    <li class="fixed-width">
+                        <a href="#">
+                          <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                          <span class="label label-warning">3</span>
+                        </a>
+                    </li>
+                    <li class="fixed-width">
+                        <a href="#">
+                          <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                          <span class="label label-message">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="logout">
+                          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            Sair
+                        </a>
+                    </li>
+                </ul>
+            </div><!---Fim Col-md-7--> 
             </header>
-          </div>
+          </div><!---Fim row-->
           <div class="dashboard-con">
             <div class="row">
               <div class="col-md-6 dashboard-left-cell">
