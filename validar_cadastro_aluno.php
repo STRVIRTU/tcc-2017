@@ -30,9 +30,15 @@
 	    	echo "ERRO N". $_FILES["foto"]["error"];
 	    }
 
-	    move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
-	    $aluno->__set("foto", $_FILES["foto"]["name"]);
-	    $aluno->gravar();
-	   header("Location: ?pagina=perfil_aluno");
+	    $fotoType = $_FILES["foto"]["type"];
+	    if ($fotoType =="image/PNG" or $fotoType =="image/png" or $fotoType == "image/jpg" or $fotoType == "image/jpeg") {
+	    	move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
+		    $aluno->__set("foto", $_FILES["foto"]["name"]);
+		    $aluno->gravar();
+		    header("Location: ?pagina=perfil_aluno");
+	    }else{
+	    	echo "<div class='danger'>Formato Inválido</div>";
+	    }
+	    
 
 ?>
