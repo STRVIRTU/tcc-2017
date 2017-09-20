@@ -79,11 +79,11 @@
     <!----------ALUNO---------->                                
     <div class="tab-content">
 	    <div role="tabpanel" class="tab-pane active" id="aluno">
-		    <form method="POST" action="?pagina=validar_cadastro_aluno">
+		    <form method="POST" action="?pagina=validar_cadastro_aluno" enctype="multipart/form-data">
 		    	<label for="cgm">CGM:</label>
 				<input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
 				<label>Nome: </label>
-				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required disabled><br>
+				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required ><br>
 				<label>Turma: </label>
 				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>						
 						<label id="input" for="course">Curso</label>
@@ -98,9 +98,9 @@
 							</select><br>
 			
 						<label for="rg">RG:</label>
-						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1" disabled><br>
+						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1"><br>
 						<label for="nascimento">Data de Nascimento:</label>
-						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999" disabled><br>
+						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999"><br>
 	
 			
 				<label>Email:</label>
@@ -110,6 +110,8 @@
 				</div><br>
 				<label>Senha:</label>
 				<input  class="form-control" type="password" name="senha_aluno" id="senha_aluno" required><br>
+				<label>Selecione uma imagem:</label>
+				<input type="file" name="foto"> <br>
 				<button type="submit" class="btn">Cadastrar</button>
 		    </form>                                   	
     </div>

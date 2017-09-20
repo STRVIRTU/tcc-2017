@@ -26,7 +26,12 @@
 	    $aluno->__set("senha",$senha);
 	    $aluno->__set("tipo", $tipo);
 
+	    if ($_FILES["foto"]["error"]) {
+	    	echo "ERRO N". $_FILES["foto"]["error"];
+	    }
 
+	    move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
+	    $aluno->__set("foto", $_FILES["foto"]["name"]);
 	    $aluno->gravar();
 	   header("Location: ?pagina=perfil_aluno");
 

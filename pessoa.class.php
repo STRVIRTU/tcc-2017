@@ -8,6 +8,7 @@ session_start();
 		public $nome;
 		public $rg;
 		public $nascimento;
+		public $foto;
 		public $email;
 		public $senha;
 		public $tipo;
@@ -30,16 +31,17 @@ session_start();
 			try {
 			
 				//echo "gravando pessoa"; 
-				$sql = "insert into pessoa (nome, rg, nascimento, email, senha, tipo, usuario) values (?,?,?,?,?,?,?)";
+				$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario) values (?,?,?,?,?,?,?,?)";
 				$con = new Conexao();
 			  	$stm = $con->prepare($sql);
 			 	$stm->bindParam(1, $this->nome);
 			  	$stm->bindParam(2, $this->rg);
 			  	$stm->bindParam(3, $this->nascimento);
-			  	$stm->bindParam(4, $this->email);
-			  	$stm->bindParam(5, $this->senha);
-			  	$stm->bindParam(6, $this->tipo);
-			  	$stm->bindParam(7, $this->usuario);
+			  	$stm->bindParam(4, $this->foto);
+			  	$stm->bindParam(5, $this->email);
+			  	$stm->bindParam(6, $this->senha);
+			  	$stm->bindParam(7, $this->tipo);
+			  	$stm->bindParam(8, $this->usuario);
 			 // 	$stm->bindParam(3, $this->rg);
 			 // 	$stm->bindParam(4, $this->cgm);
 			
