@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 	include_once('conexao.class.php');
 	include_once('pessoa.class.php');
 
@@ -7,6 +7,7 @@ session_start();
 	$pessoa = new Pessoa();
 
 	$login = $_POST['login'];
+	$_SESSION['user'] = $login;
 	$senha = $_POST['senha'];
 	
 	// 1->ADMIN
@@ -19,7 +20,7 @@ session_start();
 		$pessoa->__set('senha', $senha);
 		if($pessoa->validar()){
 			$_SESSION['logado'] = true;
-				if ($_SESSION['tipo'] == 1) {
+				if ($_SESSION['tipo'] == 1 and $_SESSION['logado'] == true) {
 					header("Location: ?pagina=admin");
 				}elseif ($_SESSION['tipo'] == 2) {
 					header("Location: ?pagina=perfil_aluno");

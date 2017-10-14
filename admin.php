@@ -1,4 +1,11 @@
  <?php 
+
+      if (!isset($_SESSION['logado'])) {
+          $_SESSION['error'] = "Realize o Login";
+          header("Location:?pagina=login");
+
+      }
+
         include_once("aluno.class.php");
         include_once("pessoa.class.php");
         include_once("funcionario.class.php");
@@ -167,7 +174,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="logout">
+                        <a href="?pagina=logout" class="logout">
                           <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                             Sair
                         </a>
@@ -195,7 +202,7 @@
                     </thead>
                     <tbody>
                       <?php
-
+                          
                           $dados = $pessoa->listar();
                             foreach ($dados as $linha) {
                                // echo "<tr onclick=\"location.href='?pagina=admin.php&id=".$linha['id']."'\"><td>";

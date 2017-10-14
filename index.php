@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 	function __autoload($classe){
 		if(file_exists('{$classe}.class.php')){
 			include_once('{$classe}.class.php');
@@ -44,6 +44,7 @@
 					case 'validar_cadastro_disciplina': $pagina = "validar_cadastro_disciplina.php"; break;
 					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_funcionario.php"; break;
 					case 'acao_admin': $pagina = "acao_admin.php"; break;
+					case 'logout': $pagina = "logout.php"; break;
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

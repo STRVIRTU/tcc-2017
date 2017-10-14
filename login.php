@@ -1,3 +1,13 @@
+   <?php
+
+      if (isset($_SESSION['error'])) {
+          echo '<script> alert("Realize o login!"); </script>';
+          session_destroy();
+      }
+
+
+   ?>
+
  <div class="container">
         <div class="row">
               <form class="col-md-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
