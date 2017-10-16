@@ -1,5 +1,4 @@
-<html>
- <head>
+
     <?php include_once('carregar_links.php');
     include_once('curso.class.php');
 	include_once('conexao.class.php'); 
@@ -31,8 +30,9 @@
 
 
 
+
     </script>
-  </head>
+
 <body>
 	
 <div class="row">
@@ -98,9 +98,9 @@
 							</select><br>
 			
 						<label for="rg">RG:</label>
-						<input class="form-control" type="text" name="rg_aluno" id="rg_aluno" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1"><br>
+						<input class="form-control rg" type="text" name="rg_aluno" id="rg" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1"><br>
 						<label for="nascimento">Data de Nascimento:</label>
-						<input class="form-control" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" id="nascimento_aluno" placeholder="05/03/1999"><br>
+						<input class="form-control data" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" placeholder="05/03/1999"><br>
 	
 			
 				<label>Email:</label>
@@ -118,15 +118,15 @@
      <div role="tabpanel" class="tab-pane" id="funcionario">
 
      <!----------FUNCIONÁRIO----------> 	
-     	<form method="POST" action="?pagina=validar_cadastro_funcionario">
+     	<form method="POST" action="?pagina=validar_cadastro_funcionario" enctype="multipart/form-data">
 				<label>Nome: </label>
 				<input class="form-control" type="text" name="nome_funcionario" id="nome_funcionario"required autofocus><br>
 						<label for="rg">RG:</label>
-						<input class="form-control" type="text" name="rg_funcionario" id="rg_funcionario" placeholder="13.195.492-1"><br>
+						<input class="form-control rg" type="text" name="rg_funcionario" id="rg" placeholder="13.195.492-1"><br>
 						<label for="cpf">CPF:</label>
-						<input class="form-control" type="text" name="cpf_funcionario" id="cpf_funcionario" placeholder="123.456.789-10"><br>
+						<input class="form-control" type="text" name="cpf_funcionario" id="cpf" placeholder="123.456.789-10"><br>
 						<label for="nascimento">Data de Nascimento:</label>
-						<input class="form-control" type="text" name="nascimento_funcionario" id="nascimento_funcionario" placeholder="05/03/1999"><br>
+						<input class="form-control data" type="text" name="nascimento_funcionario" id="data" placeholder="05/03/1999"><br>
 				<label>Email</label>
 				<div class="input-group">
 					<input class="form-control" type="text" name="email_funcionario" id="email_funcionario" placeholder="luan.rohde" aria-describedby="basic-addon2">
@@ -136,10 +136,10 @@
 				<input  class="form-control" type="password" name="senha_funcionario" id="senha_funcionario" required><br> 
 				<select name="cargo_funcionario" class="form-control" id="cargo">
 					<option value="3">Professor</option>
-					<option value="3">Pedagogo</option>
+					<option value="4">Pedagogo</option>
 				</select><br>
-
-				
+				<label>Selecione uma imagem:</label>
+				<input type="file" name="foto"> <br>
 				<button type="submit" class="btn">Cadastrar</button>
 		    </form>                                   	
     
@@ -147,12 +147,17 @@
     </div>
     </div>
 							
-														
+													
 															
 	
 </div>
 </div>
+<script type="text/javascript">
+	jQuery(function($){
+		       $(".data").mask("99/99/9999");
+		       $(".rg").mask("99.999.999-9");
+		       $("#cpf").mask("999.999.999-99");
+		});
 
-</body>
-</html>	
+</script>
 

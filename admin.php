@@ -65,6 +65,11 @@
         $('#ModalExcluir').modal('show');
       });
     }
+    if (_GET("funcao")=='novo') {
+      $(window).on('load',function(){
+        $('#ModalNovo').modal('show');
+      });
+    }
 </script>
 
 <script type="text/javascript">
@@ -80,6 +85,12 @@
 
   });
   $(document).on('hidden.bs.modal','#ModalExcluir', function () {
+
+      window.history.pushState('teste','Titulo de teste','?pagina=admin'); 
+
+  });
+
+  $(document).on('hidden.bs.modal','#ModalNovo', function () {
 
       window.history.pushState('teste','Titulo de teste','?pagina=admin'); 
 
@@ -189,7 +200,7 @@
                 <div class="admin-content-con">
                   <header class="clearfix">
                     <h5 class="pull-left">Usuários</h5>
-                    <a class="btn btn-xs btn-primary pull-right" href="#" role="button">Criar novo</a>
+                    <a class="btn btn-xs btn-primary pull-right" onclick="location.href='?pagina=admin&id=&funcao=novo'" role="button">Criar novo</a>
                   </header>
                   <table class="table table-striped">     
                     <thead>
@@ -424,12 +435,38 @@
                   <div class="modal-footer ">
                     <p clas="text" style="text-align: left;">Confirmar exclusão?</p>
                   <button type="submit" class="btn btn-default" data-dismiss="modal">Não</button>
-                  <button type="submit" class="btn btn-danger" name="acao" value="excluir"  formnovalidate>Sim</button>
+                  <button type="submit" class="btn btn-danger" name="acao" value="excluir" formnovalidate>Sim</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+
+        <!-- Modal Criar novo   -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalNovo">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Cadastrar novo</h4>
+          </div>
+          <div class="modal-body">
+           <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#aluno" aria-controls="home" role="tab" data-toggle="tab">Aluno</a></li>
+            <li role="presentation"><a href="#funcionario" aria-controls="profile" role="tab" data-toggle="tab">Fucionário</a></li>
+          </ul>
+
+
+          </div>
+          <div class="modal-footer">
+           
+          </div>
+        </div>
+      </div>
+    </div>
     
+
+
+
 
 

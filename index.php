@@ -66,5 +66,5 @@ session_start();
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="js/default.js"></script>
+    <script src="js/jquery.mask.js"></script>
 </html>

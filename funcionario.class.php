@@ -69,16 +69,30 @@
 
 	 	public function excluir(){
 				try{
-					$sql = "delete * from funcionario where idpessoa=?";
-					$con = new Conexao();
-					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->idpessoa);
-						if ($stm->execute()) {
-							return '<div class="sucess">Excluido com sucesso!</div>';
-						}
+					$sql = "select * from funcionario where idpessoa=?";
+						$con = new Conexao;
+						$stm = $con->prepare($sql);
+						$stm->bindParam(1, $this->idpessoa);
+						$stm->execute();
+						
+						if ($stm->rowCount()>0) {
+							$sqldel = "delete from funcionario where idpessoa=?";
+							$condel = new Conexao;
+							$stmdel = $condel->prepare($sqldel);
+							$stmdel->bindParam(1, $this->idpessoa);
+						
+							 if ($stmdel->execute()) {	
+							 	return '<div class="sucess">Aluno excluido com sucesso!</div>';
+							 }else{
+							 	return '<div class="danger">Aluno não excluído!</div>';
+							 }
+
+					}
+						
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
 		 		}
+					
 	 	}
 
     }

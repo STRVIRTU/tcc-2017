@@ -23,7 +23,19 @@
 	    $func->__set("senha",$senha);
 	    $func->__set("tipo",$tipo);
 	    $func->__set("usuario",$usuario);
-	    $func->gravar();
-	
-	    header("Location:?pagina=perfil_funcionario");
+	     
+	     if ($_FILES["foto"]["error"]) {
+	    	echo "ERRO N". $_FILES["foto"]["error"];
+	    }
+
+	    $fotoType = $_FILES["foto"]["type"];
+	    if ($fotoType =="image/PNG" or $fotoType =="image/png" or $fotoType == "image/jpg" or $fotoType == "image/jpeg") {
+	    	move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
+		    $func->__set("foto", $_FILES["foto"]["name"]);
+		    $func->gravar();
+		    header("Location: ?pagina=perfil_funcionario");
+	    }else{
+	    	echo "<div class='danger'>Formato Inválido</div>";
+	    }
+	    
 ?>
