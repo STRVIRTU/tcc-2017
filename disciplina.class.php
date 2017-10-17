@@ -4,9 +4,7 @@
 
 		public $id_disciplina;
 		public $nome;
-		public $professor;
 		public $curso;
-		public $carga_horaria;
 
 		public function __construct(){
 			//print "Disciplina instanciada!";
@@ -14,13 +12,11 @@
 
 		public function gravar(){
 				try {
-					$sql = "insert into disciplina (nome, professor, curso, carga_horaria) values (?,?,?,?)";
+					$sql = "insert into disciplina (nome, curso) values (?,?)";
 				 	$con = new Conexao();
 				 	$stm = $con->prepare($sql);
 				 	$stm->bindParam(1, $this->nome);
-					$stm->bindParam(2, $this->professor);
-					$stm->bindParam(3, $this->curso);
-					$stm->bindParam(4, $this->carga_horaria);
+					$stm->bindParam(2, $this->curso);
 				 	$stm->execute();
 			 	
 		 	}catch(PDOExeption $e){

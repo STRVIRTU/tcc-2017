@@ -13,6 +13,7 @@
 		public $senha;
 		public $tipo;
 		public $usuario;
+		public $criacao;
 
 		public function __construct(){
 			// print "Pessoa instanciada!";
@@ -31,7 +32,7 @@
 			try {
 			
 				//echo "gravando pessoa"; 
-				$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario) values (?,?,?,?,?,?,?,?)";
+				$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario, criacao) values (?,?,?,?,?,?,?,?,?)";
 				$con = new Conexao();
 			  	$stm = $con->prepare($sql);
 			 	$stm->bindParam(1, $this->nome);
@@ -42,6 +43,7 @@
 			  	$stm->bindParam(6, $this->senha);
 			  	$stm->bindParam(7, $this->tipo);
 			  	$stm->bindParam(8, $this->usuario);
+			  	$stm->bindParam(9, $this->criacao);
 			 // 	$stm->bindParam(3, $this->rg);
 			 // 	$stm->bindParam(4, $this->cgm);
 			
@@ -77,6 +79,7 @@
 						foreach ($stm as $linha) {
 							$_SESSION['tipo'] = $linha['tipo'];
 							$_SESSION['usuario'] = $linha['usuario'];
+							$_SESSION['nome'] = $linha['nome'];
 						}
 						return true;
 					}else{

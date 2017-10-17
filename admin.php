@@ -9,18 +9,15 @@
         include_once("aluno.class.php");
         include_once("pessoa.class.php");
         include_once("funcionario.class.php");
-        $pessoa = new Pessoa;
-        /*
-        $pessoa->__set('id', @$_GET['id']);
-        $pessoa -> carregar();
+        include_once('curso.class.php');
+                
+          $aluno = new Aluno;
+          $aluno->__set('cgm', @$_GET['cgm']);
+          $aluno->carregar();
+          $id =$aluno->__get('idpessoa');
 
-
-        $aluno = new Aluno;
-        $pessoa->__set('id', @$_GET['id']);
-        $aluno->__set("idpessoa", @$_GET['id']);
-        $aluno->excluir();
-
-        */
+          $pessoa = new Pessoa;
+  
 
         if((@$_GET['funcao']=='alterar') or (@$_GET['funcao']=='ver') or (@$_GET['funcao']=='excluir')) {
           $pessoa->__set('id', @$_GET['id']);
@@ -96,6 +93,18 @@
 
   });
 
+  jQuery(function($){
+           $(".data").mask("99/99/9999");
+           $(".rg").mask("99.999.999-9");
+           $("#cpf").mask("999.999.999-99");
+    });
+
+  function carregarinput() {
+      var CustomerNumber = document.getElementById("cgm_aluno").value;
+      var Url = "?pagina=cadastro_aluno&cgm=" + CustomerNumber;
+      window.location.href=Url;
+  }
+
 </script>
 
 
@@ -164,7 +173,7 @@
                       </ul>
                   </div><!---Fim Collapse-->
                </nav>
-                  <input type="text" class="hidden-sm hidden-xs header-search-field" placeholder="Search for something...">
+                  <input type="text" class="hidden-sm hidden-xs header-search-field" placeholder="Pesquisar">
             </div>
 
 
@@ -220,7 +229,7 @@
                               echo "<tr>";
                                echo "<td>".$linha['nome']."</td>";
                                echo "<td>".$linha['id']."</td>";
-                                echo "<td>20/08/2016</td>";
+                                echo "<td>".$linha['alteracao']."</td>";
                                 echo "<td>";
                                   echo "<a class=\"btn btn-xs btn-warning\" href=\"#\" role=\"button\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=alterar'\" >Alterar</a>";
                                   echo "<a class=\"btn btn-xs btn-primary\" href=\"#\" role=\"button\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=ver'\">Ver</a>";
@@ -280,7 +289,7 @@
                   <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
                   <hr>
                   <div class="clearfix">
-                    <a href="#" class="pull-right text-link">view all</a>
+                    <a href="#" class="pull-right text-link">Ver todos</a>
                   </div>
                 </div>
               </div>
@@ -289,7 +298,7 @@
               <div class="col-md-12">
                 <div class="admin-content-con clearfix">
                   <header>
-                    <h5>Commenters</h5>
+                    <h5>MikroTik</h5>
                   </header>
 
                   <table class="table table-bordered">
@@ -315,7 +324,7 @@
                                 echo "<td>".$linha['usuario']."</td>";
                                 echo "<td>".$linha['email']."</td>";
                                 echo "<td><a href=\"#\" class=\"label label-default\">pendente</a></td>";
-                                echo "<td>Today 5:60pm - 14/09/2015</td>";
+                                echo "<td>".$linha['criacao']."</td>";
                                 echo "<td><a href=\"#\" class=\"label label-danger\">Delete</a></td>";
                               echo "</tr>";
 
@@ -443,24 +452,95 @@
     </div>
 
         <!-- Modal Criar novo   -->
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalNovo">
-      <div class="modal-dialog modal-sm" role="document">
+    <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="ModalNovo">
+      <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Cadastrar novo</h4>
           </div>
           <div class="modal-body">
-           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#aluno" aria-controls="home" role="tab" data-toggle="tab">Aluno</a></li>
-            <li role="presentation"><a href="#funcionario" aria-controls="profile" role="tab" data-toggle="tab">Fucionário</a></li>
-          </ul>
+            <div>
 
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Curso</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Disciplina</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Funcionario</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Aluno</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                
+                <!--CURSO-->
+                <div role="tabpanel" class="tab-pane active" id="home">
+                   <form method="POST" action="?pagina=validar_cadastro_curso">
+                      <label>Informe o nome do curso:</label>
+                      <input class="form-control" type="text" name="nome_curso" id="curso"><br>
+                      <input class="btn btn-danger" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+                    </form>
+                </div>
+
+                <!--DISCIPLINA-->
+                <div role="tabpanel" class="tab-pane" id="profile">
+                  <form method="POST" action="?pagina=validar_cadastro_disciplina">
+                    <label>Disciplina:</label>
+                    <input class="form-control" type="text" name="nome_disciplina" id="nome_disciplina"><br>
+                    <label>Curso</label>
+                      <select class="form-control" type="text" name="curso_disciplina" id="curso_disciplina" value="">
+                            <?php
+                                $c = new Curso();
+                                $dados = $c->listar();
+                                  foreach ($dados as $linha) {
+                                    echo "<option value='".$linha['id_curso']."'>".$linha['nome']."</option>";
+                                  }
+                            ?>
+                      </select><br>
+                    <input class="btn btn-danger" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+                  </form>
+                </div>
+
+                <!--FUNCIONÁRIO-->
+                <div role="tabpanel" class="tab-pane" id="messages">
+                  <form method="POST" action="?pagina=validar_cadastro_funcionario" enctype="multipart/form-data">
+                      <label>Nome: </label>
+                      <input class="form-control" type="text" name="nome_funcionario" id="nome_funcionario" required autofocus><br>
+                          <label for="rg">RG:</label>
+                          <input class="form-control rg" type="text" name="rg_funcionario" id="rg" placeholder="13.195.492-1"><br>
+                          <label for="cpf">CPF:</label>
+                          <input class="form-control" type="text" name="cpf_funcionario" id="cpf" placeholder="123.456.789-10"><br>
+                          <label for="nascimento">Data de Nascimento:</label>
+                          <input class="form-control data" type="text" name="nascimento_funcionario" id="data" placeholder="05/03/1999"><br>
+                      <label>Email</label>
+                      <div class="input-group">
+                        <input class="form-control" type="text" name="email_funcionario" id="email_funcionario" placeholder="luan.rohde" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
+                      </div><br>
+                      <label>Senha:</label>
+                      <input  class="form-control" type="password" name="senha_funcionario" id="senha_funcionario" required><br> 
+                      <select name="cargo_funcionario" class="form-control" id="cargo">
+                        <option value="3">Professor</option>
+                        <option value="4">Pedagogo</option>
+                      </select><br>
+                      <label>Selecione uma imagem:</label>
+                      <input type="file" name="foto"> <br>
+                      <button type="submit" class="btn btn-danger">Cadastrar</button>
+                  </form>
+                </div>
+
+                <!--ALUNO-->
+                <div role="tabpanel" class="tab-pane" id="settings">
+                  <form method="POST" action="?pagina=validar_cadastro_aluno" enctype="multipart/form-data">
+                   
+                  </form>
+                </div>
+              </div>
+
+            </div>
 
           </div>
-          <div class="modal-footer">
-           
-          </div>
+         
         </div>
       </div>
     </div>

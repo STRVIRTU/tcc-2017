@@ -120,7 +120,7 @@
      <!----------FUNCIONÁRIO----------> 	
      	<form method="POST" action="?pagina=validar_cadastro_funcionario" enctype="multipart/form-data">
 				<label>Nome: </label>
-				<input class="form-control" type="text" name="nome_funcionario" id="nome_funcionario"required autofocus><br>
+				<input class="form-control" type="text" name="nome_funcionario" id="nome_funcionario" required autofocus><br>
 						<label for="rg">RG:</label>
 						<input class="form-control rg" type="text" name="rg_funcionario" id="rg" placeholder="13.195.492-1"><br>
 						<label for="cpf">CPF:</label>

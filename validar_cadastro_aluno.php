@@ -10,6 +10,7 @@
 		$email = $_POST['email_aluno'];
 		$senha = $_POST['senha_aluno'];
 		$usuario = $_POST['email_aluno'];
+		$criacao = date('Y-m-d h:i:s');
 		$tipo = 2;
 
 		$aluno = new Aluno();
@@ -25,6 +26,7 @@
 	    $aluno->__set("usuario", $usuario);
 	    $aluno->__set("senha",$senha);
 	    $aluno->__set("tipo", $tipo);
+	    $aluno->__set("criacao", $criacao);
 
 	    if ($_FILES["foto"]["error"]) {
 	    	echo "ERRO N". $_FILES["foto"]["error"];

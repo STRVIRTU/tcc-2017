@@ -18,6 +18,7 @@
 
 		$pessoa->__set('usuario', $login);
 		$pessoa->__set('senha', $senha);
+		
 		if($pessoa->validar()){
 			$_SESSION['logado'] = true;
 				if ($_SESSION['tipo'] == 1 and $_SESSION['logado'] == true) {

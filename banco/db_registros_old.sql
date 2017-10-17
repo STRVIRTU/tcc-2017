@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Ago-2017 às 02:08
+-- Generation Time: 23-Ago-2017 às 19:32
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`cgm`, `curso`, `turma`, `id`, `idpessoa`) VALUES
-(24354, 'Informatica', '2a', 8, 21);
+(448807959, 'Informatica', '4A', 15, 31);
 
 -- --------------------------------------------------------
 
@@ -219,17 +219,19 @@ CREATE TABLE `pessoa` (
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pendente',
-  `tipo` int(11) NOT NULL
+  `tipo` int(11) NOT NULL,
+  `usuario` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`) VALUES
-(21, 'Cezar', '089586596', '08/09/1990', '', 'cezar@ceepcascavel.com.br', '123', 'pendente', 2),
-(22, 'Jandrey', '4534534', '09/07/1980', '', 'andre@ceepcascavel.com.br', '123', 'pendente', 3),
-(23, 'admin', '', '', '', 'admin', 'admin', 'ativo', 1);
+INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`, `usuario`) VALUES
+(22, 'Jandrey', '4534534', '09/07/1980', '', 'andre.jandrey@ceepcascavel.com.br', '123', 'pendente', 3, ''),
+(28, 'Luan Teste', 'trrtertr', 'trtrtrt', '', 'dgdgd@ceepcascavel.com.br', '123', 'pendente', 2, 'dgdgd'),
+(30, 'admin', '', '', '', 'admin', 'admin', 'pendente', 1, 'admin'),
+(31, 'Luan Rohde', '13.195.492-1', '05/03/1999', '', 'luan.rohde@ceepcascavel.com.br', '123', 'pendente', 2, 'luan.rohde');
 
 -- --------------------------------------------------------
 
@@ -320,7 +322,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `alunozz`
 --
@@ -360,7 +362,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `turma`
 --

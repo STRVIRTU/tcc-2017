@@ -10,6 +10,7 @@
 		$senha = $_POST['senha_funcionario'];
 		$tipo = $_POST['cargo_funcionario'];
 		$usuario = $_POST['email_funcionario'];
+		$criacao = date('Y-m-d h:i:s');
 
 
 
@@ -23,6 +24,7 @@
 	    $func->__set("senha",$senha);
 	    $func->__set("tipo",$tipo);
 	    $func->__set("usuario",$usuario);
+	    $func->__set('criacao', $criacao);
 	     
 	     if ($_FILES["foto"]["error"]) {
 	    	echo "ERRO N". $_FILES["foto"]["error"];

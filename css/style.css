@@ -151,6 +151,7 @@
   font-size: 14px;
   font-weight: bold;
   color:#212121;
+  text-transform: uppercase;
 }
 .side-menu-cargo{
   font-size: 12px;
@@ -224,22 +225,17 @@
 
 .linha{
   height: 2px;
-border-top: 2px solid #fff; 
+  border-top: 2px solid #fff; 
   background: #fff;
   width: 100%;
 }
 
-#relatorio{
+
+span.relatorio p{
+
+  color: rgba(255,255,255 );
   text-align: center;
-  color: #fff;
-  font-weight: bold;
-  padding: 5px;
-
-}
-
-#relatorio>span{
-  border-bottom: 1px solid #fff;
-  color: rgba(58, 102, 144 );
+  font-weight: bolder;
 
 }
 #relatorio li a{

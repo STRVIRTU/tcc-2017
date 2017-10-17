@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Ago-2017 às 19:32
+-- Generation Time: 17-Out-2017 às 21:38
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -43,7 +43,11 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`cgm`, `curso`, `turma`, `id`, `idpessoa`) VALUES
-(448807959, 'Informatica', '4A', 15, 31);
+(2147483647, 'Informatica', '3A', 18, 35),
+(756756756, 'Informatica', '4A', 19, 36),
+(7657567, 'Informatica', '4A', 20, 38),
+(556456465, 'Informatica', '4A', 21, 39),
+(2147483647, 'Informatica', '4A', 22, 40);
 
 -- --------------------------------------------------------
 
@@ -93,8 +97,8 @@ INSERT INTO `curso` (`id_curso`, `nome`) VALUES
 (1, 'Informatica'),
 (2, 'Administracao'),
 (3, 'Eletronica'),
-(4, 'MEio Ambiente'),
-(5, 'Enfermagem');
+(5, 'Enfermagem'),
+(6, 'Meio Ambiente');
 
 -- --------------------------------------------------------
 
@@ -105,19 +109,20 @@ INSERT INTO `curso` (`id_curso`, `nome`) VALUES
 CREATE TABLE `disciplina` (
   `id_disciplina` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `professor` varchar(50) NOT NULL,
-  `curso` varchar(50) NOT NULL,
-  `carga_horaria` varchar(50) NOT NULL
+  `curso` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `disciplina`
 --
 
-INSERT INTO `disciplina` (`id_disciplina`, `nome`, `professor`, `curso`, `carga_horaria`) VALUES
-(1, 'Matematica', 'Silvano', 'Informatica', '1010'),
-(2, 'WEB', 'Jandrey', 'Informatica', '18h'),
-(3, '', '', '', '');
+INSERT INTO `disciplina` (`id_disciplina`, `nome`, `curso`) VALUES
+(1, 'Matematica', 'Informatica'),
+(2, 'WEB', 'Informatica'),
+(4, 'Biologia', 'Informatica'),
+(5, 'Portugues', '1'),
+(8, 'HistÃ³ria', '1'),
+(9, 'Ed. FÃ­sica', '5');
 
 -- --------------------------------------------------------
 
@@ -137,7 +142,8 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`id`, `cargo`, `cpf`, `idpessoa`) VALUES
-(4, '3', '534534', 22);
+(2, '3', '545.454.545-4', 37),
+(3, '3', '567.675.675-6', 41);
 
 -- --------------------------------------------------------
 
@@ -220,18 +226,24 @@ CREATE TABLE `pessoa` (
   `senha` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pendente',
   `tipo` int(11) NOT NULL,
-  `usuario` varchar(20) NOT NULL
+  `usuario` varchar(20) NOT NULL,
+  `criacao` datetime NOT NULL,
+  `alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`, `usuario`) VALUES
-(22, 'Jandrey', '4534534', '09/07/1980', '', 'andre.jandrey@ceepcascavel.com.br', '123', 'pendente', 3, ''),
-(28, 'Luan Teste', 'trrtertr', 'trtrtrt', '', 'dgdgd@ceepcascavel.com.br', '123', 'pendente', 2, 'dgdgd'),
-(30, 'admin', '', '', '', 'admin', 'admin', 'pendente', 1, 'admin'),
-(31, 'Luan Rohde', '13.195.492-1', '05/03/1999', '', 'luan.rohde@ceepcascavel.com.br', '123', 'pendente', 2, 'luan.rohde');
+INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`, `usuario`, `criacao`, `alteracao`) VALUES
+(30, 'Luan Rohde', '', '', '', 'admin', 'admin', 'pendente', 1, 'admin', '0000-00-00 00:00:00', '2017-10-17 19:34:16'),
+(35, 'Maria', '75.675.675-6', '98/89/8989', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'maria.ceep@ceepcascavel.com.br', '123', 'pendente', 2, 'maria.ceep', '0000-00-00 00:00:00', '2017-10-17 17:21:45'),
+(36, 'JoÃ£o', '86.787.686-7', '64/56/6778', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'joao.joao@ceepcascavel.com.br', '123', 'pendente', 2, 'joao.joao', '0000-00-00 00:00:00', '2017-10-17 17:21:45'),
+(37, 'Lucas', '34.234.342-1', '05/03/1980', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'lucas.cari@ceepcascavel.com.br', '123', 'pendente', 3, 'lucas.cari', '0000-00-00 00:00:00', '2017-10-17 17:21:45'),
+(38, 'Laura', '86.787.686-7', '87/87/8787', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'laura.laura@ceepcascavel.com.br', '123', 'pendente', 2, 'laura.laura', '0000-00-00 00:00:00', '2017-10-17 17:21:45'),
+(39, 'Nathan', '45.454.335-4', '46/76/7654', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'nathan.nathan@ceepcascavel.com.br', '123', 'pendente', 2, 'Nathan.nathan', '2017-10-17 15:22:24', '2017-10-17 17:21:45'),
+(40, 'Eduardo', '75.657.577-6', '67/67/6767', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'eduardo.eduardo@ceepcascavel.com.br', '123', 'pendente', 2, 'eduardo.edu', '2017-10-17 15:23:46', '2017-10-17 19:08:04'),
+(41, 'Gabriel Menon', '75.765.756-7', '68/76/7676', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'gabriel.menon@ceepcascavel.com.br', '123', 'pendente', 3, 'gabriel.menon', '2017-10-17 03:42:22', '2017-10-17 17:42:22');
 
 -- --------------------------------------------------------
 
@@ -322,7 +334,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `alunozz`
 --
@@ -332,17 +344,17 @@ ALTER TABLE `alunozz`
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `funcionariozz`
 --
@@ -362,7 +374,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `turma`
 --
