@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 </head>
 <body>
-	<?php include_once('menu_admin.php');?>
+
 	<div id="pagina">
 		<h1>Relatório de Alunos</h1>
 

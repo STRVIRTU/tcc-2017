@@ -14,6 +14,7 @@
 		public $tipo;
 		public $usuario;
 		public $criacao;
+		public $status;
 
 		public function __construct(){
 			// print "Pessoa instanciada!";
@@ -80,6 +81,7 @@
 							$_SESSION['tipo'] = $linha['tipo'];
 							$_SESSION['usuario'] = $linha['usuario'];
 							$_SESSION['nome'] = $linha['nome'];
+							$_SESSION['foto'] = $linha['foto'];
 						}
 						return true;
 					}else{
@@ -117,6 +119,7 @@
 							$this->senha=$linha['senha'];
 							$this->rg=$linha['rg'];
 							$this->nascimento=$linha['nascimento'];
+							$this->usuario=$linha['usuario'];
 						}
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
@@ -125,7 +128,7 @@
 
 	    public function recuperar_senha(){
 		    	try{
-					$sql = ("select * from aluno where email=?");
+					$sql = ("select * from pessoa where email=?");
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm ->bindParam(1, $this->email);
@@ -139,20 +142,31 @@
 						  
 							$para = $this->email;
 							$senha = $this->senha;
-							$headers = 'From: luanrohde11@gmail.com';
-							$mensagem ="Recuperação da senha: $senha";
+							$headers = 'From: SGU Ceep <admtcc@ceepcascavel.com.br>';
+						
+							$mensagem ="Sua senha atual é: $senha";
 							$titulo = "Recuperacao de senha";
 						
 					
 							if (mail($para, $titulo, $mensagem, $headers)){
-								echo'<p class="text text-success">Sucesso</p>';
-								session_destroy();
+								// echo "<div class='alert alert-success col-md-6 center' role='alert'><p class='text-center'>Email enviado</p></div>";
+								echo '<div class="alert alert-success col-md-6 center fade in">';
+								echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+								echo    '<p class="text-center">Email enviado com sucesso! Consulte seu email para recuperar sua senha.</p>';
+								echo '</div>';
 							}else{
-								echo '<p class="text-danger">Email não enviado</p>';
-								session_destroy();
+								
+								echo '<div class="alert alert-danger col-md-6 center fade in">';
+								echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+								echo    '<p class="text-center">Email não enviado!</p>';
+								echo '</div>';
+								
 							}
 						}else{
-							echo "Email não cadastrado!";
+							echo '<div class="alert alert-warning col-md-6 center fade in">';
+							echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+							echo    '<p class="text-center">Email não cadastrado!</p>';
+							echo '</div>';
 						}
 				}catch(PDOExeption $e){
 			 		return "<div class='danger'>".$e->getMessage()."</div>";
@@ -183,6 +197,22 @@
 					$stm->bindParam(1, $this->email);
 					$stm->bindParam(2, $this->senha);
 					$stm->bindParam(3, $this->id);
+						if ($stm->execute()) {
+							return '<div class="sucess">Alterado com sucesso!</div>';
+						}
+					
+				}catch(PDOExeption $e){
+		 			return "<div class='danger'>".$e->getMessage()."</div>";
+		 		}
+	 	}
+
+	 		public function alterarStatus(){
+				try{
+					$sql = "update pessoa set status=? where id=?";
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1, $this->status);
+					$stm->bindParam(2, $this->id);
 						if ($stm->execute()) {
 							return '<div class="sucess">Alterado com sucesso!</div>';
 						}

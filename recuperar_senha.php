@@ -3,7 +3,6 @@
 <head>
 	<title>Recuperar</title>
 <?php
-	session_start();
 	include_once('pessoa.class.php');	
 		if (isset($_POST['email'])) {
 			$pessoa = new Pessoa();

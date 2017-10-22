@@ -323,7 +323,13 @@
                                 echo "<td>".$linha['id']."</td>";
                                 echo "<td>".$linha['usuario']."</td>";
                                 echo "<td>".$linha['email']."</td>";
-                                echo "<td><a href=\"#\" class=\"label label-default\">pendente</a></td>";
+
+                                if ($linha['status']=='pendente') {
+                                  echo "<td><a href=\"#\" class=\"label label-default\">pendente</a></td>";
+                                }else{
+                                  echo "<td><a href=\"#\" class=\"label label-success\">Ativo</a></td>";
+                                }
+                                
                                 echo "<td>".$linha['criacao']."</td>";
                                 echo "<td><a href=\"#\" class=\"label label-danger\">Delete</a></td>";
                               echo "</tr>";
@@ -361,10 +367,11 @@
                     <label for="exampleInputId">ID</label>
                     <input type="email" class="form-control" name="id" id="exampleInputId" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('id')?>">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $pessoa->__get('email')?>">
-                  </div>
+                  <label for="exampleInputEmail">Email</label>
+                  <div class="input-group">
+                    <input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('usuario')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
+                  </div><br>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" name="senha" id="exampleInputPassword1" value="<?php echo $pessoa->__get('senha')?>">

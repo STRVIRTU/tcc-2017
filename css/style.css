@@ -59,6 +59,8 @@
   margin-top: 5px;
 }
 
+
+/*****LOGIN*****/
 .my_form{
   background-color: rgba(245,245,245,.9);
   margin-top: 10rem;
@@ -68,34 +70,14 @@
   
 }
 
+.my_form .form-control:focus{
+  border: none;
+}
+
 .img-avatar{
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
-.form-control{
-  
-  border: none;
-  color: black;
-
-}
-
-.form-control:focus{
-  border:none;
-  box-shadow: none;
-  
-}
-
-.form-control:first-of-type{
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.form-control:last-of-type{
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 
 .btn-login{
   background-color: #6C7A89;
@@ -391,4 +373,31 @@ span.relatorio p{
 .dashboard-con{
   padding-bottom: 40px;
 }
-/******/
+
+/***FORMULÁRIOS***/
+
+.form-control{
+
+  border-radius: 2px;
+  color: black;
+
+}
+
+.form-control:focus{
+  border-color:rgba(0,128,0,.3);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0,128,0,.6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0,128,0 233,.6);
+ 
+  
+}
+
+.form-control:first-of-type{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-control:last-of-type{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

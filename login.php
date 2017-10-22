@@ -1,10 +1,23 @@
    <?php
-
+        include_once('pessoa.class.php'); 
       if (isset($_SESSION['error'])) {
-          echo '<script> alert("Realize o login!"); </script>';
+          echo '<div class="alert alert-danger col-md-6 center fade in">';
+          echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+          echo    '<p class="text-center">Caminho não permitido!Realize o login!</p>';
+          echo '</div>';
           session_destroy();
       }
 
+            if (isset($_POST['email_rec'])) {
+              $pessoa = new Pessoa();
+              $email= $_POST['email_rec'];
+              $pessoa-> __set('email', $email);
+              $pessoa->recuperar_senha(); 
+            }
+     
+
+
+  
 
    ?>
 
@@ -39,12 +52,44 @@
                       <a href="?pagina=cadastro_aluno" class="col-md-4 btn btn-danger login_btn text-center" role="button">Cadastrar-se</a>
                     </div>
                     <div class="col-md-12">
-                      <a href="?pagina=recuperar_senha" class="col-md-4 btn btn-danger login_btn " role="button">Rec. Senha</a>
+                      <a  class="col-md-4 btn btn-danger login_btn " role="button" data-toggle="modal" data-target="#myModal">Rec. Senha</a>
                     </div>
                   </div>
                 </form> <!-- /form -->
            </div> <!-- /row -->
+
+           <!--FORM RECUPERAR SENHA-->
+
+           <!-- Small modal -->
+        
+
+            <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Recuperação de Senha</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-rec" method="POST">
+                    <label>Informe seu email</label>
+                    <input type="text" class="form-control" name="email_rec"><br>
+                   <!--  <button type="submit" class="btn btn-success" role="button">Rec. Senha</button> -->
+                  </div>
+                 
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" role="button" onclick="location.href='?pagina=login'" >Rec. Senha</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
         </div> <!-- /container -->
+ 
+        </script>
         <br>
         <br>
         <br>

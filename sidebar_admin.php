@@ -1,9 +1,10 @@
  <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top side-menu">
           <div class="box-perfil center">
-            <img src="img/avatar.png" class="block img-responsive img-rounded img-avatar">
+            <?php echo '<img src="img/'.$_SESSION['foto']. '"class="block img-responsive img-rounded img-avatar">'; ?>
+            
           </div>
           <div class="side-menu-usertitle">
-            <br>            
+                    
             <div class="side-menu-nome">
               <?php echo $_SESSION['nome']; ?>
             </div>

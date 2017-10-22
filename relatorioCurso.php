@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 </head>
 <body>
-	<?php include_once('sidebar_admin.php');?>
+	<!-- <?php include_once('sidebar_admin.php');?> -->
 	<div id="pagina">
 		<h1>Relatório de Cursos</h1>
 
