@@ -18,8 +18,8 @@ $API = new RouterosAPI();
 //$API->debug = true;
 $pessoa = new Pessoa;
 $i = 0;
- if ($API->connect('192.168.15.5', 'admin', '')){
-// if ($API->connect('10.1.1.1', 'admin', 'fwpmicsc*9dc')){
+  if ($API->connect('192.168.15.6', 'admin', '')){
+ // if ($API->connect('10.1.1.1', 'admin', 'fwpmicsc*9dc')){
 $dados = $pessoa->listarPendentes();
 	foreach($dados as $linha)
 	{	
@@ -34,7 +34,7 @@ $dados = $pessoa->listarPendentes();
 
 
 		$API->comm("/ip/hotspot/user/add", array(
-	         "name"     => $linha['nome'],
+	         "name"     => $linha['usuario'],
 	         "password" => $linha['senha'],
 	         "profile" => $profile,
 	 		));

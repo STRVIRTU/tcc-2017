@@ -8,6 +8,7 @@
 		public $curso;
 		public $turma;
 		public $idpessoa;
+
 		public function __construct(){
 
 			//print "Aluno instanciado!";
@@ -16,17 +17,27 @@
 		public function gravar(){
 			try {
 				echo parent::gravar();
-				//echo "Gravando aluno";
-				$sql = "insert into aluno (cgm, curso, turma, idpessoa) values (?,?,?,?)";
-			  	$con = new Conexao();
-			  	$stm = $con->prepare($sql);
-			  	$stm->bindParam(1, $this->cgm);
-			  	$stm->bindParam(2, $this->curso);
-			  	$stm->bindParam(3, $this->turma);
-			  	$stm->bindParam(4, parent::__get("id"));
-			  //	$stm->bindParam(4, $this->cgm);
+				if ($_SESSION['gravar'] == true) {
 
-			 	$stm->execute();
+					$sql = "insert into aluno (cgm, curso, turma, idpessoa) values (?,?,?,?)";
+				  	$con = new Conexao();
+				  	$stm = $con->prepare($sql);
+				  	$stm->bindParam(1, $this->cgm);
+				  	$stm->bindParam(2, $this->curso);
+				  	$stm->bindParam(3, $this->turma);
+				  	$stm->bindParam(4, $_SESSION['id_pessoa']);
+				  //	$stm->bindParam(4, $this->cgm);
+
+				 	if ($stm->execute()) {
+				 		echo '<div class="alert alert-success col-md-6 center fade in">';
+						echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+						echo    '<p class="text-center">Aluno gravado com sucesso!</p>';
+						echo '</div>';
+				 	}
+
+				}
+
+				
 
 		 	}catch(PDOExeption $e){
 		 		return "<div class='danger'>".$e->getMessage()."</div>";

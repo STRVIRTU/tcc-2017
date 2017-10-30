@@ -18,5 +18,9 @@
  <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
   <script src="js/jquery-3.2.1.min.js"></script>
+
+  <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
   
   

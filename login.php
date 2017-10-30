@@ -3,7 +3,7 @@
       if (isset($_SESSION['error'])) {
           echo '<div class="alert alert-danger col-md-6 center fade in">';
           echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
-          echo    '<p class="text-center">Caminho não permitido!Realize o login!</p>';
+          echo    '<p class="text-center">Caminho não permitido! Realize o login!</p>';
           echo '</div>';
           session_destroy();
       }

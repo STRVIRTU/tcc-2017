@@ -14,16 +14,34 @@
 
 		public function gravar(){
 				try{
+
 					echo parent::gravar();
+
+			  	if ($_SESSION['gravar'] == true) {
+
+
+					
 					$sql = "insert into funcionario (cargo, cpf, idpessoa) values (?,?,?)";
 				 	$con = new Conexao();
 				 	$stm = $con->prepare($sql);
 				 	$stm->bindParam(1, $this->cargo);
 				 	$stm->bindParam(2, $this->cpf);
-				 	$stm->bindParam(3, parent::__get("id"));
+				 	$stm->bindParam(3, $_SESSION['id_pessoa']);
 				 				 
-				 	$stm->execute();
-				 	//echo "gravado";
+				 	if ($stm->execute()) {
+				 		echo '<div class="alert alert-success col-md-6 center fade in">';
+						echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+						echo    '<p class="text-center">Funcionário Gravado com sucesso</p>';
+						echo '</div>';
+				 	}
+				 	
+
+			  	}else{
+
+			  		echo "teste Funcionario";
+
+			  	}
+
 		 		}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
 		 		}

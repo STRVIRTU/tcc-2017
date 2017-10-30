@@ -1,14 +1,18 @@
+
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
 
-define('APPLICATION_NAME', 'Directory API PHP Quickstart');
-define('CREDENTIALS_PATH', '~/.credentials/admin-directory_v1-php-quickstart.json');
+define('APPLICATION_NAME', 'Classroom API PHP Quickstart');
+define('CREDENTIALS_PATH', '~/.credentials/classroom.googleapis.com-php-quickstart.json');
 define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 // If modifying these scopes, delete your previously saved credentials
-// at ~/.credentials/admin-directory_v1-php-quickstart.json
+// at ~/.credentials/classroom.googleapis.com-php-quickstart.json
 define('SCOPES', implode(' ', array(
-  'https://www.googleapis.com/auth/admin.directory.user')
+  'https://www.googleapis.com/auth/classroom.courses',
+  'https://www.googleapis.com/auth/classroom.rosters',
+
+)
 ));
 
 if (php_sapi_name() != 'cli') {
@@ -72,22 +76,58 @@ function expandHomeDirectory($path) {
 
 // Get the API client and construct the service object.
 $client = getClient();
-$service = new Google_Service_Directory($client);
+$service = new Google_Service_Classroom($client);
 
-// Print the first 10 users in the domain.
-$dir = new Google_Service_Directory($client);
-// SET UP THE USER/USERNAME OBJECTS
-$user = new Google_Service_Directory_User();
-$name = new Google_Service_Directory_UserName();
-$new_person = array();
-// SET THE ATTRIBUTES
-$name->setGivenName('Teste');
-$name->setFamilyName('SGU');
-$user->setName($name);
-$user->setHashFunction("SHA-1");
-$user->setPrimaryEmail("testetcc2@ceepcascavel.com.br");
-$user->setPassword(hash("sha1","testing123"));
-// the JSON object shows us that externalIds is an array, so that's how we set it here
-$user->setExternalIds(array("value"=>28790,"type"=>"custom","customType"=>"EmployeeID"));
-$result = $dir->users->insert($user);
-echo "New user ".$result->primaryEmail." created successfully.";
+// Print the first 10 courses the user has access to.
+
+// $course = new Google_Service_Classroom_Course(array(
+//   'name' => 'Matemática',
+//   'section' => 'Period 2',
+//   'descriptionHeading' => 'Welcome to 10th Grade Biology',
+//   'description' => 'We\'ll be learning about about the structure of living ' .
+//                    'creatures from a combination of textbooks, guest ' .
+//                    'lectures, and lab work. Expect to be excited!',
+//   'room' => '301',
+//   'ownerId' => 'me',
+//   'courseState' => 'PROVISIONED'
+// ));
+// $course = $service->courses->create($course);
+// printf("Course created: %s (%s)\n", $course->name, $course->id);
+
+
+// $courseId = '5964844561';
+// $teacherEmail = 'andrejandrey@ceepcascavel.com.br';
+// $teacher = new Google_Service_Classroom_Teacher(array(
+//   'userId' => $teacherEmail
+// ));
+// try {
+//   $teacher = $service->courses_teachers->create($courseId, $teacher);
+//   printf("User '%s' was added as a teacher to the course with ID '%s'.\n",
+//       $teacher->profile->name->fullName, $courseId);
+// } catch (Google_Service_Exception $e) {
+//   if ($e->getCode() == 409) {
+//     printf("User '%s' is already a member of this course.\n", $teacherEmail);
+//   } else {
+//     throw $e;
+//   }
+// }
+
+$courseId = '5964844561';
+$enrollmentCode = 'g0ioc9';
+$student = new Google_Service_Classroom_Student(array(
+  'userId' => 'vinicius.stanoga@ceepcascavel.com.br'
+));
+$params = array(
+  'enrollmentCode' => $enrollmentCode
+);
+try {
+  $student = $service->courses_students->create($courseId, $student, $params);
+  printf("User '%s' was enrolled  as a student in the course with ID '%s'.\n",
+      $student->profile->name->fullName, $courseId);
+} catch (Google_Service_Exception $e) {
+  if ($e->getCode() == 409) {
+    print "You are already a member of this course.\n";
+  } else {
+    throw $e;
+  }
+}

@@ -31,37 +31,48 @@
 
 		public function gravar(){
 			try {
-			
-				//echo "gravando pessoa"; 
-				$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario, criacao) values (?,?,?,?,?,?,?,?,?)";
+				
+				$sql = "select * from pessoa where usuario=?";
 				$con = new Conexao();
 			  	$stm = $con->prepare($sql);
-			 	$stm->bindParam(1, $this->nome);
-			  	$stm->bindParam(2, $this->rg);
-			  	$stm->bindParam(3, $this->nascimento);
-			  	$stm->bindParam(4, $this->foto);
-			  	$stm->bindParam(5, $this->email);
-			  	$stm->bindParam(6, $this->senha);
-			  	$stm->bindParam(7, $this->tipo);
-			  	$stm->bindParam(8, $this->usuario);
-			  	$stm->bindParam(9, $this->criacao);
-			 // 	$stm->bindParam(3, $this->rg);
-			 // 	$stm->bindParam(4, $this->cgm);
-			
-
+			 	$stm->bindParam(1, $this->usuario);
 			  	$stm->execute();
 
-			  	$sql = ("select * from pessoa where rg=? and email=?");
-				$con = new Conexao();
-				$stm = $con->prepare($sql);
-				$stm->bindParam(1,$this->rg);
-				$stm->bindParam(2,$this->email);
-				$stm->execute();
-				foreach ($stm as $linha) {
-							$this->id=$linha['id'];
-							
-				}
+			  	if ($stm->rowCount()==0) {
+			  		$_SESSION['gravar'] = true;
+			  		$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario, criacao) values (?,?,?,?,?,?,?,?,?)";
+					$con = new Conexao();
+				  	$stm = $con->prepare($sql);
+				 	$stm->bindParam(1, $this->nome);
+				  	$stm->bindParam(2, $this->rg);
+				  	$stm->bindParam(3, $this->nascimento);
+				  	$stm->bindParam(4, $this->foto);
+				  	$stm->bindParam(5, $this->email);
+				  	$stm->bindParam(6, $this->senha);
+				  	$stm->bindParam(7, $this->tipo);
+				  	$stm->bindParam(8, $this->usuario);
+				  	$stm->bindParam(9, $this->criacao);
 
+				  	$stm->execute();
+
+				  	$sql = ("select * from pessoa where rg=? and email=?");
+					$con = new Conexao();
+					$stm = $con->prepare($sql);
+					$stm->bindParam(1,$this->rg);
+					$stm->bindParam(2,$this->email);
+					$stm->execute();
+					foreach ($stm as $linha) {
+								$_SESSION['id_pessoa']=$linha['id'];
+				
+					}
+
+			  	}else{
+			  		echo '<div class="alert alert-danger col-md-6 center fade in">';
+					echo    '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>';
+					echo    '<p class="text-center">Email já existente! Por favor insira outro!.</p>';
+					echo '</div>';
+					$_SESSION['gravar'] = false;
+			  	}
 		 	}catch(PDOExeption $e){
 		 		return "<div class='danger'>".$e->getMessage()."</div>";
 		 	}

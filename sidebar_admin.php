@@ -1,8 +1,9 @@
  <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top side-menu">
           <div class="box-perfil center">
             <?php echo '<img src="img/'.$_SESSION['foto']. '"class="block img-responsive img-rounded img-avatar">'; ?>
-            
+  
           </div>
+          <br>
           <div class="side-menu-usertitle">
                     
             <div class="side-menu-nome">
@@ -49,6 +50,13 @@
               <a href="?pagina=relatorio_funcionario">
                 <span class="fa fa-user" aria-hidden="true"></span>
                 <span class="hidden-sm hidden-xs">Funcionarios</span>
+              </a>
+            </li>
+
+            <li class="link">
+              <a href="?pagina=carteirinha">
+                <span class="fa fa-user" aria-hidden="true"></span>
+                <span class="hidden-sm hidden-xs">Carteirinha</span>
               </a>
             </li>
           </ul>

@@ -1,7 +1,7 @@
  <?php 
 
       if (!isset($_SESSION['logado'])) {
-          $_SESSION['error'] = "Realize o Login";
+          $_SESSION['error'] = " Realize o Login";
           header("Location:?pagina=login");
 
       }
@@ -14,13 +14,13 @@
           $aluno = new Aluno;
           $aluno->__set('cgm', @$_GET['cgm']);
           $aluno->carregar();
-          $id =$aluno->__get('idpessoa');
+          
 
           $pessoa = new Pessoa;
   
 
         if((@$_GET['funcao']=='alterar') or (@$_GET['funcao']=='ver') or (@$_GET['funcao']=='excluir')) {
-          $pessoa->__set('id', @$_GET['id']);
+          $pessoa->__set('id', $_SESSION['idpessoa']);
           $pessoa -> carregar();
      
       }
@@ -101,7 +101,7 @@
 
   function carregarinput() {
       var CustomerNumber = document.getElementById("cgm_aluno").value;
-      var Url = "?pagina=cadastro_aluno&cgm=" + CustomerNumber;
+      var Url = "http://localhost/tccgit/tcc-2017/?pagina=admin&id=&funcao=novo&cgm=" + CustomerNumber;
       window.location.href=Url;
   }
 
@@ -222,7 +222,8 @@
                     </thead>
                     <tbody>
                       <?php
-                          
+                           $cont_aluno = '';
+                           $cont_funcionario = '';
                           $dados = $pessoa->listar();
                             foreach ($dados as $linha) {
                                // echo "<tr onclick=\"location.href='?pagina=admin.php&id=".$linha['id']."'\"><td>";
@@ -236,6 +237,14 @@
                                   echo "<a class=\"btn btn-xs btn-danger\" onclick=\"location.href='?pagina=admin&id=".$linha['id']."&funcao=excluir'\" role=\"button\">Excluir</a>";
                                 echo "</td>";
                               echo "</tr>";
+
+
+
+                              if ($linha ['tipo']=='2') {
+                                $cont_aluno++;
+                              }else{
+                                $cont_funcionario++;
+                              }
 
                                // echo "</td><td>";
                                // echo $linha['nome'];
@@ -254,43 +263,52 @@
               <div class="col-md-6 dashboard-right-cell">
                 <div class="admin-content-con">
                   <header>
-                    <h5>Comments</h5>
+                    <h5>Gráficos</h5>
                   </header>
 
 
 
-                  <div class="comment-head-dash clearfix">
-                    <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
-                    <div class="days-dash pull-right">2 days ago</div>
-                  </div>
-                  <p class="comment-dash">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
-                  </p>
-                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
-                  <hr>
-                  
-                  <div class="comment-head-dash clearfix">
-                    <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
-                    <div class="days-dash pull-right">2 days ago</div>
-                  </div>
-                  <p class="comment-dash">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
-                  </p>
-                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
-                  <hr>
+                  <script type="text/javascript">
 
-                  <div class="comment-head-dash clearfix">
-                   <div class="commenter-name-dash pull-left">Kingsley Ijomah</div>
-                   <div class="days-dash pull-right">2 days ago</div>
-                  </div>
-                  <p class="comment-dash">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula erat, placerat id felis egestas, semper feugiat velit. Sed at arcu ac enim vulputate tincidunt.
-                  </p>
-                  <small class="comment-date-dash">Today 5:10pm 24/03/2015</small>
-                  <hr>
-                  <div class="clearfix">
-                    <a href="#" class="pull-right text-link">Ver todos</a>
-                  </div>
+                  // Load the Visualization API and the corechart package.
+                  google.charts.load('current', {'packages':['corechart']});
+
+                  // Set a callback to run when the Google Visualization API is loaded.
+                  google.charts.setOnLoadCallback(drawChart);
+
+                  // Callback that creates and populates a data table,
+                  // instantiates the pie chart, passes in the data and
+                  // draws it.
+                  function drawChart() {
+
+                    // Create the data table.
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Topping');
+                    data.addColumn('number', 'Slices');
+                    data.addRows([
+                      ['Alunos', <?php echo  $cont_aluno++; ?>],
+                      ['Funcionarios', <?php echo  $cont_funcionario++; ?>],
+                      // ['Olives', 1],
+                      // ['Zucchini', 1],
+                      // ['Pepperoni', 2]
+                    ]);
+
+                    // Set chart options
+                    var options = {'title':'Usuários cadastrados',
+                                   'width':400,
+                                   'height':300};
+
+                    // Instantiate and draw our chart, passing in some options.
+                    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                  }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+
                 </div>
               </div>
             </div>
@@ -539,7 +557,39 @@
                 <!--ALUNO-->
                 <div role="tabpanel" class="tab-pane" id="settings">
                   <form method="POST" action="?pagina=validar_cadastro_aluno" enctype="multipart/form-data">
-                   
+                        <label for="cgm">CGM:</label>
+                      <input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
+                      <label>Nome: </label>
+                      <input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required ><br>
+                      <label>Turma: </label>
+                      <input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>            
+                          <label id="input" for="course">Curso</label>
+                            <select class="form-control" type="text" name="curso_aluno" id="curso_aluno" value="">
+                              <?php
+                                  $c = new Curso();
+                                  $dados = $c->listar();
+                                    foreach ($dados as $linha) {
+                                      echo "<option>".$linha['nome']."</option>"; 
+                                    }
+                              ?>
+                            </select><br>
+                    
+                          <label for="rg">RG:</label>
+                          <input class="form-control rg" type="text" name="rg_aluno" id="rg" value="<?php echo $pessoa->__get('rg')?>" placeholder="13.195.492-1"><br>
+                          <label for="nascimento">Data de Nascimento:</label>
+                          <input class="form-control data" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" placeholder="05/03/1999"><br>
+                
+                    
+                      <label>Email:</label>
+                      <div class="input-group">
+                        <input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('usuario')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
+                      </div><br>
+                      <label>Senha:</label>
+                      <input  class="form-control" type="password" name="senha_aluno" id="senha_aluno" required><br>
+                      <label>Selecione uma imagem:</label>
+                      <input type="file" name="foto"> <br>
+                      <button type="submit" class="btn">Cadastrar</button>
                   </form>
                 </div>
               </div>

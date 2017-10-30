@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body{
+	background: #eee;
+}
+
+.pagina{
+	width:21cm;
+	height:29.7cm;
+	box-sizing:border-box;
+	padding: 2cm;
+	margin:0 auto;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.cartao{
+	width: 9cm;
+	height: 5.5cm;
+	background: #9ccc65;
+	margin:0;
+	padding: 2px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+	font-family: 'Nunito', sans-serif;
+
+}
+
+p{
+
+}
+
+ul{
+
+	width: 9cm;
+	background: #999;
+	height: 1cm;
+
+}
+
+li{
+
+	float: left;
+	list-style: none;
+	background: #fff;
+	height: 1cm;
+
+
+}
+
+img{
+	position: relative;
+}
+
+.topo{
+	padding: 5px;
+	-moz-column-count: 3;
+	-webkit-column-count: 3;
+
+}
+
+.rodape{
+	margin-bottom: 0;
+
+	height: 2.75cm
+
+}
+
+.foto-perfil{
+	width: 2cm;
+	height: 2cm;
+	margin-right:22px;
+
+
+}
+
+.foto-ceep{
+	width: 2cm;
+	height: 2cm;
+	margin-left: 22px;
+
+}
+
+.img-thumbnail{
+	padding: 1px !important;
+}
+
+.center{
+  margin: 0 auto !important;
+  float: none !important;
+
+}
+
+form{
+	width: 8cm;
+	position: absolute;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+input{
+	height: 0.4cm;
+	width: 7.09cm;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+	font-size: 6pt;
+}
+
+form label{
+	font-size: 6pt;
+	width: 0.8cm;
+	text-transform: uppercase;
+	font-weight: bolder;
+
+
+}
+
+.group{
+	margin-top: -2px;
+}
+.group-right input, .group-left input{
+	width: 2.7cm;
+}
+
+.group-right{
+	float: right;
+	
+}
+.group-right label{
+	width: 1.4cm;
+}
+
+.group-left{
+	float: left;
+}

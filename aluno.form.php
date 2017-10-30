@@ -98,14 +98,14 @@
 							</select><br>
 			
 						<label for="rg">RG:</label>
-						<input class="form-control rg" type="text" name="rg_aluno" id="rg" value="<?php echo $pessoa->__get('rg')?>"placeholder="13.195.492-1"><br>
+						<input class="form-control rg" type="text" name="rg_aluno" id="rg" value="<?php echo $pessoa->__get('rg')?>" placeholder="13.195.492-1"><br>
 						<label for="nascimento">Data de Nascimento:</label>
 						<input class="form-control data" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" placeholder="05/03/1999"><br>
 	
 			
 				<label>Email:</label>
 				<div class="input-group">
-					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('email')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
+					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('usuario')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
 					<span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
 				</div><br>
 				<label>Senha:</label>

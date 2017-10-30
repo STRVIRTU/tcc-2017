@@ -33,6 +33,7 @@ session_start();
 					case 'cadastro_funcionario': $pagina = 'funcionario.form.php';break;
 					case 'cadastro_curso': $pagina = 'curso.form.php';break;
 					case 'cadastro_disciplina': $pagina = 'disciplina.form.php';break;
+					case 'carteirinha': $pagina = 'carteirinha.php';break;
 					case 'relatorio_aluno': $pagina = 'relatorioAluno.php';break;
 					case 'relatorio_curso': $pagina = 'relatorioCurso.php';break;
 					case 'relatorio_disciplina': $pagina = 'relatorioDisciplina.php';break;
