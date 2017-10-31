@@ -14,13 +14,13 @@
           $aluno = new Aluno;
           $aluno->__set('cgm', @$_GET['cgm']);
           $aluno->carregar();
-          
+          $id = $aluno->__get('idpessoa');
 
           $pessoa = new Pessoa;
   
 
         if((@$_GET['funcao']=='alterar') or (@$_GET['funcao']=='ver') or (@$_GET['funcao']=='excluir')) {
-          $pessoa->__set('id', $_SESSION['idpessoa']);
+          $pessoa->__set('id', @$_GET['id'] );
           $pessoa -> carregar();
      
       }
@@ -558,7 +558,7 @@
                 <div role="tabpanel" class="tab-pane" id="settings">
                   <form method="POST" action="?pagina=validar_cadastro_aluno" enctype="multipart/form-data">
                         <label for="cgm">CGM:</label>
-                      <input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959">
+                      <input class="form-control" type="text" name="cgm_aluno" id="cgm_aluno" value="<?php echo $aluno->__get('cgm')?>"onblur="carregarinput()" placeholder="448807959"><br>
                       <label>Nome: </label>
                       <input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required ><br>
                       <label>Turma: </label>

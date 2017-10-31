@@ -156,7 +156,9 @@
   max-height: 60px;
 }
 
-
+.box{
+  border: 1px red dotted;
+}
 
 .side-menu{
   background-color: #2f4050;
@@ -400,6 +402,7 @@ span.relatorio p{
   border-top-right-radius: 0;
 }
 
+
 /* PAGINA ALUNO */
 
 .perfil-aluno-div{
@@ -408,7 +411,7 @@ span.relatorio p{
   height: 700px;
   border: 1px solid #1a1a1a;
   border-radius: 6px;
-  /*margin-top: 1rem !important;*/
+  /margin-top: 1rem !important;/
 
 }
 .perfil-aluno-conteudo{
