@@ -101,8 +101,9 @@
 						<input class="form-control rg" type="text" name="rg_aluno" id="rg" value="<?php echo $pessoa->__get('rg')?>" placeholder="13.195.492-1"><br>
 						<label for="nascimento">Data de Nascimento:</label>
 						<input class="form-control data" type="text" name="nascimento_aluno" value="<?php echo $pessoa->__get('nascimento')?>" placeholder="05/03/1999"><br>
-	
-			
+				
+				<label for="cpf">CPF:</label>
+				<input class="form-control" type="text" name="cpf" id="cpf" placeholder="123.456.789-10"><br>
 				<label>Email:</label>
 				<div class="input-group">
 					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('usuario')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
@@ -112,7 +113,7 @@
 				<input  class="form-control" type="password" name="senha_aluno" id="senha_aluno" required><br>
 				<label>Selecione uma imagem:</label>
 				<input type="file" name="foto"> <br>
-				<button type="submit" class="btn">Cadastrar</button>
+				<button type="submit" class="btn btn-success">Cadastrar</button>
 		    </form>                                   	
     </div>
      <div role="tabpanel" class="tab-pane" id="funcionario">
@@ -124,7 +125,7 @@
 						<label for="rg">RG:</label>
 						<input class="form-control rg" type="text" name="rg_funcionario" id="rg" placeholder="13.195.492-1"><br>
 						<label for="cpf">CPF:</label>
-						<input class="form-control" type="text" name="cpf_funcionario" id="cpf" placeholder="123.456.789-10"><br>
+						<input class="form-control" type="text" name="cpf" id="cpf" placeholder="123.456.789-10"><br>
 						<label for="nascimento">Data de Nascimento:</label>
 						<input class="form-control data" type="text" name="nascimento_funcionario" id="data" placeholder="05/03/1999"><br>
 				<label>Email</label>
@@ -140,7 +141,7 @@
 				</select><br>
 				<label>Selecione uma imagem:</label>
 				<input type="file" name="foto"> <br>
-				<button type="submit" class="btn">Cadastrar</button>
+				<button type="submit" class="btn btn-success">Cadastrar</button>
 		    </form>                                   	
     
 

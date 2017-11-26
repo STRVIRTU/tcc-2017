@@ -5,7 +5,7 @@
 	include_once('funcionario.class.php');
 	
 	$id = $_POST['id'];
-	$email = $_POST['email'];
+	$usuario = $_POST['usuario'];
 	$senha = $_POST['senha'];
 
 	$aluno = new Aluno();
@@ -16,7 +16,7 @@
 
 	$pessoa = new Pessoa();
 	$pessoa->__set("id",$id);
-	$pessoa->__set('email', $email);
+	$pessoa->__set('usuario', $usuario);
 	$pessoa->__set("senha", $senha);
 
 	if(@$_POST['acao'] == 'excluir'){
@@ -27,6 +27,6 @@
 	   	header("Location: ?pagina=admin");
 	}elseif(@$_POST['acao'] == 'alterar') {
 		$pessoa->alterar();
-	   	header("Location: ?pagina=admin");
+		 echo "<script>window.history.back();</script>";
 	}
 ?>

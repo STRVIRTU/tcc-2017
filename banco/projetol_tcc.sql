@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Out-2017 às 20:08
+-- Generation Time: 26-Nov-2017 às 17:49
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `projetol_tcc`
 --
+CREATE DATABASE IF NOT EXISTS `projetol_tcc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `projetol_tcc`;
 
 -- --------------------------------------------------------
 
@@ -46,7 +48,11 @@ INSERT INTO `aluno` (`cgm`, `curso`, `turma`, `id`, `idpessoa`) VALUES
 (7657567, 'Informatica', '4A', 20, 38),
 (556456465, 'Informatica', '4A', 21, 39),
 (2147483647, 'Informatica', '4A', 22, 40),
-(2147483647, 'Informatica', '4A', 23, 45);
+(2147483647, 'Informatica', '4A', 23, 45),
+(6767676, 'Informatica', '3a', 24, 46),
+(4234234, 'Informatica', '4A', 28, 60),
+(2147483647, 'Informatica', '4A', 29, 61),
+(448807959, 'Informatica', '4a', 34, 68);
 
 -- --------------------------------------------------------
 
@@ -108,20 +114,16 @@ INSERT INTO `curso` (`id_curso`, `nome`) VALUES
 CREATE TABLE `disciplina` (
   `id_disciplina` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `curso` varchar(50) NOT NULL
+  `curso` varchar(50) NOT NULL,
+  `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `disciplina`
 --
 
-INSERT INTO `disciplina` (`id_disciplina`, `nome`, `curso`) VALUES
-(1, 'Matematica', 'Informatica'),
-(2, 'WEB', 'Informatica'),
-(4, 'Biologia', 'Informatica'),
-(5, 'Portugues', '1'),
-(8, 'HistÃ³ria', '1'),
-(9, 'Ed. FÃ­sica', '5');
+INSERT INTO `disciplina` (`id_disciplina`, `nome`, `curso`, `id_curso`) VALUES
+(10, 'historia', '', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,8 @@ INSERT INTO `funcionario` (`id`, `cargo`, `cpf`, `idpessoa`) VALUES
 (2, '3', '545.454.545-4', 37),
 (4, '3', '545.454.545-4', 42),
 (5, '3', '465.665.656-5', 43),
-(6, '3', '645.456.456-4', 44);
+(6, '3', '645.456.456-4', 44),
+(14, '3', '545.454.545-4', 54);
 
 -- --------------------------------------------------------
 
@@ -214,6 +217,27 @@ INSERT INTO `login` (`id_login`, `email`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `ocorrencia`
+--
+
+CREATE TABLE `ocorrencia` (
+  `id_obs` int(11) NOT NULL,
+  `id_aluno` int(11) NOT NULL,
+  `id_funcionario` int(11) NOT NULL,
+  `data` varchar(15) NOT NULL,
+  `observacao` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `ocorrencia`
+--
+
+INSERT INTO `ocorrencia` (`id_obs`, `id_aluno`, `id_funcionario`, `data`, `observacao`) VALUES
+(2, 35, 54, '2017-11-15', 'Fica no Celular');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pessoa`
 --
 
@@ -221,8 +245,9 @@ CREATE TABLE `pessoa` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `rg` varchar(50) NOT NULL,
+  `cpf` varchar(20) DEFAULT NULL,
   `nascimento` varchar(50) NOT NULL,
-  `foto` varchar(50) NOT NULL,
+  `foto` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pendente',
@@ -236,18 +261,23 @@ CREATE TABLE `pessoa` (
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`id`, `nome`, `rg`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`, `usuario`, `criacao`, `alteracao`) VALUES
-(30, 'Luan Rohde', '', '', 'av1.jpg', 'luan.rohde@ceepcascavel.com.br', 'admin', 'ativo', 1, 'admin', '0000-00-00 00:00:00', '2017-10-20 10:55:07'),
-(35, 'Maria', '75.675.675-6', '98/89/8989', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'maria.ceep@ceepcascavel.com.br', '123', 'ativo', 2, 'maria.ceep', '0000-00-00 00:00:00', '2017-10-19 20:42:25'),
-(36, 'JoÃ£o', '86.787.686-7', '64/56/6778', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'joao.joao@ceepcascavel.com.br', '123', 'ativo', 2, 'joao.joao', '0000-00-00 00:00:00', '2017-10-19 20:42:25'),
-(37, 'Lucas', '34.234.342-1', '05/03/1980', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'lucas.cari@ceepcascavel.com.br', 'seco123', 'ativo', 3, 'lucas.cari', '0000-00-00 00:00:00', '2017-10-19 21:00:30'),
-(38, 'Laura', '86.787.686-7', '87/87/8787', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'laura.laura@ceepcascavel.com.br', '123', 'ativo', 2, 'laura.laura', '0000-00-00 00:00:00', '2017-10-19 20:42:25'),
-(39, 'Nathan', '45.454.335-4', '46/76/7654', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'nathan.moura@ceepcascavel.com.br', '123', 'ativo', 2, 'Nathan.nathan', '2017-10-17 15:22:24', '2017-10-19 20:42:25'),
-(40, 'Eduardo', '75.657.577-6', '67/67/6767', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'eduardo.eduardo@ceepcascavel.com.br', '123', 'ativo', 2, 'eduardo.edu', '2017-10-17 15:23:46', '2017-10-19 20:42:25'),
-(42, 'Gabriel Menon', '65.654.665-6', '68/76/7676', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'gabriel.menon@ceepcascavel.com.br', 'teste', 'ativo', 3, 'gabriel.menon', '2017-10-19 06:47:20', '2017-10-19 20:47:41'),
-(43, 'Celma', '54.545.454-5', '65/56/5656', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'celma.burille@ceepcascavel.com.br', '123', 'ativo', 3, 'celma.burille', '2017-10-19 06:54:26', '2017-10-19 20:54:50'),
-(44, 'Vander', '65.656.767-6', '76/76/7676', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'vander.ceep@ceepcascavel.com.br', 'vander123', 'ativo', 3, 'vander.ceep', '2017-10-19 06:58:36', '2017-10-19 20:58:51'),
-(45, 'AurÃ©lio', '76.767.676-7', '56/75/6756', 'teste.jpeg', 'vini.aurelio@ceepcascavel.com.br', '12345', 'ativo', 2, 'vini.aurelio', '2017-10-19 07:20:03', '2017-10-19 21:20:53');
+INSERT INTO `pessoa` (`id`, `nome`, `rg`, `cpf`, `nascimento`, `foto`, `email`, `senha`, `status`, `tipo`, `usuario`, `criacao`, `alteracao`) VALUES
+(30, 'Luan Rohde', '', '', '', 'perfil.jpg', 'luan.rohde@ceepcascavel.com.br', 'admin', 'ativo', 1, 'admin', '0000-00-00 00:00:00', '2017-10-31 10:35:17'),
+(35, 'Maria', '75.675.675-6', '', '98/89/8989', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'maria.ceep@ceepcascavel.com.br', '123', 'ativo', 2, 'maria.ceep', '0000-00-00 00:00:00', '2017-10-19 20:42:25'),
+(36, 'JoÃ£o', '86.787.686-7', '', '64/56/6778', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'joao.joao@ceepcascavel.com.br', '123', 'ativo', 2, 'joao.joao', '0000-00-00 00:00:00', '2017-10-19 20:42:25'),
+(37, 'Lucas', '34.234.342-1', '', '05/03/1980', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'lucas.cari@ceepcascavel.com.br', 'seco123', 'ativo', 3, 'lucas.cari', '0000-00-00 00:00:00', '2017-10-19 21:00:30'),
+(38, 'Laura', '86.787.686-7', '', '87/87/8787', 'teste.jpeg', 'laura.laura@ceepcascavel.com.br', '123', 'ativo', 2, 'laura.laura', '0000-00-00 00:00:00', '2017-11-02 21:20:00'),
+(39, 'Nathan', '45.454.335-4', '', '46/76/7654', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'nathan.moura@ceepcascavel.com.br', '123', 'ativo', 2, 'Nathan.nathan', '2017-10-17 15:22:24', '2017-10-19 20:42:25'),
+(40, 'Eduardo', '75.657.577-6', '', '67/67/6767', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'eduardo.eduardo@ceepcascavel.com.br', '123', 'ativo', 2, 'eduardo.edu', '2017-10-17 15:23:46', '2017-10-19 20:42:25'),
+(42, 'Gabriel Menon', '65.654.665-6', '', '68/76/7676', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'gabriel.menon@ceepcascavel.com.br', 'teste', 'ativo', 3, 'gabriel.menon', '2017-10-19 06:47:20', '2017-10-19 20:47:41'),
+(43, 'Celma', '54.545.454-5', '', '65/56/5656', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'celma.burille@ceepcascavel.com.br', '123', 'ativo', 3, 'celma.burille', '2017-10-19 06:54:26', '2017-10-19 20:54:50'),
+(44, 'Vander', '65.656.767-6', '', '76/76/7676', 'WhatsApp Image 2017-10-09 at 7.47.33 PM.jpeg', 'vander.ceep@ceepcascavel.com.br', 'vander123', 'ativo', 3, 'vander.ceep', '2017-10-19 06:58:36', '2017-10-19 20:58:51'),
+(45, 'AurÃ©lio', '76.767.676-7', '', '56/75/6756', 'teste.jpeg', 'vini.aurelio@ceepcascavel.com.br', '12345', 'ativo', 2, 'vini.aurelio', '2017-10-19 07:20:03', '2017-10-19 21:20:53'),
+(46, 'Florisbelo', '56.767.767-6', '', '45/65/4665', 'teste.jpeg', 'floris.belo@ceepcascavel.com.br', '123', 'ativo', 2, 'floris.belo', '2017-10-20 08:35:56', '2017-10-20 22:38:10'),
+(54, 'Jandrey', '34.234.342-1', '', '45/34/5454', NULL, 'andre.jandrey@ceepcascavel.com.br', '1234', 'ativo', 3, 'andre.jandrey', '2017-10-29 11:51:27', '2017-11-26 15:53:18'),
+(60, 'teste', '45.446.466-3', '', '54/63/4636', NULL, 'teste.teste@ceepcascavel.com.br', '123', 'ativo', 2, 'teste.teste', '2017-10-31 10:44:01', '2017-11-07 17:01:21'),
+(61, 'Luan', '13.195.492-1', '', '05/03/1999', NULL, 'luan.sgu@ceepcascavel.com.br', '123', 'ativo', 2, 'luan.sgu', '2017-11-02 04:21:28', '2017-11-07 17:01:21'),
+(68, 'Luan Rohde', '13.195.492-1', '088.035.059-89', '05/03/1999', 'perfil.jpg', 'luan.rohde@ceepcascavel.com.br', '123', 'ativo', 2, 'luan.rohde', '2017-11-07 03:21:07', '2017-11-09 10:30:01');
 
 -- --------------------------------------------------------
 
@@ -260,7 +290,7 @@ CREATE TABLE `turma` (
   `ano` int(10) NOT NULL,
   `serie` varchar(10) NOT NULL,
   `periodo` varchar(50) NOT NULL,
-  `curso` varchar(100) NOT NULL,
+  `id_curso` int(100) NOT NULL,
   `data_inicio` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -291,7 +321,8 @@ ALTER TABLE `curso`
 -- Indexes for table `disciplina`
 --
 ALTER TABLE `disciplina`
-  ADD PRIMARY KEY (`id_disciplina`);
+  ADD PRIMARY KEY (`id_disciplina`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
 -- Indexes for table `funcionario`
@@ -319,16 +350,26 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`id_login`);
 
 --
+-- Indexes for table `ocorrencia`
+--
+ALTER TABLE `ocorrencia`
+  ADD PRIMARY KEY (`id_obs`),
+  ADD KEY `id_funcionario` (`id_funcionario`),
+  ADD KEY `id_aluno` (`id_aluno`);
+
+--
 -- Indexes for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- Indexes for table `turma`
 --
 ALTER TABLE `turma`
-  ADD PRIMARY KEY (`id_turma`);
+  ADD PRIMARY KEY (`id_turma`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -338,7 +379,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `alunozz`
 --
@@ -353,12 +394,12 @@ ALTER TABLE `curso`
 -- AUTO_INCREMENT for table `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `funcionariozz`
 --
@@ -375,10 +416,15 @@ ALTER TABLE `info_aluno`
 ALTER TABLE `login`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `ocorrencia`
+--
+ALTER TABLE `ocorrencia`
+  MODIFY `id_obs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `turma`
 --
@@ -395,10 +441,29 @@ ALTER TABLE `aluno`
   ADD CONSTRAINT `aluno_ibfk_1` FOREIGN KEY (`idpessoa`) REFERENCES `pessoa` (`id`);
 
 --
+-- Limitadores para a tabela `disciplina`
+--
+ALTER TABLE `disciplina`
+  ADD CONSTRAINT `disciplina_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
+
+--
 -- Limitadores para a tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`idpessoa`) REFERENCES `pessoa` (`id`);
+
+--
+-- Limitadores para a tabela `ocorrencia`
+--
+ALTER TABLE `ocorrencia`
+  ADD CONSTRAINT `ocorrencia_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`idpessoa`),
+  ADD CONSTRAINT `ocorrencia_ibfk_2` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`idpessoa`);
+
+--
+-- Limitadores para a tabela `turma`
+--
+ALTER TABLE `turma`
+  ADD CONSTRAINT `turma_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

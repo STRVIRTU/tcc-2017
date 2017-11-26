@@ -7,6 +7,7 @@
 		public $id;
 		public $nome;
 		public $rg;
+		public $cpf;
 		public $nascimento;
 		public $foto;
 		public $email;
@@ -40,18 +41,19 @@
 
 			  	if ($stm->rowCount()==0) {
 			  		$_SESSION['gravar'] = true;
-			  		$sql = "insert into pessoa (nome, rg, nascimento, foto, email, senha, tipo, usuario, criacao) values (?,?,?,?,?,?,?,?,?)";
+			  		$sql = "insert into pessoa (nome, rg, cpf, nascimento, foto, email, senha, tipo, usuario, criacao) values (?,?,?,?,?,?,?,?,?,?)";
 					$con = new Conexao();
 				  	$stm = $con->prepare($sql);
 				 	$stm->bindParam(1, $this->nome);
-				  	$stm->bindParam(2, $this->rg);
-				  	$stm->bindParam(3, $this->nascimento);
-				  	$stm->bindParam(4, $this->foto);
-				  	$stm->bindParam(5, $this->email);
-				  	$stm->bindParam(6, $this->senha);
-				  	$stm->bindParam(7, $this->tipo);
-				  	$stm->bindParam(8, $this->usuario);
-				  	$stm->bindParam(9, $this->criacao);
+					$stm->bindParam(2, $this->rg);
+					$stm->bindParam(3, $this->cpf);
+				  	$stm->bindParam(4, $this->nascimento);
+				  	$stm->bindParam(5, $this->foto);
+				  	$stm->bindParam(6, $this->email);
+				  	$stm->bindParam(7, $this->senha);
+				  	$stm->bindParam(8, $this->tipo);
+				  	$stm->bindParam(9, $this->usuario);
+				  	$stm->bindParam(10, $this->criacao);
 
 				  	$stm->execute();
 
@@ -88,11 +90,14 @@
 					$stm->execute();
 
 					if($stm->rowCount()>0){
+						
 						foreach ($stm as $linha) {
+							$_SESSION['id_pessoa'] = $linha['id'];
 							$_SESSION['tipo'] = $linha['tipo'];
 							$_SESSION['usuario'] = $linha['usuario'];
 							$_SESSION['nome'] = $linha['nome'];
 							$_SESSION['foto'] = $linha['foto'];
+							$_SESSION['email'] = $linha['email'];
 						}
 						return true;
 					}else{
@@ -129,6 +134,7 @@
 							$this->email=$linha['email'];
 							$this->senha=$linha['senha'];
 							$this->rg=$linha['rg'];
+							$this->cpf=$linha['cpf'];
 							$this->nascimento=$linha['nascimento'];
 							$this->usuario=$linha['usuario'];
 						}
@@ -202,10 +208,10 @@
 
 	 	public function alterar(){
 				try{
-					$sql = "update pessoa set email=?, senha=? where id=?";
+					$sql = "update pessoa set usuario=?, senha=? where id=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
-					$stm->bindParam(1, $this->email);
+					$stm->bindParam(1, $this->usuario);
 					$stm->bindParam(2, $this->senha);
 					$stm->bindParam(3, $this->id);
 						if ($stm->execute()) {

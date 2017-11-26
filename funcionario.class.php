@@ -21,11 +21,10 @@
 
 
 					
-					$sql = "insert into funcionario (cargo, cpf, idpessoa) values (?,?,?)";
+					$sql = "insert into funcionario (cargo, idpessoa) values (?,?)";
 				 	$con = new Conexao();
 				 	$stm = $con->prepare($sql);
 				 	$stm->bindParam(1, $this->cargo);
-				 	$stm->bindParam(2, $this->cpf);
 				 	$stm->bindParam(3, $_SESSION['id_pessoa']);
 				 				 
 				 	if ($stm->execute()) {
@@ -70,15 +69,15 @@
 
 	    public function carregar(){
 				try{
-					$sql = "select * from pessoa";
+					$sql = "select * from funcionario where idpessoa=?";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->bindParam(1, $this->idpessoa);
 					$stm->execute();
-					print_r($sql);
 
 						foreach ($stm as $linha) {
 							$this->idpessoa=$linha['id'];
+							$this->cargo=$linha['cargo'];
 						}
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";

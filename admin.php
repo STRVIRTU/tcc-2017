@@ -170,6 +170,12 @@
                                 <span class="hidden-sm hidden-xs">Funcionarios</span>
                               </a>
                             </li>
+                            <li class="link">
+                              <a href="?pagina=carteirinha">
+                                <span class="fa fa-user" aria-hidden="true"></span>
+                                <span class="hidden-sm hidden-xs">Funcionarios</span>
+                              </a>
+                            </li>
                       </ul>
                   </div><!---Fim Collapse-->
                </nav>

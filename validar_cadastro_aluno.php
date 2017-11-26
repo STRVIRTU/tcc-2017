@@ -5,6 +5,7 @@
 		$nome = $_POST['nome_aluno'];
 		$nascimento = $_POST['nascimento_aluno'];
 		$rg = $_POST['rg_aluno'];
+		$cpf = $_POST['cpf_aluno'];
 		$cgm = $_POST['cgm_aluno'];
 		$curso = $_POST['curso_aluno'];
 		$turma = $_POST['turma_aluno'];
@@ -27,31 +28,36 @@
 
 	    $aluno->__set("nome",$nome);  
 	    $aluno->__set("nascimento",$nascimento);  
-	    $aluno->__set("rg",$rg);
+		$aluno->__set("rg",$rg);
+		$aluno->__set("cpf", $cpf);
 	    $aluno->__set("email",$email.'@ceepcascavel.com.br');
 	    $aluno->__set("usuario", $usuario);
 	    $aluno->__set("senha",$senha);
 	    $aluno->__set("tipo", $tipo);
 	    $aluno->__set("criacao", $criacao);
 
-	     if (isset($_FILES["foto"])) {
+	    //  if ($_FILES["foto"] != NULL) {
 	     	
-	     	if ($_FILES["foto"]["error"]) {
-		     	echo "ERRO N". $_FILES["foto"]["error"];
-		     }
+	    //  	if ($_FILES["foto"]["error"]) {
+		//      	echo "ERRO N". $_FILES["foto"]["error"];
+		//      }
 
-		     $fotoType = $_FILES["foto"]["type"];
-		     if ($fotoType =="image/PNG" or $fotoType =="image/png" or $fotoType == "image/jpg" or $fotoType == "image/jpeg") {
-		     	move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
-			     $aluno->__set("foto", 'img/'.$_FILES["foto"]["name"]);
-			     $aluno->gravar();
-			     //$class->novoUsuario();
+		//      $fotoType = $_FILES["foto"]["type"];
+		//      if ($fotoType =="image/PNG" or $fotoType =="image/png" or $fotoType == "image/jpg" or $fotoType == "image/jpeg") {
+		//      	move_uploaded_file($_FILES["foto"]["tmp_name"], $_FILES["name"]);
+		// 	     $aluno->__set("foto", 'img/'.$_FILES["foto"]["name"]);
+		// 	     $aluno->gravar();
+		// 	     $class->novoUsuario();
 			    
-		     }else{
-		     	echo "<div class='danger'>Formato Inválido</div>";
-		     }
-	     }
-	     $aluno->gravar();
+		//      }else{
+		//      	echo "<div class='danger'>Formato Inválido</div>";
+		//      }
+		//  }
+		
+
+		 echo $aluno->gravar();
+
+		echo $class->novoUsuario();
 
 
 	     

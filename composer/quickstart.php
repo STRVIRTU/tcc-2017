@@ -70,24 +70,32 @@ function expandHomeDirectory($path) {
   return str_replace('~', realpath($homeDirectory), $path);
 }
 
-// Get the API client and construct the service object.
-$client = getClient();
-$service = new Google_Service_Directory($client);
+// // Get the API client and construct the service object.
+// $client = getClient();
+// $service = new Google_Service_Directory($client);
 
-// Print the first 10 users in the domain.
+// // Print the first 10 users in the domain.
+// $dir = new Google_Service_Directory($client);
+// // SET UP THE USER/USERNAME OBJECTS
+// $user = new Google_Service_Directory_User();
+// $name = new Google_Service_Directory_UserName();
+// $new_person = array();
+// // SET THE ATTRIBUTES
+// $name->setGivenName('Luan');
+// $name->setFamilyName('SGU');
+// $user->setName($name);
+// $user->setHashFunction("SHA-1");
+// $user->setPrimaryEmail("luan.sgu@ceepcascavel.com.br");
+// $user->setPassword(hash("sha1","testing123"));
+// // the JSON object shows us that externalIds is an array, so that's how we set it here
+// $user->setExternalIds(array("value"=>28790,"type"=>"custom","customType"=>"EmployeeID"));
+// $result = $dir->users->insert($user);
+// echo "New user ".$result->primaryEmail." created successfully.";
+
 $dir = new Google_Service_Directory($client);
-// SET UP THE USER/USERNAME OBJECTS
 $user = new Google_Service_Directory_User();
-$name = new Google_Service_Directory_UserName();
-$new_person = array();
-// SET THE ATTRIBUTES
-$name->setGivenName('Teste');
-$name->setFamilyName('SGU');
-$user->setName($name);
-$user->setHashFunction("SHA-1");
-$user->setPrimaryEmail("testetcc2@ceepcascavel.com.br");
-$user->setPassword(hash("sha1","testing123"));
-// the JSON object shows us that externalIds is an array, so that's how we set it here
-$user->setExternalIds(array("value"=>28790,"type"=>"custom","customType"=>"EmployeeID"));
-$result = $dir->users->insert($user);
-echo "New user ".$result->primaryEmail." created successfully.";
+$id = $dir->users->get($email);
+$unique_google_id = $id['id'];
+$user->setPassword(hash(“sha1”,’newPassword1234?));
+$user->setHashFunction(“SHA-1”)
+$dir->users->update($unique_google_id,$user);b

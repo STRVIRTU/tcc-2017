@@ -24,8 +24,8 @@
  <div class="container">
         <div class="row">
               <form class="col-md-3 center my_form" style="margin-top: 9rem !important;" method="POST" action="?pagina=validar_login">
-                <h2 class="form-signin-heading text-center no-margin">Login - CEEP</h2>
-                  <img src="img/avatar.png" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">
+                <!-- <h2 class="form-signin-heading text-center no-margin">Login - CEEP</h2> -->
+                  <img src="img/logo_ceep.jpg" class="center-block img-responsive img-rounded img-avatar" style="max-width: 115px;">
           
                     <div class="input-group ">
                       <span class="input-group-addon"><i class="fa fa-envelope-o "></i></span>
@@ -46,13 +46,13 @@
             
                   <div class="row">
                     <div class="col-md-12">
-                      <input type="submit" class="btn btn-danger login_btn text-center" value="Logar">
+                      <button type="submit" class="btn btn-success login_btn text-center"><strong>Logar</strong></button>
                     </div>
                     <div class="col-md-12">
-                      <a href="?pagina=cadastro_aluno" class="col-md-4 btn btn-danger login_btn text-center" role="button">Cadastrar-se</a>
+                      <a href="?pagina=cadastro_aluno" class="col-md-4 btn btn-success login_btn text-center" role="button"><strong>Cadastrar-se</strong></a>
                     </div>
                     <div class="col-md-12">
-                      <a  class="col-md-4 btn btn-danger login_btn " role="button" data-toggle="modal" data-target="#myModal">Rec. Senha</a>
+                      <a  class="col-md-4 btn btn-success login_btn " role="button" data-toggle="modal" data-target="#myModal"><strong>Rec. Senha</strong></a>
                     </div>
                   </div>
                 </form> <!-- /form -->
@@ -80,7 +80,7 @@
                  
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger" role="button" onclick="location.href='?pagina=login'" >Rec. Senha</button>
+                    <button type="submit" class="btn btn-success" role="button" onclick="location.href='?pagina=login'" >Rec. Senha</button>
                   </div>
                 </form>
               </div>

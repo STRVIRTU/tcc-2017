@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>MikroTik</title>
-	<meta http-equiv="refresh" content="120;url=http://localhost/tccgit/tcc-2017/teste2.php"> -->
+	<meta http-equiv="refresh" content="60;url=http://localhost/tccgit/tcc-2017/teste2.php"> -->
 </head>
 <body>
 
@@ -18,7 +18,7 @@ $API = new RouterosAPI();
 //$API->debug = true;
 $pessoa = new Pessoa;
 $i = 0;
-  if ($API->connect('192.168.15.6', 'admin', '')){
+  if ($API->connect('192.168.2.1', 'admin', '')){
  // if ($API->connect('10.1.1.1', 'admin', 'fwpmicsc*9dc')){
 $dados = $pessoa->listarPendentes();
 	foreach($dados as $linha)
@@ -43,8 +43,8 @@ $dados = $pessoa->listarPendentes();
 		$pessoa->__set('status', 'ativo');
 		$pessoa->alterarStatus();
 		$i++;
-		echo $profile;
-	}
+	// 	echo $profile;
+	 }
 }
 echo "<br>";
 echo $i." usuarios incluidos.";

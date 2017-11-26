@@ -24,8 +24,10 @@
 				if ($_SESSION['tipo'] == 1 and $_SESSION['logado'] == true) {
 					header("Location: ?pagina=admin");
 				}elseif ($_SESSION['tipo'] == 2) {
+					$_SESSION['logado_aluno'] = true;
 					header("Location: ?pagina=perfil_aluno");
 				}elseif($_SESSION['tipo'] == 3){
+					$_SESSION['logado_funcionario'] = true;
 					header("location: ?pagina=perfil_funcionario");
 				}else{
 					echo '<script> alert("Login/senha inválidos!"); </script>';

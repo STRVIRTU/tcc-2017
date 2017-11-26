@@ -14,6 +14,13 @@
 			//print "Aluno instanciado!";
 		}
 
+		public function __get($var){
+	        return $this->$var;
+	   	}
+	    public function __set($var, $valor){
+	        $this->$var = $valor;
+	    }
+
 		public function gravar(){
 			try {
 				echo parent::gravar();
@@ -45,16 +52,9 @@
 	 	}
 	 	  
 
-	    public function __get($var){
-	        return $this->$var;
-	   	}
-	    public function __set($var, $valor){
-	        $this->$var = $valor;
-	    }
-
 		public function listar(){
 				try {
-					$sql = "select p.id, p.nome, p.senha, p.email, p.nascimento, p.rg, a.turma, a.cgm, a.curso from pessoa p join aluno a on p.id=a.idpessoa";
+					$sql = "select p.id, p.nome, p.senha, p.email, p.nascimento, p.rg, a.turma, a.cgm, a.curso, a.idpessoa from pessoa p join aluno a on p.id=a.idpessoa";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->execute();
@@ -82,7 +82,28 @@
 				}catch(PDOExeption $e){
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
 		 		}
-	 	}
+		 }
+		 
+		 public function carregarbyID(){
+			try{
+				$sql = "select * from aluno where idpessoa=?";
+				$con = new Conexao();
+				$stm = $con->prepare($sql);
+				$stm->bindParam(1, $this->idpessoa);
+				$stm->execute();
+
+					
+				foreach ($stm as $linha) {
+					$this->cgm=$linha['cgm'];
+					$this->turma=$linha['turma'];
+					$this->curso=$linha['curso'];
+				
+				}
+
+			}catch(PDOExeption $e){
+				 return "<div class='danger'>".$e->getMessage()."</div>";
+			 }
+	 }
 
 	 	public function excluir(){
 				try{

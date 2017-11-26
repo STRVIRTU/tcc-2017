@@ -46,6 +46,7 @@ session_start();
 					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_funcionario.php"; break;
 					case 'acao_admin': $pagina = "acao_admin.php"; break;
 					case 'logout': $pagina = "logout.php"; break;
+					case 'ocorrencia': $pagina = "validar_ocorrencia.php"; break;
 					default: $pagina = $_GET['pagina'];break;
 				}	
 			}

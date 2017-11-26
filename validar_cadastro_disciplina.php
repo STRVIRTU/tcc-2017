@@ -6,7 +6,7 @@
 
 		$disc = new Disciplina();
 		$disc->__set("nome",$nome);  
-	    $disc->__set("curso",$curso_disciplina);
+	    $disc->__set("id_curso",$curso_disciplina);
 
 	    $disc->gravar();
 	

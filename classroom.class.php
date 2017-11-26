@@ -7,6 +7,7 @@ class Classroom {
       private $name;
       private $password;
       private $id;
+      private $newpass;
 
       function __construct(){
     
@@ -94,7 +95,7 @@ class Classroom {
 
 
       public function novoUsuario() {
-
+        try{
             $client = getClient();
             $service = new Google_Service_Directory($client);  
             $dir = new Google_Service_Directory($client);
@@ -112,7 +113,26 @@ class Classroom {
             // the JSON object shows us that externalIds is an array, so that's how we set it here
             $user->setExternalIds(array("value"=>28790,"type"=>"custom","customType"=>"EmployeeID"));
             $result = $dir->users->insert($user);
-            echo "Novo usuário ".$result->primaryEmail." criado com sucesso.";
+           
+            return "Novo usuário ".$result->primaryEmail." criado com sucesso.";
+          }catch(Exception $e){
+              return '<div class="alert alert-danger col-md-6 center fade in">'.
+                  '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>'.
+                  '<p class="text-center">Sem conexao! Nao foi possível acessar o google.</p>'.
+               '</div>';
+          }
+
+      }
+
+      public function updatePassword(){
+        
+        $dir = new Google_Service_Directory($client);
+        $user = new Google_Service_Directory_User();
+        $id = $dir->users->get($email);
+        $unique_google_id = $id['id'];
+        $user->setPassword(hash('sha1','newPassword1234?'));
+        $user->setHashFunction('SHA-1');
+        $dir->users->update($unique_google_id,$user);
 
       }
 }
