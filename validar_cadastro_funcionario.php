@@ -48,6 +48,7 @@
 		// 	}
 		// }
 		echo $func->gravar();
+	
 		echo $class->novoUsuario();
 
 ?>

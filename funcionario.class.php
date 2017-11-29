@@ -35,10 +35,6 @@
 				 	}
 				 	
 
-			  	}else{
-
-			  		echo "teste Funcionario";
-
 			  	}
 
 		 		}catch(PDOExeption $e){

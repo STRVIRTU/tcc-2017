@@ -16,6 +16,7 @@
 		public $usuario;
 		public $criacao;
 		public $status;
+		public $cgm;
 
 		public function __construct(){
 			// print "Pessoa instanciada!";
@@ -142,6 +143,24 @@
 		 			return "<div class='danger'>".$e->getMessage()."</div>";
 		 		}
 	 	}
+
+		 public function carregarCeep(){
+			try{
+				$sql = "select * from ceep where cgm=?";
+				$con = new Conexao();
+				$stm = $con->prepare($sql);
+				$stm->bindParam(1, $this->cgm);
+				$stm->execute();
+					foreach ($stm as $linha) {
+						$this->id=$linha['id'];
+						$this->nome=$linha['nome'];
+						$this->rg=$linha['rg'];
+						$this->nascimento=$linha['nascimento'];
+					}
+			}catch(PDOExeption $e){
+				 return "<div class='danger'>".$e->getMessage()."</div>";
+			 }
+	 }
 
 	    public function recuperar_senha(){
 		    	try{

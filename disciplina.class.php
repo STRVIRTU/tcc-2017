@@ -35,7 +35,7 @@
 
 		public function listar(){
 				try {
-					$sql = "select * from disciplina";
+					$sql = "select c.nome_curso, c.id_curso, d.id_curso, d.nome, d.id_disciplina from curso c join disciplina d on c.id_curso=d.id_curso";
 					$con = new Conexao();
 					$stm = $con->prepare($sql);
 					$stm->execute();

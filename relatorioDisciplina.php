@@ -9,16 +9,14 @@
 </head>
 <body>
 	<!-- <?php include_once('sidebar_admin.php');?> -->
-	<div id="pagina">
+	<div id="">
 		<h1>Relatório de Disciplinas</h1>
 
-		<table>
+		<table class="center">
 			<tr>
 				<td class="topo">Código</td>
 				<td class="topo">Nome</td>
-				<td class="topo">Professor</td>
 				<td class="topo">Curso</td>
-				<td class="topo">Carga</td>
 			</tr>
 
 			<?php
@@ -28,9 +26,7 @@
 				 	echo "<tr>";
 				 	echo "<td>".$linha['id_disciplina']."</td>";
 				 	echo "<td>".$linha['nome']."</td>";
-				 	echo "<td>".$linha['professor']."</td>";
-				 	echo "<td>".$linha['curso']."</td>";
-				 	echo "<td>".$linha['carga_horaria']."</td>";
+				 	echo "<td>".$linha['nome_curso']."</td>";
 				 	echo "</tr>";
 
 				} 

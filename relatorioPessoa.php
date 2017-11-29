@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- <?php include_once('sidebar_admin.php');?> -->
-	<div id="pagina">
+	<div id="">
 		<h1>Relatório de Usuários</h1>
 
 		<table>

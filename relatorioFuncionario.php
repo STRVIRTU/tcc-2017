@@ -7,8 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 </head>
 <body>
-	<!-- <?php include_once('menu_admin.php');?> -->
-	<div id="pagina">
+
+	<div id="">
 		<h1>Relatório de Funcionários</h1>
 
 		<table class="center">

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div id="pagina">
+	<div id="">
 		<h1>Relatório de Alunos</h1>
 
 		<table class="center">

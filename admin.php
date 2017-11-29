@@ -496,6 +496,7 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Curso</a></li>
+                <li role="presentation"><a href="#turma" aria-controls="turma" role="tab" data-toggle="tab">Turma</a></li>
                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Disciplina</a></li>
                 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Funcionario</a></li>
                 <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Aluno</a></li>
@@ -513,6 +514,36 @@
                     </form>
                 </div>
 
+                <!--Turma-->
+                <div role="tabpanel" class="tab-pane" id="turma">
+                   <form method="POST" action="?pagina=validar_cadastro_turma">
+                      <label>Informe a turma:</label>
+                      <input class="form-control" type="text" name="turma" id="turma"><br>
+                      <label>Informe o periodo:</label>
+                      <select class="form-control" name="periodo"><br>
+                          <option value="matutino">MATUTINO</option>
+                          <option value="vespertino">VESPERTINO</option>
+                          <option value="noturno">NOTURNO</option>
+                      </select><br>
+                      <label id="input" for="course">Curso</label>
+                            <select class="form-control" name="curso" id="curso">
+                              <?php
+                                  $c = new Curso();
+                                  $dados = $c->listar();
+                                    foreach ($dados as $linha) {
+                                      echo "<option value='".$linha['id_curso']."'>".$linha['nome']."</option>"; 
+                                    }
+                              ?>
+                            </select><br>
+
+                      <label>Data de início</label>
+                      <input class="form-control" type="date" name="data" id="data"><br>
+
+
+                      <input class="btn btn-danger" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+                    </form>
+                </div>
+
                 <!--DISCIPLINA-->
                 <div role="tabpanel" class="tab-pane" id="profile">
                   <form method="POST" action="?pagina=validar_cadastro_disciplina">
@@ -524,7 +555,7 @@
                                 $c = new Curso();
                                 $dados = $c->listar();
                                   foreach ($dados as $linha) {
-                                    echo "<option value='".$linha['id_curso']."'>".$linha['nome']."</option>";
+                                    echo "<option value='".$linha['id_curso']."'>".$linha['nome_curso']."</option>";
                                   }
                             ?>
                       </select><br>

@@ -12,7 +12,7 @@ class Classroom {
       function __construct(){
     
             define('APPLICATION_NAME', 'Directory API PHP Quickstart');
-            define('CREDENTIALS_PATH', '~/.credentials/admin-directory_v1-php-quickstart.json');
+            define('CREDENTIALS_PATH', 'credentials/admin-directory_v1-php-quickstart.json');
             define('CLIENT_SECRET_PATH', __DIR__ . '/composer/client_secret.json');
             // If modifying these scopes, delete your previously saved credentials
             // at ~/.credentials/admin-directory_v1-php-quickstart.json
@@ -113,7 +113,11 @@ class Classroom {
             // the JSON object shows us that externalIds is an array, so that's how we set it here
             $user->setExternalIds(array("value"=>28790,"type"=>"custom","customType"=>"EmployeeID"));
             $result = $dir->users->insert($user);
-           
+
+            return '<div class="alert alert-success col-md-6 center fade in">'.
+                      '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>'.
+                      '<p class="text-center">Novo usuário'.$result->primaryEmail.' criado com sucesso no google admin.</p>'.
+                  '</div>';
             return "Novo usuário ".$result->primaryEmail." criado com sucesso.";
           }catch(Exception $e){
               return '<div class="alert alert-danger col-md-6 center fade in">'.

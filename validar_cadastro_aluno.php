@@ -5,7 +5,7 @@
 		$nome = $_POST['nome_aluno'];
 		$nascimento = $_POST['nascimento_aluno'];
 		$rg = $_POST['rg_aluno'];
-		$cpf = $_POST['cpf_aluno'];
+		$cpf = $_POST['cpf'];
 		$cgm = $_POST['cgm_aluno'];
 		$curso = $_POST['curso_aluno'];
 		$turma = $_POST['turma_aluno'];
@@ -55,7 +55,7 @@
 		//  }
 		
 
-		 echo $aluno->gravar();
+		echo $aluno->gravar();
 
 		echo $class->novoUsuario();
 

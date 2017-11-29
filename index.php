@@ -42,6 +42,7 @@ session_start();
 					case 'validar_login': $pagina = "valida_login.php"; break;
 					case 'validar_cadastro_aluno': $pagina = "validar_cadastro_aluno.php"; break;
 					case 'validar_cadastro_curso': $pagina = "validar_cadastro_curso.php"; break;
+					case 'validar_cadastro_turma': $pagina = "validar_cadastro_turma.php"; break;
 					case 'validar_cadastro_disciplina': $pagina = "validar_cadastro_disciplina.php"; break;
 					case 'validar_cadastro_funcionario': $pagina = "validar_cadastro_funcionario.php"; break;
 					case 'acao_admin': $pagina = "acao_admin.php"; break;

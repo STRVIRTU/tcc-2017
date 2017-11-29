@@ -3,7 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 
 define('APPLICATION_NAME', 'Directory API PHP Quickstart');
-define('CREDENTIALS_PATH', '~/.credentials/admin-directory_v1-php-quickstart.json');
+define('CREDENTIALS_PATH', '../credentials/admin-directory_v1-php-quickstart.json');
 define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/admin-directory_v1-php-quickstart.json
@@ -71,8 +71,8 @@ function expandHomeDirectory($path) {
 }
 
 // // Get the API client and construct the service object.
-// $client = getClient();
-// $service = new Google_Service_Directory($client);
+$client = getClient();
+$service = new Google_Service_Directory($client);
 
 // // Print the first 10 users in the domain.
 // $dir = new Google_Service_Directory($client);
@@ -96,6 +96,6 @@ $dir = new Google_Service_Directory($client);
 $user = new Google_Service_Directory_User();
 $id = $dir->users->get($email);
 $unique_google_id = $id['id'];
-$user->setPassword(hash(“sha1”,’newPassword1234?));
-$user->setHashFunction(“SHA-1”)
-$dir->users->update($unique_google_id,$user);b
+$user->setPassword(hash('sha1','newPassword1234?'));
+$user->setHashFunction("SHA-1");
+$dir->users->update($unique_google_id,$user);

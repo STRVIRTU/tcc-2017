@@ -11,7 +11,7 @@
 
 		public function gravar(){
 			try{
-				$sql = "insert into curso (nome) values (?)";
+				$sql = "insert into curso (nome_curso) values (?)";
 			 	$con = new Conexao();
 			 	$stm = $con->prepare($sql);
 			 	$stm->bindParam(1, $this->curso);

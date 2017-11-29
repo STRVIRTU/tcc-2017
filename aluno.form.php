@@ -4,6 +4,7 @@
 	include_once('conexao.class.php'); 
 	include_once('aluno.class.php');
 	include_once('pessoa.class.php');
+	include_once('turma.class.php');
 
 	
 	$aluno = new Aluno;
@@ -12,8 +13,8 @@
 	$id =$aluno->__get('idpessoa');
 
 	$pessoa = new Pessoa;
-	$pessoa->__set('id', @$_SESSION['idpessoa'] );
-	$pessoa->carregar();
+	$pessoa->__set('cgm', @$_GET['cgm']);
+	$pessoa->carregarCeep();
 	
 
 	?>
@@ -85,14 +86,22 @@
 				<label>Nome: </label>
 				<input class="form-control" type="text" name="nome_aluno" value="<?php echo $pessoa->__get('nome')?>" id="nome_aluno"  required ><br>
 				<label>Turma: </label>
-				<input class="form-control" type="text" name="turma_aluno" id="turma_aluno" value="<?php echo $aluno->__get('turma')?>"><br>						
+				<select class="form-control" name="turma_aluno" id="curso">
+                              <?php
+                                  $t = new Turma();
+                                  $dados = $t->listar();
+                                    foreach ($dados as $linha) {
+                                      echo "<option value='".$linha['nome']."'>".$linha['nome']."</option>"; 
+                                    }
+                              ?>
+                            </select><br>						
 						<label id="input" for="course">Curso</label>
 							<select class="form-control" type="text" name="curso_aluno" id="curso_aluno" value="">
 								<?php
 										$c = new Curso();
 										$dados = $c->listar();
 											foreach ($dados as $linha) {
-												echo "<option>".$linha['nome']."</option>";	
+												echo "<option>".$linha['nome_curso']."</option>";	
 											}
 								?>
 							</select><br>
@@ -106,7 +115,7 @@
 				<input class="form-control" type="text" name="cpf" id="cpf" placeholder="123.456.789-10"><br>
 				<label>Email:</label>
 				<div class="input-group">
-					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="<?php echo $pessoa->__get('usuario')?>" placeholder="luan.rohde" aria-describedby="basic-addon2">
+					<input class="form-control" type="text" name="email_aluno" id="email_aluno" value="" placeholder="luan.rohde" aria-describedby="basic-addon2">
 					<span class="input-group-addon" id="basic-addon2">@ceepcascavel.com.br</span>
 				</div><br>
 				<label>Senha:</label>
